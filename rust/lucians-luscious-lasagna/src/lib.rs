@@ -12,7 +12,7 @@ pub fn remaining_minutes_in_oven(actual_minutes_in_oven: i32) -> i32 {
 }
 
 pub fn preparation_time_in_minutes(number_of_layers: i32) -> i32 {
-    unimplemented!("calculate preparation time in minutes for number of layers: {number_of_layers}")
+    2 * number_of_layers
 }
 
 pub fn elapsed_time_in_minutes(number_of_layers: i32, actual_minutes_in_oven: i32) -> i32 {
