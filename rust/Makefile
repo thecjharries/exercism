@@ -10,6 +10,21 @@ SUBMISSION = src/lib.rs
 TRACK = rust
 EXERCISE = $(shell basename $(CURDIR))
 
+# Create the exercise
+.PHONY: create
+create:
+	$(EXERCISM) download --exercise=$(EXERCISE) --track=$(TRACK)
+
+# Create the feature branch
+.PHONY: branch
+boot: create
+	$(GIT) checkout -b feat/$(TRACK)/$(EXERCISE)
+	$(GIT) add $(EXERCISE)
+	$(GIT) commit -m "Create $(TRACK):$(EXERCISE) exercise"
+	echo "-include ../Makefile" >> $(EXERCISE)/Makefile
+	$(GIT) add $(EXERCISE)/Makefile
+	$(GIT) commit -m "Add Makefile"
+
 # Run the tests
 .PHONY: test
 test:
@@ -36,10 +51,10 @@ clean:
 
 # Submit the solution
 .PHONY: submit
-submit:
+submit: coverage clean
 	$(EXERCISM) submit $(SUBMISSION)
 
 # Finish the branch
 .PHONY: push
-push: coverage clean submit
+push: submit
 	$(GIT) push -u origin feat/$(TRACK)/$(EXERCISE)
