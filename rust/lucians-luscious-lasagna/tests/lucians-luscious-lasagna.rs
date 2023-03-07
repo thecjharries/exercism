@@ -14,6 +14,11 @@ fn remaining_minutes_in_oven_after_fifteen_minutes() {
 }
 
 #[test]
+fn remaining_minutes_in_over_after_more_than_expected_minutes() {
+    assert_eq!(0, remaining_minutes_in_oven(45));
+}
+
+#[test]
 fn preparation_time_in_minutes_for_one_layer() {
     assert_eq!(2, preparation_time_in_minutes(1));
 }
