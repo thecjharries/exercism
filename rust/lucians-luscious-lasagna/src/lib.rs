@@ -1,5 +1,5 @@
 pub fn expected_minutes_in_oven() -> i32 {
-    unimplemented!("return expected minutes in the oven")
+    40
 }
 
 pub fn remaining_minutes_in_oven(actual_minutes_in_oven: i32) -> i32 {
