@@ -28,11 +28,11 @@ pub fn log(level: LogLevel, message: &str) -> String {
     format!("[{}]: {}", level, message)
 }
 pub fn info(message: &str) -> String {
-    unimplemented!("return a message for info log level")
+    log(LogLevel::Info, message)
 }
 pub fn warn(message: &str) -> String {
-    unimplemented!("return a message for warn log level")
+    log(LogLevel::Warning, message)
 }
 pub fn error(message: &str) -> String {
-    unimplemented!("return a message for error log level")
+    log(LogLevel::Error, message)
 }
