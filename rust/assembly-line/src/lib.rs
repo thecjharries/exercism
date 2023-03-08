@@ -10,5 +10,5 @@ pub fn production_rate_per_hour(speed: u8) -> f64 {
 }
 
 pub fn working_items_per_minute(speed: u8) -> u32 {
-    unimplemented!("calculate the amount of working items at speed: {speed}")
+    (production_rate_per_hour(speed) / 60.0) as u32
 }
