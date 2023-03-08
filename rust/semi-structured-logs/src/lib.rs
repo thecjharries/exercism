@@ -16,7 +16,7 @@ impl fmt::Display for LogLevel {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let level = match self {
             LogLevel::Info => "INFO",
-            LogLevel::Warning => "WARN",
+            LogLevel::Warning => "WARNING",
             LogLevel::Error => "ERROR",
         };
         write!(f, "{level}")
