@@ -25,7 +25,7 @@ impl fmt::Display for LogLevel {
 
 /// primary function for emitting logs
 pub fn log(level: LogLevel, message: &str) -> String {
-    unimplemented!("return a message for the given log level")
+    format!("[{}]: {}", level, message)
 }
 pub fn info(message: &str) -> String {
     unimplemented!("return a message for info log level")
