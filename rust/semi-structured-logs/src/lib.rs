@@ -2,6 +2,8 @@
 // to enable stricter warnings.
 #![allow(unused)]
 
+use std::fmt;
+
 /// various log levels
 #[derive(Clone, PartialEq, Eq, Debug)]
 pub enum LogLevel {
@@ -9,6 +11,18 @@ pub enum LogLevel {
     Warning,
     Error,
 }
+
+impl fmt::Display for LogLevel {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let level = match self {
+            LogLevel::Info => "INFO",
+            LogLevel::Warning => "WARN",
+            LogLevel::Error => "ERROR",
+        };
+        write!(f, "{level}")
+    }
+}
+
 /// primary function for emitting logs
 pub fn log(level: LogLevel, message: &str) -> String {
     unimplemented!("return a message for the given log level")

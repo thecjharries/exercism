@@ -1,6 +1,13 @@
 use semi_structured_logs::{error, info, log, warn, LogLevel};
 
 #[test]
+fn log_level_display() {
+    assert_eq!(format!("{}", LogLevel::Info), "INFO");
+    assert_eq!(format!("{}", LogLevel::Warning), "WARN");
+    assert_eq!(format!("{}", LogLevel::Error), "ERROR");
+}
+
+#[test]
 fn emits_info() {
     assert_eq!(info("Timezone changed"), "[INFO]: Timezone changed");
 }
