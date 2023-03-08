@@ -1,29 +1,28 @@
 # Aliases for executables
 CARGO ?= cargo
-GIT ?= git
-XDG_OPEN ?= xdg-open
-RM ?= rm
 EXERCISM ?= exercism
 FIND ?= find
+GIT ?= git
+RM ?= rm
 SED ?= sed
+XDG_OPEN ?= xdg-open
 
 # Exercism variables
-SUBMISSION = src/lib.rs
-TRACK = rust
 ifeq (,$(IN))
 EXERCISE = $(shell basename $(CURDIR))
 else
 EXERCISE = $(shell echo $(IN) | sed 's/.*--exercise=\([^ ]*\) --.*/\1/')
 endif
+SUBMISSION = src/lib.rs
+TRACK = rust
 
 # Debug the variables
 .PHONY: debug
 debug:
 	@echo "EXERCISE: $(EXERCISE)"
+	@echo "IN: $(IN)"
 	@echo "SUBMISSION: $(SUBMISSION)"
 	@echo "TRACK: $(TRACK)"
-	@echo "IN: $(IN)"
-
 
 # Create the exercise
 .PHONY: create
@@ -31,7 +30,7 @@ create:
 	$(EXERCISM) download --exercise=$(EXERCISE) --track=$(TRACK)
 
 # Create the feature branch
-.PHONY: branch
+.PHONY: boot
 boot: create
 	$(GIT) checkout -b feat/$(TRACK)/$(EXERCISE)
 	$(GIT) add $(EXERCISE)
@@ -65,7 +64,6 @@ clean:
 	$(RM) -rf Cargo.lock
 	$(RM) -rf tarpaulin-report.html
 	$(RM) -rf main
-
 
 # Submit the solution
 .PHONY: submit
