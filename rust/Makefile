@@ -4,6 +4,8 @@ GIT ?= git
 XDG_OPEN ?= xdg-open
 RM ?= rm
 EXERCISM ?= exercism
+FIND ?= find
+SED ?= sed
 
 # Exercism variables
 SUBMISSION = src/lib.rs
@@ -24,6 +26,9 @@ boot: create
 	echo "-include ../Makefile" >> $(EXERCISE)/Makefile
 	$(GIT) add $(EXERCISE)/Makefile
 	$(GIT) commit -m "Add Makefile"
+	$(FIND) ./$(EXERCISE)/tests/ -type f -name '*.rs' -exec $(SED) -i '/#\[ignore]/d' {} \;
+	$(GIT) add $(EXERCISE)/tests/*.rs
+	$(GIT) commit -m "Enable all tests"
 
 # Run the tests
 .PHONY: test
