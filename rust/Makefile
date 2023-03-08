@@ -10,10 +10,10 @@ SED ?= sed
 # Exercism variables
 SUBMISSION = src/lib.rs
 TRACK = rust
-ifeq (,$(COMMAND))
+ifeq (,$(IN))
 EXERCISE = $(shell basename $(CURDIR))
 else
-EXERCISE = $(shell echo $(COMMAND) | sed 's/.*--exercise=\([^ ]*\) --.*/\1/')
+EXERCISE = $(shell echo $(IN) | sed 's/.*--exercise=\([^ ]*\) --.*/\1/')
 endif
 
 # Debug the variables
@@ -22,7 +22,7 @@ debug:
 	@echo "EXERCISE: $(EXERCISE)"
 	@echo "SUBMISSION: $(SUBMISSION)"
 	@echo "TRACK: $(TRACK)"
-	@echo "COMMAND: $(COMMAND)"
+	@echo "IN: $(IN)"
 
 
 # Create the exercise
