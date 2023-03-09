@@ -1,6 +1,7 @@
+use enum_iterator::{all, Sequence};
 use std::fmt;
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Sequence)]
 pub enum ResistorColor {
     Black = 0,
     Blue = 6,
@@ -29,6 +30,22 @@ impl fmt::Display for ResistorColor {
             ResistorColor::Yellow => "Yellow",
         };
         write!(f, "{}", color)
+    }
+}
+
+impl PartialOrd for ResistorColor {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        let self_value = *self as u32;
+        let other_value = *other as u32;
+        self_value.partial_cmp(&other_value)
+    }
+}
+
+impl Ord for ResistorColor {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        let self_value = *self as u32;
+        let other_value = *other as u32;
+        self_value.cmp(&other_value)
     }
 }
 
