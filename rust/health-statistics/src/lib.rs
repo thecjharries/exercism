@@ -18,7 +18,7 @@ impl User {
     }
 
     pub fn age(&self) -> u32 {
-        unimplemented!()
+        self.age
     }
 
     pub fn weight(&self) -> f32 {
@@ -26,7 +26,7 @@ impl User {
     }
 
     pub fn set_age(&mut self, new_age: u32) {
-        unimplemented!()
+        self.age = new_age;
     }
 
     pub fn set_weight(&mut self, new_weight: f32) {
