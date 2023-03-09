@@ -37,7 +37,20 @@ pub fn color_to_value(color: ResistorColor) -> u32 {
 }
 
 pub fn value_to_color_string(value: u32) -> String {
-    unimplemented!("convert the value {value} into a string representation of color")
+    let color = match value {
+        0 => ResistorColor::Black,
+        1 => ResistorColor::Brown,
+        2 => ResistorColor::Red,
+        3 => ResistorColor::Orange,
+        4 => ResistorColor::Yellow,
+        5 => ResistorColor::Green,
+        6 => ResistorColor::Blue,
+        7 => ResistorColor::Violet,
+        8 => ResistorColor::Grey,
+        9 => ResistorColor::White,
+        _ => return String::from("value out of range"),
+    };
+    color.to_string()
 }
 
 pub fn colors() -> Vec<ResistorColor> {
