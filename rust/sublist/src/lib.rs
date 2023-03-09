@@ -8,18 +8,12 @@ pub enum Comparison {
 
 pub fn sublist<T: PartialEq>(_first_list: &[T], _second_list: &[T]) -> Comparison {
     if _first_list.len() == _second_list.len() {
-        let mut equal = true;
         for i in 0.._first_list.len() {
             if _first_list[i] != _second_list[i] {
-                equal = false;
-                break;
+                return Comparison::Unequal;
             }
         }
-        if equal {
-            return Comparison::Equal;
-        } else {
-            return Comparison::Unequal;
-        }
+        return Comparison::Equal;
     } else {
         let mut larger = _first_list;
         let mut smaller = _second_list;
@@ -37,11 +31,12 @@ pub fn sublist<T: PartialEq>(_first_list: &[T], _second_list: &[T]) -> Compariso
         let window_size = smaller.len();
         for window in larger.windows(window_size) {
             let mut equal = true;
-            for i in 0..window_size {
-                if window[i] != smaller[i] {
+            let mut index = 0;
+            while equal && index < window_size {
+                if window[index] != smaller[index] {
                     equal = false;
-                    break;
                 }
+                index += 1;
             }
             if equal {
                 if larger == _first_list {
