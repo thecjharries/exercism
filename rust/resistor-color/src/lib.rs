@@ -1,3 +1,5 @@
+use std::fmt;
+
 #[derive(Debug, PartialEq, Eq)]
 pub enum ResistorColor {
     Black = 0,
@@ -10,6 +12,24 @@ pub enum ResistorColor {
     Violet = 7,
     White = 9,
     Yellow = 4,
+}
+
+impl fmt::Display for ResistorColor {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let color = match self {
+            ResistorColor::Black => "Black",
+            ResistorColor::Blue => "Blue",
+            ResistorColor::Brown => "Brown",
+            ResistorColor::Green => "Green",
+            ResistorColor::Grey => "Grey",
+            ResistorColor::Orange => "Orange",
+            ResistorColor::Red => "Red",
+            ResistorColor::Violet => "Violet",
+            ResistorColor::White => "White",
+            ResistorColor::Yellow => "Yellow",
+        };
+        write!(f, "{}", color)
+    }
 }
 
 pub fn color_to_value(color: ResistorColor) -> u32 {
