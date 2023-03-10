@@ -1,3 +1,4 @@
+#[derive(Debug, Copy, Clone)]
 pub struct Player {
     pub health: u32,
     pub mana: Option<u32>,
@@ -6,7 +7,16 @@ pub struct Player {
 
 impl Player {
     pub fn revive(&self) -> Option<Player> {
-        unimplemented!("Revive this player")
+        if 0 == self.health {
+            let mut player = *self;
+            player.health = 100;
+            if 10 <= player.level {
+                player.mana = Some(100);
+            }
+            Some(player)
+        } else {
+            None
+        }
     }
 
     pub fn cast_spell(&mut self, mana_cost: u32) -> u32 {
