@@ -12,7 +12,7 @@ impl School {
     }
 
     pub fn add(&mut self, grade: u32, student: &str) {
-        unimplemented!("Add {student} to the roster for {grade}")
+        self.grades.entry(grade).or_insert(vec![]).push(student.to_string());
     }
 
     pub fn grades(&self) -> Vec<u32> {
