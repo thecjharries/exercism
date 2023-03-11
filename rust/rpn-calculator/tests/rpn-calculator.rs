@@ -56,8 +56,11 @@ fn test_complex_operation() {
 
 #[test]
 fn test_too_few_operands_returns_none() {
-    let input = calculator_input("2 +");
-    assert_eq!(evaluate(&input), None);
+    let operands = vec!['+', '-', '*', '/'];
+    for operand in operands {
+        let input = calculator_input(&format!("2 {}", operand));
+        assert_eq!(evaluate(&input), None);
+    }
 }
 
 #[test]
