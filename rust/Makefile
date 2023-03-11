@@ -13,7 +13,7 @@ EXERCISE = $(shell basename $(CURDIR))
 else
 EXERCISE = $(shell echo $(IN) | sed 's/.*--exercise=\([^ ]*\) --.*/\1/')
 endif
-SUBMISSION = src/lib.rs
+SUBMISSIONS = src/lib.rs Cargo.toml Cargo.lock
 TRACK = rust
 
 # Debug the variables
@@ -67,10 +67,10 @@ clean:
 
 # Submit the solution
 .PHONY: submit
-submit: coverage clean
-	$(EXERCISM) submit $(SUBMISSION)
+submit:
+	$(EXERCISM) submit $(SUBMISSIONS)
 
 # Finish the branch
 .PHONY: push
-push: submit
+push: coverage submit clean
 	$(GIT) push -u origin feat/$(TRACK)/$(EXERCISE)
