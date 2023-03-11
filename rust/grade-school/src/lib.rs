@@ -12,11 +12,14 @@ impl School {
     }
 
     pub fn add(&mut self, grade: u32, student: &str) {
-        self.grades.entry(grade).or_insert(vec![]).push(student.to_string());
+        self.grades
+            .entry(grade)
+            .or_insert(vec![])
+            .push(student.to_string());
     }
 
     pub fn grades(&self) -> Vec<u32> {
-        unimplemented!()
+        self.grades.keys().cloned().collect()
     }
 
     // If `grade` returned a reference, `School` would be forced to keep a `Vec<String>`
