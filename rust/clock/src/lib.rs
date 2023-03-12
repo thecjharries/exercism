@@ -1,7 +1,15 @@
+use std::fmt;
+
 #[derive(Debug, PartialEq)]
 pub struct Clock {
     hours: i32,
     minutes: i32,
+}
+
+impl fmt::Display for Clock {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:02}:{:02}", self.hours, self.minutes)
+    }
 }
 
 impl Clock {
