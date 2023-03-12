@@ -23,6 +23,6 @@ impl Clock {
     }
 
     pub fn add_minutes(&self, minutes: i32) -> Self {
-        unimplemented!("Add {minutes} minutes to existing Clock time");
+        Clock::new(self.hours, self.minutes + minutes)
     }
 }
