@@ -13,7 +13,7 @@ EXERCISE = $(shell basename $(CURDIR))
 else
 EXERCISE = $(shell echo $(IN) | sed 's/.*--exercise=\([^ ]*\) --.*/\1/')
 endif
-SUBMISSIONS = src/lib.rs Cargo.toml Cargo.lock
+SUBMISSIONS = src/lib.rs Cargo.toml
 TRACK = rust
 
 # Debug the variables
