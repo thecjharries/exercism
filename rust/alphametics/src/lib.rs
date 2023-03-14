@@ -1,7 +1,8 @@
-// use eval::eval;
 use itertools::Itertools;
 use std::collections::HashMap;
 
+// Note this brute forces the permutations. There are better ways to do this.
+// The tests time out on exercism.
 pub fn solve(input: &str) -> Option<HashMap<char, u8>> {
     let characters = input
         .chars()
