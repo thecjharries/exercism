@@ -10,5 +10,12 @@ pub fn verse(n: u32) -> String {
 }
 
 pub fn sing(start: u32, end: u32) -> String {
-    unimplemented!("sing verses {start} to {end}, inclusive")
+    let mut song = String::new();
+    for n in (end..=start).rev() {
+        song.push_str(&verse(n));
+        if n != end {
+            song.push_str("\n");
+        }
+    }
+    song
 }
