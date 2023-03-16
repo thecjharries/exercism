@@ -12,5 +12,6 @@ pub fn square(s: u32) -> u64 {
 }
 
 pub fn total() -> u64 {
-    (1..=64).map(|s| square(s)).sum()
+    // this is 2^64 - 1
+    u64::MAX
 }
