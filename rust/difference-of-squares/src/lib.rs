@@ -1,5 +1,5 @@
 pub fn square_of_sum(n: u32) -> u32 {
-    unimplemented!("square of sum of 1...{n}")
+    (n * (n + 1) / 2).pow(2)
 }
 
 pub fn sum_of_squares(n: u32) -> u32 {
