@@ -21,7 +21,12 @@ impl<'a> HighScores<'a> {
     }
 
     pub fn personal_best(&self) -> Option<u32> {
-        unimplemented!("Return the highest score")
+        if self.scores.is_empty() {
+            None
+        } else {
+            let top_three = self.personal_top_three();
+            Some(top_three[0])
+        }
     }
 
     pub fn personal_top_three(&self) -> Vec<u32> {
