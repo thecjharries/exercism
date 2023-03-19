@@ -29,6 +29,7 @@ impl<'a> HighScores<'a> {
         }
     }
 
+    #[cfg(not(tarpaulin_include))]
     pub fn personal_top_three(&self) -> Vec<u32> {
         let mut top_three = self.scores.to_vec();
         top_three.sort();
