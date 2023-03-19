@@ -1,5 +1,7 @@
 #[derive(Debug)]
-pub struct HighScores;
+pub struct HighScores<'a> {
+    scores: &'a [u32],
+};
 
 impl HighScores {
     pub fn new(scores: &[u32]) -> Self {
