@@ -9,7 +9,7 @@ impl<'a> HighScores<'a> {
     }
 
     pub fn scores(&self) -> &[u32] {
-        unimplemented!("Return all the scores as a slice")
+        self.scores
     }
 
     pub fn latest(&self) -> Option<u32> {
