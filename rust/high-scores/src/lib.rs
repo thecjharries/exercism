@@ -25,6 +25,10 @@ impl<'a> HighScores<'a> {
     }
 
     pub fn personal_top_three(&self) -> Vec<u32> {
-        unimplemented!("Return 3 highest scores")
+        let mut top_three = self.scores.to_vec();
+        top_three.sort();
+        top_three.reverse();
+        top_three.truncate(3);
+        top_three
     }
 }
