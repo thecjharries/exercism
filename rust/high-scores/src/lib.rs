@@ -13,7 +13,11 @@ impl<'a> HighScores<'a> {
     }
 
     pub fn latest(&self) -> Option<u32> {
-        unimplemented!("Return the latest (last) score")
+        if self.scores.is_empty() {
+            None
+        } else {
+            Some(self.scores[self.scores.len() - 1])
+        }
     }
 
     pub fn personal_best(&self) -> Option<u32> {
