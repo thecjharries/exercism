@@ -22,7 +22,5 @@ pub fn public_key(p: u64, g: u64, a: u64) -> u64 {
 }
 
 pub fn secret(p: u64, b_pub: u64, a: u64) -> u64 {
-    unimplemented!(
-        "Calculate secret key using prime number {p}, public key {b_pub}, and private key {a}"
-    )
+    mod_exp(b_pub, a, p)
 }
