@@ -1,3 +1,11 @@
 pub fn series(digits: &str, len: usize) -> Vec<String> {
-    unimplemented!("What are the series of length {len} in string {digits:?}")
+    if 0 == len {
+        return vec!["".to_string(); digits.len() + 1];
+    }
+    digits
+        .chars()
+        .collect::<Vec<char>>()
+        .windows(len)
+        .map(|w| w.iter().collect())
+        .collect()
 }
