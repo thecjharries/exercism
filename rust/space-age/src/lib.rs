@@ -35,7 +35,11 @@ const URANUS_YEAR: f64 = 84.016846;
 pub struct Neptune;
 const NEPTUNE_YEAR: f64 = 164.79132;
 
-impl Planet for Mercury {}
+impl Planet for Mercury {
+    fn years_during(d: &Duration) -> f64 {
+        d.0.as_secs_f64() / MERCURY_YEAR / EARTH_YEAR_IN_SECONDS
+    }
+}
 impl Planet for Venus {}
 impl Planet for Earth {}
 impl Planet for Mars {}
