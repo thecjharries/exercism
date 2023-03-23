@@ -40,10 +40,38 @@ impl Planet for Mercury {
         d.0.as_secs_f64() / MERCURY_YEAR / EARTH_YEAR_IN_SECONDS
     }
 }
-impl Planet for Venus {}
-impl Planet for Earth {}
-impl Planet for Mars {}
-impl Planet for Jupiter {}
-impl Planet for Saturn {}
-impl Planet for Uranus {}
-impl Planet for Neptune {}
+impl Planet for Venus {
+    fn years_during(d: &Duration) -> f64 {
+        d.0.as_secs_f64() / VENUS_YEAR / EARTH_YEAR_IN_SECONDS
+    }
+}
+impl Planet for Earth {
+    fn years_during(d: &Duration) -> f64 {
+        d.0.as_secs_f64() / EARTH_YEAR / EARTH_YEAR_IN_SECONDS
+    }
+}
+impl Planet for Mars {
+    fn years_during(d: &Duration) -> f64 {
+        d.0.as_secs_f64() / MARS_YEAR / EARTH_YEAR_IN_SECONDS
+    }
+}
+impl Planet for Jupiter {
+    fn years_during(d: &Duration) -> f64 {
+        d.0.as_secs_f64() / JUPITER_YEAR / EARTH_YEAR_IN_SECONDS
+    }
+}
+impl Planet for Saturn {
+    fn years_during(d: &Duration) -> f64 {
+        d.0.as_secs_f64() / SATURN_YEAR / EARTH_YEAR_IN_SECONDS
+    }
+}
+impl Planet for Uranus {
+    fn years_during(d: &Duration) -> f64 {
+        d.0.as_secs_f64() / URANUS_YEAR / EARTH_YEAR_IN_SECONDS
+    }
+}
+impl Planet for Neptune {
+    fn years_during(d: &Duration) -> f64 {
+        d.0.as_secs_f64() / NEPTUNE_YEAR / EARTH_YEAR_IN_SECONDS
+    }
+}
