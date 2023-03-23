@@ -9,6 +9,7 @@ impl From<u64> for Duration {
     }
 }
 
+#[cfg(not(tarpaulin_include))]
 pub trait Planet {
     fn years_during(d: &Duration) -> f64 {
         unimplemented!(
