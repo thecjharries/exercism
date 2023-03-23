@@ -1,12 +1,11 @@
-// The code below is a stub. Just enough to satisfy the compiler.
-// In order to pass the tests you can add-to or change any of this code.
+use std::time::Duration as StdDuration;
 
 #[derive(Debug)]
-pub struct Duration;
+pub struct Duration(StdDuration);
 
 impl From<u64> for Duration {
     fn from(s: u64) -> Self {
-        unimplemented!("s, measured in seconds: {s}")
+        Duration(StdDuration::from_secs(s))
     }
 }
 
