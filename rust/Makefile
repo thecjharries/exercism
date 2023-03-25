@@ -68,6 +68,7 @@ clean:
 # Submit the solution
 .PHONY: submit
 submit:
+	$(GIT) diff-index --quiet HEAD || (echo "Uncommitted changes"; exit 1)
 	$(EXERCISM) submit $(SUBMISSIONS)
 
 # Finish the branch
