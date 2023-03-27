@@ -6,7 +6,14 @@ pub struct Rna(Vec<char>);
 
 impl Dna {
     pub fn new(dna: &str) -> Result<Dna, usize> {
-        unimplemented!("Construct new Dna from '{dna}' string. If string contains invalid nucleotides return index of first invalid nucleotide");
+        let mut characters = Vec::new();
+        for (i, c) in dna.chars().enumerate() {
+            match c {
+                'A' | 'C' | 'G' | 'T' => characters.push(c),
+                _ => return Err(i),
+            }
+        }
+        Ok(Dna(characters))
     }
 
     pub fn into_rna(self) -> Rna {
