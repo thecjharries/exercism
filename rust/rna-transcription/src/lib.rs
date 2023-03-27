@@ -23,6 +23,13 @@ impl Dna {
 
 impl Rna {
     pub fn new(rna: &str) -> Result<Rna, usize> {
-        unimplemented!("Construct new Rna from '{rna}' string. If string contains invalid nucleotides return index of first invalid nucleotide");
+        let mut characters = Vec::new();
+        for (i, c) in rna.chars().enumerate() {
+            match c {
+                'A' | 'C' | 'G' | 'U' => characters.push(c),
+                _ => return Err(i),
+            }
+        }
+        Ok(Rna(characters))
     }
 }
