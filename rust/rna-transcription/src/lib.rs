@@ -17,7 +17,17 @@ impl Dna {
     }
 
     pub fn into_rna(self) -> Rna {
-        unimplemented!("Transform Dna {self:?} into corresponding Rna");
+        let mut characters = Vec::new();
+        for c in self.0 {
+            match c {
+                'A' => characters.push('U'),
+                'C' => characters.push('G'),
+                'G' => characters.push('C'),
+                'T' => characters.push('A'),
+                _ => unreachable!(),
+            }
+        }
+        Rna(characters)
     }
 }
 
