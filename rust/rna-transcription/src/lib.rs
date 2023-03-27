@@ -1,8 +1,8 @@
 #[derive(Debug, PartialEq, Eq)]
-pub struct Dna;
+pub struct Dna(Vec<char>);
 
 #[derive(Debug, PartialEq, Eq)]
-pub struct Rna;
+pub struct Rna(Vec<char>);
 
 impl Dna {
     pub fn new(dna: &str) -> Result<Dna, usize> {
