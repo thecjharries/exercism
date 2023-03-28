@@ -1,5 +1,12 @@
+use std::collections::HashMap;
+
 pub mod graph {
-    pub struct Graph;
+    #[derive(Debug, PartialEq)]
+    pub struct Graph {
+        nodes: Vec<graph_items::node::Node>,
+        edges: Vec<graph_items::edge::Edge>,
+        attrs: HashMap<&'static str, &'static str>,
+    };
 
     impl Graph {
         pub fn new() -> Self {
@@ -9,7 +16,11 @@ pub mod graph {
 
     pub mod graph_items {
         pub mod edge {
-            pub struct Edge;
+            #[derive(Debug, PartialEq)]
+            pub struct Edge {
+                pair: (String, String),
+                attrs: HashMap<&'static str, &'static str>,
+            };
 
             impl Edge {
                 pub fn new(a: &str, b: &str) -> Self {
@@ -19,7 +30,11 @@ pub mod graph {
         }
 
         pub mod node {
-            pub struct Node;
+            #[derive(Debug, PartialEq)]
+            pub struct Node {
+                title: String,
+                attrs: HashMap<&'static str, &'static str>,
+            };
 
             impl Node {
                 pub fn new(a: &str) -> Self {
