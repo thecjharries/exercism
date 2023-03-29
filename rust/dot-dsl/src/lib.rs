@@ -8,6 +8,18 @@ pub mod graph {
         pub attrs: HashMap<String, String>,
     }
 
+    trait GraphItem {
+        fn with_attrs(&self, attrs: &[(&str, &str)]) -> Self {
+            for (k, v) in attrs.iter() {
+                self.attrs.insert(k.to_string(), v.to_string());
+            }
+        }
+
+        fn attr(&self, key: &str) -> Option<&str> {
+            self.attrs.get(key).map(|s| s.as_str())
+        }
+    }
+
     impl Graph {
         pub fn new() -> Self {
             Graph {
