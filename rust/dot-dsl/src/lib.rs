@@ -58,6 +58,29 @@ pub mod graph {
         pub fn attr(&self, key: &str) -> Option<&str> {
             self.attrs.get(key).map(|s| s.as_str())
         }
+
+        pub fn with_attrs(&self, new_attrs: &[(&str, &str)]) -> Self {
+            let mut nodes = Vec::new();
+            for node in self.nodes.iter() {
+                nodes.push(node.clone());
+            }
+            let mut edges = Vec::new();
+            for edge in self.edges.iter() {
+                edges.push(edge.clone());
+            }
+            let mut attrs = HashMap::new();
+            while let Some((k, v)) = self.attrs.iter().next() {
+                attrs.insert(k.clone(), v.clone());
+            }
+            for (k, v) in new_attrs.iter() {
+                attrs.insert(k.to_string(), v.to_string());
+            }
+            Graph {
+                nodes,
+                edges,
+                attrs,
+            }
+        }
     }
 
     pub mod graph_items {
@@ -81,6 +104,20 @@ pub mod graph {
                 pub fn attr(&self, key: &str) -> Option<&str> {
                     self.attrs.get(key).map(|s| s.as_str())
                 }
+
+                pub fn with_attrs(&self, new_attrs: &[(&str, &str)]) -> Self {
+                    let mut attrs = HashMap::new();
+                    while let Some((k, v)) = self.attrs.iter().next() {
+                        attrs.insert(k.clone(), v.clone());
+                    }
+                    for (k, v) in new_attrs.iter() {
+                        attrs.insert(k.to_string(), v.to_string());
+                    }
+                    Edge {
+                        pair: self.pair.clone(),
+                        attrs,
+                    }
+                }
             }
         }
 
@@ -103,6 +140,20 @@ pub mod graph {
 
                 pub fn attr(&self, key: &str) -> Option<&str> {
                     self.attrs.get(key).map(|s| s.as_str())
+                }
+
+                pub fn with_attrs(&self, new_attrs: &[(&str, &str)]) -> Self {
+                    let mut attrs = HashMap::new();
+                    while let Some((k, v)) = self.attrs.iter().next() {
+                        attrs.insert(k.clone(), v.clone());
+                    }
+                    for (k, v) in new_attrs.iter() {
+                        attrs.insert(k.to_string(), v.to_string());
+                    }
+                    Node {
+                        title: self.title.clone(),
+                        attrs,
+                    }
                 }
             }
         }
