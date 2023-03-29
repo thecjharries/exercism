@@ -50,6 +50,10 @@ pub mod graph {
                 attrs,
             }
         }
+
+        pub fn node(&self, title: &str) -> Option<&graph_items::node::Node> {
+            self.nodes.iter().find(|n| n.title == title)
+        }
     }
 
     pub mod graph_items {
@@ -58,8 +62,8 @@ pub mod graph {
 
             #[derive(Debug, PartialEq, Clone)]
             pub struct Edge {
-                pair: (String, String),
-                attrs: HashMap<String, String>,
+                pub pair: (String, String),
+                pub attrs: HashMap<String, String>,
             }
 
             impl Edge {
@@ -77,8 +81,8 @@ pub mod graph {
 
             #[derive(Debug, PartialEq, Clone)]
             pub struct Node {
-                title: String,
-                attrs: HashMap<String, String>,
+                pub title: String,
+                pub attrs: HashMap<String, String>,
             }
 
             impl Node {
