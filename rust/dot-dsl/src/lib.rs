@@ -33,6 +33,23 @@ pub mod graph {
                 attrs,
             }
         }
+
+        pub fn with_edges(&self, edges: &[graph_items::edge::Edge]) -> Self {
+            let mut nodes = Vec::new();
+            for node in self.nodes.iter() {
+                nodes.push(node.clone());
+            }
+            let edges = edges.to_vec();
+            let mut attrs = HashMap::new();
+            while let Some((k, v)) = self.attrs.iter().next() {
+                attrs.insert(k.clone(), v.clone());
+            }
+            Graph {
+                nodes,
+                edges,
+                attrs,
+            }
+        }
     }
 
     pub mod graph_items {
