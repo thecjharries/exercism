@@ -8,18 +8,6 @@ pub mod graph {
         pub attrs: HashMap<String, String>,
     }
 
-    trait GraphItem {
-        fn with_attrs(&self, attrs: &[(&str, &str)]) -> Self {
-            for (k, v) in attrs.iter() {
-                self.attrs.insert(k.to_string(), v.to_string());
-            }
-        }
-
-        fn attr(&self, key: &str) -> Option<&str> {
-            self.attrs.get(key).map(|s| s.as_str())
-        }
-    }
-
     impl Graph {
         pub fn new() -> Self {
             Graph {
@@ -66,6 +54,10 @@ pub mod graph {
         pub fn node(&self, title: &str) -> Option<&graph_items::node::Node> {
             self.nodes.iter().find(|n| n.title == title)
         }
+
+        pub fn attr(&self, key: &str) -> Option<&str> {
+            self.attrs.get(key).map(|s| s.as_str())
+        }
     }
 
     pub mod graph_items {
@@ -85,6 +77,10 @@ pub mod graph {
                         attrs: HashMap::new(),
                     }
                 }
+
+                pub fn attr(&self, key: &str) -> Option<&str> {
+                    self.attrs.get(key).map(|s| s.as_str())
+                }
             }
         }
 
@@ -103,6 +99,10 @@ pub mod graph {
                         title: a.to_string(),
                         attrs: HashMap::new(),
                     }
+                }
+
+                pub fn attr(&self, key: &str) -> Option<&str> {
+                    self.attrs.get(key).map(|s| s.as_str())
                 }
             }
         }
