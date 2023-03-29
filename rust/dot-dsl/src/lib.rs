@@ -1,3 +1,4 @@
+#[cfg(not(tarpaulin_include))]
 pub mod graph {
     use std::collections::HashMap;
 
