@@ -1,3 +1,4 @@
+#[derive(Debug)]
 pub struct Triangle([u64; 3]);
 
 impl Triangle {
@@ -6,11 +7,14 @@ impl Triangle {
             if *side == 0 {
                 return None;
             }
-
-            for other_side in sides.iter().skip(i + 1) {
-                if *side + *other_side <= *side {
-                    return None;
-                }
+            let sum = sides
+                .iter()
+                .enumerate()
+                .filter(|&(j, _)| i != j)
+                .map(|(_, side)| side)
+                .sum();
+            if *side > sum {
+                return None;
             }
         }
         Some(Triangle(sides))
