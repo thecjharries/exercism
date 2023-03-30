@@ -31,6 +31,24 @@ impl Team {
             points: 0,
         }
     }
+
+    fn add_match(&mut self, result: &str) {
+        self.matches_played += 1;
+        match result {
+            "win" => {
+                self.wins += 1;
+                self.points += 3;
+            }
+            "draw" => {
+                self.draws += 1;
+                self.points += 1;
+            }
+            "loss" => {
+                self.losses += 1;
+            }
+            _ => panic!("Invalid result"),
+        }
+    }
 }
 
 pub fn tally(match_results: &str) -> String {
