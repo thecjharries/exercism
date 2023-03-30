@@ -1,8 +1,19 @@
-pub struct Triangle;
+pub struct Triangle([u64; 3]);
 
 impl Triangle {
     pub fn build(sides: [u64; 3]) -> Option<Triangle> {
-        unimplemented!("Construct new Triangle from following sides: {sides:?}. Return None if the sides are invalid.");
+        for (i, side) in sides.iter().enumerate() {
+            if *side == 0 {
+                return None;
+            }
+
+            for other_side in sides.iter().skip(i + 1) {
+                if *side + *other_side <= *side {
+                    return None;
+                }
+            }
+        }
+        Some(Triangle(sides))
     }
 
     pub fn is_equilateral(&self) -> bool {
