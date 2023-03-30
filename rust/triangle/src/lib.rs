@@ -37,6 +37,13 @@ impl Triangle {
     }
 
     pub fn is_isosceles(&self) -> bool {
-        unimplemented!("Determine if the Triangle is isosceles.");
+        for (i, side) in self.0.iter().enumerate() {
+            for other_side in self.0.iter().skip(i + 1) {
+                if *side == *other_side {
+                    return true;
+                }
+            }
+        }
+        false
     }
 }
