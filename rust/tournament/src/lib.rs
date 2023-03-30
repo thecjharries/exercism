@@ -1,6 +1,7 @@
+use std::collections::HashMap;
 use std::fmt::Display;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 struct Team {
     name: String,
     matches_played: u32,
@@ -43,16 +44,60 @@ impl Team {
                 self.draws += 1;
                 self.points += 1;
             }
-            "loss" => {
+            _ => {
                 self.losses += 1;
             }
-            _ => panic!("Invalid result"),
         }
     }
 }
 
 pub fn tally(match_results: &str) -> String {
-    unimplemented!(
-        "Given the result of the played matches '{match_results}' return a properly formatted tally table string."
-    );
+    let mut teams: HashMap<String, Team> = HashMap::new();
+    for line in match_results.lines() {
+        let mut parts = line.split(';');
+        let team1 = parts.next().unwrap();
+        let team2 = parts.next().unwrap();
+        let result = parts.next().unwrap();
+        match result {
+            "win" => {
+                teams
+                    .entry(team1.to_string())
+                    .or_insert(Team::new(team1))
+                    .add_match(result);
+                teams
+                    .entry(team2.to_string())
+                    .or_insert(Team::new(team2))
+                    .add_match("loss");
+            }
+            "draw" => {
+                teams
+                    .entry(team1.to_string())
+                    .or_insert(Team::new(team1))
+                    .add_match(result);
+                teams
+                    .entry(team2.to_string())
+                    .or_insert(Team::new(team2))
+                    .add_match(result);
+            }
+            _ => {
+                teams
+                    .entry(team1.to_string())
+                    .or_insert(Team::new(team1))
+                    .add_match("loss");
+                teams
+                    .entry(team2.to_string())
+                    .or_insert(Team::new(team2))
+                    .add_match("win");
+            }
+        }
+    }
+    let mut output = String::new();
+    output.push_str("Team                           | MP |  W |  D |  L |  P\n");
+    let mut teams: Vec<Team> = teams.values().cloned().collect();
+    teams.sort_by(|a, b| b.points.cmp(&a.points).then(a.name.cmp(&b.name)));
+    for team in teams {
+        output.push_str(&format!("{}\n", team));
+    }
+    println!("{}", output);
+    output.trim().to_string()
 }
