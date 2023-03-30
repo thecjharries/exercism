@@ -12,7 +12,24 @@ struct Team {
 
 impl Display for Team {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{:30} | {:2} | {:2} | {:2} | {:2} | {:2}", self.name, self.matches_played, self.wins, self.draws, self.losses, self.points)
+        write!(
+            f,
+            "{:30} | {:2} | {:2} | {:2} | {:2} | {:2}",
+            self.name, self.matches_played, self.wins, self.draws, self.losses, self.points
+        )
+    }
+}
+
+impl Team {
+    fn new(name: &str) -> Self {
+        Self {
+            name: name.to_string(),
+            matches_played: 0,
+            wins: 0,
+            draws: 0,
+            losses: 0,
+            points: 0,
+        }
     }
 }
 
