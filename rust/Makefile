@@ -2,6 +2,7 @@
 CARGO ?= cargo
 EXERCISM ?= exercism
 FIND ?= find
+GH ?= gh
 GIT ?= git
 RM ?= rm
 SED ?= sed
@@ -75,3 +76,7 @@ submit:
 .PHONY: push
 push: coverage submit clean
 	$(GIT) push -u origin feat/$(TRACK)/$(EXERCISE)
+	$(GH) pr create --fill
+	$(GH) pr merge --merge --delete-branch
+	$(GIT) pull
+
