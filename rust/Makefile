@@ -73,10 +73,8 @@ submit:
 	$(EXERCISM) submit $(SUBMISSIONS)
 
 # Finish the branch
-.PHONY: push
-push: coverage submit clean
+.PHONY: finish
+finish: coverage submit clean
 	$(GIT) push -u origin feat/$(TRACK)/$(EXERCISE)
 	$(GH) pr create --fill
 	$(GH) pr merge --merge --delete-branch
-	$(GIT) pull
-
