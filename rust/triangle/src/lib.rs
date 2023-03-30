@@ -17,7 +17,12 @@ impl Triangle {
     }
 
     pub fn is_equilateral(&self) -> bool {
-        unimplemented!("Determine if the Triangle is equilateral.");
+        for side in self.0.iter().skip(1) {
+            if *side != self.0[0] {
+                return false;
+            }
+        }
+        true
     }
 
     pub fn is_scalene(&self) -> bool {
