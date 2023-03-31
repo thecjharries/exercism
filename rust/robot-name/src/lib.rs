@@ -4,7 +4,7 @@ use rand::{thread_rng, Rng};
 pub struct Robot(String);
 
 impl Robot {
-    pub fn new() -> Self {
+    fn generate_name() -> String {
         let mut name = String::new();
         let mut rng = thread_rng();
         for _ in 0..2 {
@@ -13,7 +13,11 @@ impl Robot {
         for _ in 0..3 {
             name.push(rng.gen_range(b'0'..b'9' + 1) as char);
         }
-        Robot(name)
+        name
+    }
+
+    pub fn new() -> Self {
+        Robot(Self::generate_name())
     }
 
     pub fn name(&self) -> &str {
@@ -21,6 +25,6 @@ impl Robot {
     }
 
     pub fn reset_name(&mut self) {
-        unimplemented!("Assign a new unique name to the robot.");
+        self.0 = Self::generate_name();
     }
 }
