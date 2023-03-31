@@ -1,4 +1,5 @@
-pub struct Robot;
+#[derive(Debug, PartialEq, Clone)]
+pub struct Robot(String);
 
 impl Robot {
     pub fn new() -> Self {
