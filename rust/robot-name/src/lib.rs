@@ -17,7 +17,7 @@ impl Robot {
     }
 
     pub fn name(&self) -> &str {
-        unimplemented!("Return the reference to the robot's name.");
+        &self.0
     }
 
     pub fn reset_name(&mut self) {
