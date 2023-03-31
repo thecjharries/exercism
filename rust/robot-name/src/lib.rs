@@ -1,4 +1,6 @@
-use rand::{thread_rng, Rng};
+use rand::Rng;
+use rand_chacha::rand_core::SeedableRng;
+use rand_chacha::ChaChaRng;
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct Robot(String);
@@ -6,7 +8,7 @@ pub struct Robot(String);
 impl Robot {
     fn generate_name() -> String {
         let mut name = String::new();
-        let mut rng = thread_rng();
+        let mut rng = ChaChaRng::from_entropy();
         for _ in 0..2 {
             name.push(rng.gen_range(b'A'..b'Z' + 1) as char);
         }
