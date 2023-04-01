@@ -1,7 +1,9 @@
+use std::collections::BTreeMap;
+
+#[derive(Debug, PartialEq)]
 pub struct CodonsInfo<'a> {
-    // We fake using 'a here, so the compiler does not complain that
-    // "parameter `'a` is never used". Delete when no longer needed.
-    phantom: std::marker::PhantomData<&'a ()>,
+    codons: BTreeMap<&'a str, &'a str>,
+    acids: BTreeMap<&'a str, Vec<&'a str>>,
 }
 
 impl<'a> CodonsInfo<'a> {
