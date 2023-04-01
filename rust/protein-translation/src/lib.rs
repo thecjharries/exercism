@@ -18,9 +18,7 @@ impl<'a> CodonsInfo<'a> {
     }
 
     pub fn name_for(&self, codon: &str) -> Option<&'a str> {
-        unimplemented!(
-            "Return the protein name for a '{codon}' codon or None, if codon string is invalid"
-        );
+        self.codons.get(codon).copied()
     }
 
     pub fn of_rna(&self, rna: &str) -> Option<Vec<&'a str>> {
