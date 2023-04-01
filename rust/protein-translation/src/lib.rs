@@ -7,6 +7,16 @@ pub struct CodonsInfo<'a> {
 }
 
 impl<'a> CodonsInfo<'a> {
+    pub fn new(pairs: Vec<(&'a str, &'a str)>) -> Self {
+        let mut codons = BTreeMap::new();
+        let mut acids = BTreeMap::new();
+        for (codon, name) in pairs {
+            codons.insert(codon, name);
+            acids.entry(name).or_insert_with(Vec::new).push(codon);
+        }
+        CodonsInfo { codons, acids }
+    }
+
     pub fn name_for(&self, codon: &str) -> Option<&'a str> {
         unimplemented!(
             "Return the protein name for a '{codon}' codon or None, if codon string is invalid"
