@@ -22,7 +22,19 @@ impl<'a> CodonsInfo<'a> {
     }
 
     pub fn of_rna(&self, rna: &str) -> Option<Vec<&'a str>> {
-        unimplemented!("Return a list of protein names that correspond to the '{rna}' RNA string or None if the RNA string is invalid");
+        let mut result = Vec::new();
+        for codon in rna.as_bytes().chunks(3) {
+            let codon = std::str::from_utf8(codon).ok()?;
+            if let Some(name) = self.name_for(codon) {
+                if name == "stop codon" {
+                    return Some(result);
+                }
+                result.push(name);
+            } else {
+                return None;
+            }
+        }
+        Some(result)
     }
 }
 
