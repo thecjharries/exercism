@@ -29,5 +29,5 @@ impl<'a> CodonsInfo<'a> {
 }
 
 pub fn parse<'a>(pairs: Vec<(&'a str, &'a str)>) -> CodonsInfo<'a> {
-    unimplemented!("Construct a new CodonsInfo struct from given pairs: {pairs:?}");
+    CodonsInfo::new(pairs)
 }
