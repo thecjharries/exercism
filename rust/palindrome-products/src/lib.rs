@@ -18,9 +18,7 @@ impl Palindrome {
 
     /// Create a `Palindrome` only if `value` is in fact a palindrome when represented in base ten. Otherwise, `None`.
     pub fn new(value: u64) -> Option<Palindrome> {
-        let forward_digits = value.to_string();
-        let reverse_digits = forward_digits.chars().rev().collect::<String>();
-        if forward_digits == reverse_digits {
+        if value == Self::reverse(value) {
             Some(Palindrome(value))
         } else {
             None
