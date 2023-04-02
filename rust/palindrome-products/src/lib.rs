@@ -13,7 +13,7 @@ impl Palindrome {
 
     /// Get the value of this palindrome.
     pub fn into_inner(self) -> u64 {
-        unimplemented!("return inner value of a Palindrome");
+        self.0
     }
 }
 
