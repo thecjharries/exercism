@@ -6,6 +6,16 @@
 pub struct Palindrome(u64);
 
 impl Palindrome {
+    pub fn reverse(value: u64) -> u64 {
+        let mut result = 0;
+        let mut value = value;
+        while value > 0 {
+            result = result * 10 + value % 10;
+            value /= 10;
+        }
+        result
+    }
+
     /// Create a `Palindrome` only if `value` is in fact a palindrome when represented in base ten. Otherwise, `None`.
     pub fn new(value: u64) -> Option<Palindrome> {
         let forward_digits = value.to_string();
