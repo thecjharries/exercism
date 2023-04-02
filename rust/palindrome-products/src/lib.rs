@@ -8,7 +8,13 @@ pub struct Palindrome(u64);
 impl Palindrome {
     /// Create a `Palindrome` only if `value` is in fact a palindrome when represented in base ten. Otherwise, `None`.
     pub fn new(value: u64) -> Option<Palindrome> {
-        unimplemented!("if the value {value} is a palindrome return Some, otherwise return None");
+        let forward_digits = value.to_string();
+        let reverse_digits = forward_digits.chars().rev().collect::<String>();
+        if forward_digits == reverse_digits {
+            Some(Palindrome(value))
+        } else {
+            None
+        }
     }
 
     /// Get the value of this palindrome.
