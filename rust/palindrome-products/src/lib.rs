@@ -2,7 +2,7 @@
 ///
 /// A struct with a single field which is used to constrain behavior like this is called a "newtype", and its use is
 /// often referred to as the "newtype pattern". This is a fairly common pattern in Rust.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd)]
 pub struct Palindrome(u64);
 
 impl Palindrome {
@@ -24,7 +24,20 @@ impl Palindrome {
 }
 
 pub fn palindrome_products(min: u64, max: u64) -> Option<(Palindrome, Palindrome)> {
-    unimplemented!(
-        "returns the minimum and maximum number of palindromes of the products of two factors in the range {min} to {max}"
-    );
+    let mut min_palindrome = None;
+    let mut max_palindrome = None;
+    for i in min..=max {
+        for j in i..=max {
+            let product = i * j;
+            if let Some(palindrome) = Palindrome::new(product) {
+                if min_palindrome.map_or(true, |min| palindrome < min) {
+                    min_palindrome = Some(palindrome);
+                }
+                if max_palindrome.map_or(true, |max| palindrome > max) {
+                    max_palindrome = Some(palindrome);
+                }
+            }
+        }
+    }
+    min_palindrome.zip(max_palindrome)
 }
