@@ -19,5 +19,15 @@ pub fn encode(plain: &str) -> String {
 
 /// "Decipher" with the Atbash cipher.
 pub fn decode(cipher: &str) -> String {
-    unimplemented!("Decoding of {cipher:?} in Atbash cipher.");
+    cipher
+        .chars()
+        .filter(|c| c.is_alphanumeric())
+        .map(|c| {
+            if c.is_ascii_digit() {
+                c
+            } else {
+                (b'a' + b'z' - c.to_ascii_lowercase() as u8) as char
+            }
+        })
+        .collect()
 }
