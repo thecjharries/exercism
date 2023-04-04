@@ -27,6 +27,6 @@ impl PascalsTriangle {
     }
 
     pub fn rows(&self) -> Vec<Vec<u32>> {
-        unimplemented!();
+        self.0.clone()
     }
 }
