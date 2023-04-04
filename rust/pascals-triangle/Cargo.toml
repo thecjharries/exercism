@@ -2,3 +2,6 @@
 edition = "2021"
 name = "pascals-triangle"
 version = "1.5.0"
+
+[dependencies]
+memoize = "0.4.0"
