@@ -17,6 +17,10 @@ impl PascalsTriangle {
         factorial(n) / (factorial(k) * factorial(n - k))
     }
 
+    pub fn row(n: u32) -> Vec<u32> {
+        (0..=n).map(|k| binomial_coefficient(n, k)).collect()
+    }
+
     pub fn new(row_count: u32) -> Self {
         unimplemented!("create Pascal's triangle with {row_count} rows");
     }
