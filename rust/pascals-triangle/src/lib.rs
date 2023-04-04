@@ -1,6 +1,7 @@
 use memoize::memoize;
 
-pub struct PascalsTriangle;
+#[derive(Debug, PartialEq)]
+pub struct PascalsTriangle(Vec<Vec<u32>>);
 
 impl PascalsTriangle {
     #[memoize]
