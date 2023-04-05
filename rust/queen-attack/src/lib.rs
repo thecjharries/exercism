@@ -6,9 +6,10 @@ pub struct Queen(ChessPosition);
 
 impl ChessPosition {
     pub fn new(rank: i32, file: i32) -> Option<Self> {
-        unimplemented!(
-            "Construct a ChessPosition struct, given the following rank, file: ({rank}, {file}). If the position is invalid return None."
-        );
+        if rank < 0 || rank > 7 || file < 0 || file > 7 {
+            return None;
+        }
+        Some(ChessPosition(rank, file))
     }
 }
 
