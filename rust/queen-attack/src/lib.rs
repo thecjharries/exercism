@@ -19,8 +19,10 @@ impl Queen {
     }
 
     pub fn can_attack(&self, other: &Queen) -> bool {
-        let (rank1, file1) = (self.0).0;
-        let (rank2, file2) = (other.0).0;
+        let self_pos = &self.0;
+        let other_pos = &other.0;
+        let (rank1, file1) = (self_pos.0, self_pos.1);
+        let (rank2, file2) = (other_pos.0, other_pos.1);
         rank1 == rank2 || file1 == file2 || (rank1 - rank2).abs() == (file1 - file2).abs()
     }
 }
