@@ -19,6 +19,8 @@ impl Queen {
     }
 
     pub fn can_attack(&self, other: &Queen) -> bool {
-        unimplemented!("Determine if this Queen can attack the other Queen {other:?}");
+        let (rank1, file1) = (self.0).0;
+        let (rank2, file2) = (other.0).0;
+        rank1 == rank2 || file1 == file2 || (rank1 - rank2).abs() == (file1 - file2).abs()
     }
 }
