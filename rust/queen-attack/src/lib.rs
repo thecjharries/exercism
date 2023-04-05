@@ -15,7 +15,7 @@ impl ChessPosition {
 
 impl Queen {
     pub fn new(position: ChessPosition) -> Self {
-        unimplemented!("Given the chess position {position:?}, construct a Queen struct.");
+        Queen(position)
     }
 
     pub fn can_attack(&self, other: &Queen) -> bool {
