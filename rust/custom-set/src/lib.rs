@@ -11,7 +11,7 @@ impl<T> CustomSet<T> {
     }
 
     pub fn contains(&self, _element: &T) -> bool {
-        unimplemented!();
+        self.0.contains(_element)
     }
 
     pub fn add(&mut self, _element: T) {
