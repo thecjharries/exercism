@@ -1,7 +1,9 @@
+use std::cmp::Ord;
+
 #[derive(Debug, PartialEq, Eq)]
 pub struct CustomSet<T>(Vec<T>);
 
-impl<T: PartialEq + Clone> CustomSet<T> {
+impl<T: PartialEq + Clone + Ord> CustomSet<T> {
     pub fn new(_input: &[T]) -> Self {
         let mut set = CustomSet(Vec::new());
         for element in _input {
@@ -17,6 +19,7 @@ impl<T: PartialEq + Clone> CustomSet<T> {
     pub fn add(&mut self, _element: T) {
         if !self.contains(&_element) {
             self.0.push(_element);
+            self.0.sort();
         }
     }
 
