@@ -1,11 +1,11 @@
 #[derive(Debug, PartialEq, Eq)]
 pub struct CustomSet<T>(Vec<T>);
 
-impl<T> CustomSet<T> {
+impl<T: PartialEq + Clone> CustomSet<T> {
     pub fn new(_input: &[T]) -> Self {
         let mut set = CustomSet(Vec::new());
         for element in _input {
-            set.add(element);
+            set.add(element.clone());
         }
         set
     }
