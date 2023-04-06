@@ -1,9 +1,5 @@
 #[derive(Debug, PartialEq, Eq)]
-pub struct CustomSet<T> {
-    // We fake using T here, so the compiler does not complain that
-    // "parameter `T` is never used". Delete when no longer needed.
-    phantom: std::marker::PhantomData<T>,
-}
+pub struct CustomSet<T>(Vec<T>);
 
 impl<T> CustomSet<T> {
     pub fn new(_input: &[T]) -> Self {
