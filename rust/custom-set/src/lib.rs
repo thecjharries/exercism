@@ -15,7 +15,9 @@ impl<T: PartialEq + Clone> CustomSet<T> {
     }
 
     pub fn add(&mut self, _element: T) {
-        unimplemented!();
+        if !self.contains(&_element) {
+            self.0.push(_element);
+        }
     }
 
     pub fn is_subset(&self, _other: &Self) -> bool {
