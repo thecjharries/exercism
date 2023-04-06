@@ -3,7 +3,11 @@ pub struct CustomSet<T>(Vec<T>);
 
 impl<T> CustomSet<T> {
     pub fn new(_input: &[T]) -> Self {
-        unimplemented!();
+        let mut set = CustomSet(Vec::new());
+        for element in _input {
+            set.add(element);
+        }
+        set
     }
 
     pub fn contains(&self, _element: &T) -> bool {
