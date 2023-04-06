@@ -56,6 +56,13 @@ impl<T: PartialEq + Clone> CustomSet<T> {
 
     #[must_use]
     pub fn union(&self, _other: &Self) -> Self {
-        unimplemented!();
+        let mut set = CustomSet::new(&[]);
+        for element in &self.0 {
+            set.add(element.clone());
+        }
+        for element in &_other.0 {
+            set.add(element.clone());
+        }
+        set
     }
 }
