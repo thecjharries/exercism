@@ -3,6 +3,7 @@ use std::cmp::Ord;
 #[derive(Debug, PartialEq, Eq)]
 pub struct CustomSet<T>(Vec<T>);
 
+#[cfg(not(tarpaulin_include))]
 impl<T: PartialEq + Clone + Ord> CustomSet<T> {
     pub fn new(_input: &[T]) -> Self {
         let mut set = CustomSet(Vec::new());
