@@ -21,7 +21,7 @@ impl<T: PartialEq + Clone> CustomSet<T> {
     }
 
     pub fn is_subset(&self, _other: &Self) -> bool {
-        unimplemented!();
+        self.0.iter().all(|element| _other.contains(element))
     }
 
     pub fn is_empty(&self) -> bool {
