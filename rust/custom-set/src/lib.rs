@@ -29,7 +29,7 @@ impl<T: PartialEq + Clone> CustomSet<T> {
     }
 
     pub fn is_disjoint(&self, _other: &Self) -> bool {
-        unimplemented!();
+        self.0.iter().all(|element| !_other.contains(element))
     }
 
     #[must_use]
