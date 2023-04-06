@@ -45,7 +45,13 @@ impl<T: PartialEq + Clone> CustomSet<T> {
 
     #[must_use]
     pub fn difference(&self, _other: &Self) -> Self {
-        unimplemented!();
+        let mut set = CustomSet::new(&[]);
+        for element in &self.0 {
+            if !_other.contains(element) {
+                set.add(element.clone());
+            }
+        }
+        set
     }
 
     #[must_use]
