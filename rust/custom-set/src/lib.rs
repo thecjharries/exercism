@@ -25,7 +25,7 @@ impl<T: PartialEq + Clone> CustomSet<T> {
     }
 
     pub fn is_empty(&self) -> bool {
-        unimplemented!();
+        self.0.is_empty()
     }
 
     pub fn is_disjoint(&self, _other: &Self) -> bool {
