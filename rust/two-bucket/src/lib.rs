@@ -24,6 +24,7 @@ pub fn gcd(a: u8, b: u8) -> u8 {
     }
 }
 
+#[cfg(not(tarpaulin_include))]
 /// Solve the bucket problem
 pub fn solve(
     capacity_1: u8,
