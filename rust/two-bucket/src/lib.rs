@@ -34,5 +34,8 @@ pub fn solve(
     if goal > capacity_1 && goal > capacity_2 {
         return None;
     }
+    if 0 != goal % gcd(capacity_1, capacity_2) {
+        return None;
+    }
     None
 }
