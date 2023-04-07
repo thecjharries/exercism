@@ -63,6 +63,63 @@ pub fn solve(
             other_bucket,
         });
     }
-
-    None
+    let mut bucket_1 = 0;
+    let mut bucket_2 = 0;
+    let mut moves = 0;
+    let goal_bucket;
+    let other_bucket;
+    loop {
+        if start_bucket == &Bucket::One {
+            if bucket_1 == 0 {
+                bucket_1 = capacity_1;
+                moves += 1;
+            } else if bucket_2 == capacity_2 {
+                bucket_2 = 0;
+                moves += 1;
+            } else {
+                let diff = capacity_2 - bucket_2;
+                if diff >= bucket_1 {
+                    bucket_2 += bucket_1;
+                    bucket_1 = 0;
+                } else {
+                    bucket_1 -= diff;
+                    bucket_2 = capacity_2;
+                }
+                moves += 1;
+            }
+        } else {
+            if bucket_2 == 0 {
+                bucket_2 = capacity_2;
+                moves += 1;
+            } else if bucket_1 == capacity_1 {
+                bucket_1 = 0;
+                moves += 1;
+            } else {
+                let diff = capacity_1 - bucket_1;
+                if diff >= bucket_2 {
+                    bucket_1 += bucket_2;
+                    bucket_2 = 0;
+                } else {
+                    bucket_2 -= diff;
+                    bucket_1 = capacity_1;
+                }
+                moves += 1;
+            }
+        }
+        if bucket_1 == goal {
+            goal_bucket = Bucket::One;
+            other_bucket = bucket_2;
+            break;
+        }
+        if bucket_2 == goal {
+            goal_bucket = Bucket::Two;
+            other_bucket = bucket_1;
+            break;
+        }
+    }
+    Some(BucketStats {
+        moves,
+        goal_bucket,
+        other_bucket,
+    })
 }
