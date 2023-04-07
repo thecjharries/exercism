@@ -37,5 +37,32 @@ pub fn solve(
     if 0 != goal % gcd(capacity_1, capacity_2) {
         return None;
     }
+    if capacity_1 == goal {
+        let moves = if start_bucket == &Bucket::One { 1 } else { 2 };
+        let other_bucket = if start_bucket == &Bucket::One {
+            0
+        } else {
+            capacity_2
+        };
+        return Some(BucketStats {
+            moves,
+            goal_bucket: Bucket::One,
+            other_bucket,
+        });
+    }
+    if capacity_2 == goal {
+        let moves = if start_bucket == &Bucket::Two { 1 } else { 2 };
+        let other_bucket = if start_bucket == &Bucket::Two {
+            0
+        } else {
+            capacity_1
+        };
+        return Some(BucketStats {
+            moves,
+            goal_bucket: Bucket::Two,
+            other_bucket,
+        });
+    }
+
     None
 }
