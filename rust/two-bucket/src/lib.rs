@@ -16,6 +16,14 @@ pub struct BucketStats {
     pub other_bucket: u8,
 }
 
+pub fn gcd(a: u8, b: u8) -> u8 {
+    if b == 0 {
+        a
+    } else {
+        gcd(b, a % b)
+    }
+}
+
 /// Solve the bucket problem
 pub fn solve(
     capacity_1: u8,
@@ -26,4 +34,5 @@ pub fn solve(
     if goal > capacity_1 && goal > capacity_2 {
         return None;
     }
+    None
 }
