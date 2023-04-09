@@ -3,7 +3,7 @@ pub fn encode(source: &str) -> String {
     let mut result = String::new();
     while index < source.len() {
         let mut count = 1;
-        let mut ch = source.chars().nth(index).unwrap();
+        let ch = source.chars().nth(index).unwrap();
         while index + 1 < source.len() && source.chars().nth(index + 1).unwrap() == ch {
             count += 1;
             index += 1;
