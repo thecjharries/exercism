@@ -20,5 +20,22 @@ pub fn encode(source: &str) -> String {
 }
 
 pub fn decode(source: &str) -> String {
-    unimplemented!("Return the run-length decoding of {source}.");
+    let mut index = 0;
+    let mut result = String::new();
+    while index < source.len() {
+        let mut count = 1;
+        let mut ch = source.chars().nth(index).unwrap();
+        let mut number = String::new();
+        while ch.is_digit(10) {
+            number.push(ch);
+            index += 1;
+            ch = source.chars().nth(index).unwrap();
+            count = number.parse().unwrap();
+        }
+        for _ in 0..count {
+            result.push(ch);
+        }
+        index += 1;
+    }
+    result
 }
