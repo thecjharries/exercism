@@ -29,5 +29,29 @@ pub fn to_bytes(values: &[u32]) -> Vec<u8> {
 
 /// Given a stream of bytes, extract all numbers which are encoded in there.
 pub fn from_bytes(bytes: &[u8]) -> Result<Vec<u32>, Error> {
-    unimplemented!("Convert the list of bytes {bytes:?} to a list of numbers")
+    let mut result = Vec::new();
+    let mut index = 0;
+    while index < bytes.len() {
+        let mut number = String::new();
+        let mut byte = format!("{:0>8b}", bytes[index]);
+        while byte.starts_with("1") {
+            number.push_str(&byte[1..]);
+            index += 1;
+            if index >= bytes.len() {
+                return Err(Error::IncompleteNumber);
+            }
+            byte = format!("{:0>8b}", bytes[index]);
+        }
+        number.push_str(&byte[1..]);
+        number = number.trim_start_matches('0').to_string();
+        if number.is_empty() {
+            number = "0".to_string();
+        }
+        if number.len() > 32 {
+            return Err(Error::Overflow);
+        }
+        result.push(u32::from_str_radix(&number, 2).unwrap());
+        index += 1;
+    }
+    Ok(result)
 }
