@@ -15,9 +15,6 @@ pub fn to_bytes(values: &[u32]) -> Vec<u8> {
         for i in (0..binary.len() - 7).step_by(7) {
             let mut byte = String::from("1");
             byte.push_str(&binary[i..i + 7]);
-            if i + 7 >= binary.len() {
-                byte = format!("{:0>8}", byte);
-            }
             result.push(u8::from_str_radix(&byte, 2).unwrap());
         }
         let mut byte = String::from("0");
