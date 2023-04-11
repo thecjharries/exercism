@@ -3,7 +3,7 @@ pub struct RailFence(u32);
 
 impl RailFence {
     pub fn new(rails: u32) -> RailFence {
-        unimplemented!("Construct a new fence with {rails} rails")
+        RailFence(rails)
     }
 
     pub fn encode(&self, text: &str) -> String {
