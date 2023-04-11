@@ -1,4 +1,5 @@
-pub struct RailFence;
+#[derive(Debug, PartialEq)]
+pub struct RailFence(u32);
 
 impl RailFence {
     pub fn new(rails: u32) -> RailFence {
