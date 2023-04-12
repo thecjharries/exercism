@@ -59,6 +59,7 @@ fn test_decode_with_three_rails() {
 #[test]
 /// decode with five rails
 fn test_decode_with_five_rails() {
+    println!("{:?}", RailFence::new(5).encode("EXERCISMISAWESOME"));
     process_decode_case("EIEXMSMESAORIWSCE", 5, "EXERCISMISAWESOME");
 }
 
