@@ -1,6 +1,9 @@
 use std::fmt::{Display, Formatter, Result};
 
-pub struct Roman;
+pub struct Roman {
+    decimal: u32,
+    numeral: String,
+};
 
 impl Display for Roman {
     fn fmt(&self, _f: &mut Formatter<'_>) -> Result {
