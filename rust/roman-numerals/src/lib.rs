@@ -7,7 +7,7 @@ pub struct Roman {
 
 impl Display for Roman {
     fn fmt(&self, _f: &mut Formatter<'_>) -> Result {
-        unimplemented!("Return a roman-numeral string representation of the Roman object");
+        write!(_f, "{}", self.numeral)
     }
 }
 
