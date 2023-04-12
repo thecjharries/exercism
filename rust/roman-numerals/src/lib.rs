@@ -1,8 +1,9 @@
 use std::fmt::{Display, Formatter, Result};
 
+#[derive(Debug, PartialEq)]
 pub struct Roman {
-    decimal: u32,
-    numeral: String,
+    pub decimal: u32,
+    pub numeral: String,
 }
 
 impl Display for Roman {

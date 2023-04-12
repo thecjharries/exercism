@@ -1,6 +1,15 @@
 use roman_numerals::*;
 
 #[test]
+fn test_equality() {
+    let roman = Roman {
+        decimal: 1,
+        numeral: "I".to_string(),
+    };
+    assert_eq!(roman, Roman::from(1));
+}
+
+#[test]
 fn test_one() {
     assert_eq!("I", Roman::from(1).to_string());
 }
