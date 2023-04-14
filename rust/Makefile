@@ -1,5 +1,6 @@
 # Aliases for executables
 CARGO ?= cargo
+CODE ?= code
 EXERCISM ?= exercism
 FIND ?= find
 GH ?= gh
@@ -42,6 +43,7 @@ boot: create
 	$(FIND) ./$(EXERCISE)/tests/ -type f -name '*.rs' -exec $(SED) -i '/#\[ignore]/d' {} \;
 	$(GIT) add $(EXERCISE)/tests/*.rs
 	$(GIT) commit -m "Enable all tests"
+	$(CODE) --reuse-window $(EXERCISE)/src/lib.rs $(EXERCISE)/tests/*.rs
 
 # Run the tests
 .PHONY: test
