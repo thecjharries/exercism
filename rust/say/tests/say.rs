@@ -18,6 +18,18 @@ fn test_negative() {
 */
 
 #[test]
+fn test_full_coverage() {
+    assert_eq!(String::from("eleven"), say::encode(11));
+    assert_eq!(String::from("twelve"), say::encode(12));
+    assert_eq!(String::from("thirteen"), say::encode(13));
+    assert_eq!(String::from("sixteen"), say::encode(16));
+    assert_eq!(String::from("seventeen"), say::encode(17));
+    assert_eq!(String::from("nineteen"), say::encode(19));
+    assert_eq!(String::from("sixty"), say::encode(60));
+    assert_eq!(String::from("ninety"), say::encode(90));
+}
+
+#[test]
 fn test_one() {
     assert_eq!(say::encode(1), String::from("one"));
 }
