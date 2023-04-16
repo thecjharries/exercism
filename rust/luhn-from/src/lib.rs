@@ -13,12 +13,6 @@ impl Luhn {
 /// Perhaps there exists a better solution for this problem?
 impl<'a> From<&'a str> for Luhn {
     fn from(input: &'a str) -> Self {
-        Luhn(
-            input
-                .chars()
-                .filter(|c| c.is_digit(10))
-                .map(|c| c.to_digit(10).unwrap() as u8)
-                .collect(),
-        )
+        Luhn(input.chars().filter(|&c| c.is_alphanumeric()).collect())
     }
 }
