@@ -1,4 +1,4 @@
-pub struct Luhn;
+pub struct Luhn(Vec<u8>);
 
 impl Luhn {
     pub fn is_valid(&self) -> bool {
@@ -13,6 +13,12 @@ impl Luhn {
 /// Perhaps there exists a better solution for this problem?
 impl<'a> From<&'a str> for Luhn {
     fn from(input: &'a str) -> Self {
-        unimplemented!("From the given input '{input}' create a new Luhn struct.");
+        Luhn(
+            input
+                .chars()
+                .filter(|c| c.is_digit(10))
+                .map(|c| c.to_digit(10).unwrap() as u8)
+                .collect(),
+        )
     }
 }
