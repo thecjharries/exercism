@@ -23,6 +23,7 @@ impl Luhn {
     }
 }
 
+#[cfg(not(tarpaulin_include))]
 impl<T: ToString> From<T> for Luhn {
     fn from(input: T) -> Self {
         Luhn(
