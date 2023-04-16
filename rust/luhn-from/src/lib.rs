@@ -33,3 +33,9 @@ impl<'a> From<&'a str> for Luhn {
         Luhn(input.chars().filter(|&c| c.is_alphanumeric()).collect())
     }
 }
+
+impl<T: ToString> From<T> for Luhn {
+    fn from(input: T) -> Self {
+        Luhn::from(input.to_string())
+    }
+}
