@@ -4,6 +4,7 @@ use luhn_trait::*;
 fn you_can_validate_from_a_str() {
     assert!("046 454 286".valid_luhn());
     assert!(!"046 454 287".valid_luhn());
+    assert!(!"046a 454 286".valid_luhn());
 }
 
 #[test]
