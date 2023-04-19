@@ -1,4 +1,7 @@
 pub fn encode(key: &str, s: &str) -> Option<String> {
+    if 0 == key.chars().filter(|c| c.is_ascii_lowercase()).count() {
+        return None;
+    }
     let mut result = String::new();
     let mut key_iter = key.chars().cycle();
     for c in s.chars() {
