@@ -66,6 +66,12 @@ impl<T> Fizzy<T> {
 }
 
 /// convenience function: return a Fizzy which applies the standard fizz-buzz rules
-pub fn fizz_buzz<T>() -> Fizzy<T> {
-    unimplemented!()
+pub fn fizz_buzz<T>() -> Fizzy<T>
+where
+    T: std::ops::Rem<Output = T> + PartialEq + ToString,
+    u8: Into<T>,
+{
+    Fizzy::new()
+        .add_matcher(Matcher::new(|n: T| n % 3.into() == 0.into(), "fizz"))
+        .add_matcher(Matcher::new(|n: T| n % 5.into() == 0.into(), "buzz"))
 }
