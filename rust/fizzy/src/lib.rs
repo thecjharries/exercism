@@ -45,10 +45,23 @@ impl<T> Fizzy<T> {
     }
 
     /// map this fizzy onto every element of an iterator, returning a new iterator
-    pub fn apply<I>(self, _iter: I) -> impl Iterator<Item = String> {
-        // unimplemented!() doesn't actually work, here; () is not an Iterator
-        // that said, this is probably not the actual implementation you desire
-        Vec::new().into_iter()
+    pub fn apply<I>(self, _iter: I) -> impl Iterator<Item = String>
+    where
+        I: Iterator<Item = T>,
+        T: Clone + ToString,
+    {
+        _iter.map(move |n| {
+            let mut s = String::new();
+            for m in &self.0 {
+                if (m._matcher)(n.clone()) {
+                    s.push_str(&m._subs);
+                }
+            }
+            if s.is_empty() {
+                s.push_str(&n.to_string());
+            }
+            s
+        })
     }
 }
 
