@@ -3,14 +3,21 @@
 
 /// A Matcher is a single rule of fizzbuzz: given a function on T, should
 /// a word be substituted in? If yes, which word?
-pub struct Matcher<T>{
-    _matcher: Box<dyn Fn(T) -> bool>,
+pub struct Matcher<'a, T> {
+    _matcher: Box<dyn Fn(T) -> bool + 'a>,
     _subs: String,
-};
+}
 
-impl<T> Matcher<T> {
-    pub fn new<F, S>(_matcher: F, _subs: S) -> Matcher<T> {
-        unimplemented!()
+impl<'a, T> Matcher<'a, T> {
+    pub fn new<F, S>(_matcher: F, _subs: S) -> Matcher<'a, T>
+    where
+        F: Fn(T) -> bool + 'a,
+        S: ToString,
+    {
+        Matcher {
+            _matcher: Box::new(_matcher),
+            _subs: _subs.to_string(),
+        }
     }
 }
 
