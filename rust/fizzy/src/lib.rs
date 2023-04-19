@@ -34,7 +34,7 @@ pub struct Fizzy<T>(Vec<Matcher<'static, T>>);
 
 impl<T> Fizzy<T> {
     pub fn new() -> Self {
-        unimplemented!()
+        Fizzy(Vec::new())
     }
 
     // feel free to change the signature to `mut self` if you like
