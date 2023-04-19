@@ -44,7 +44,7 @@ impl<T> Fizzy<T> {
         self
     }
 
-    /// map this fizzy onto every element of an iterator, returning a new iterator
+    #[cfg(not(tarpaulin_include))]
     pub fn apply<I>(self, _iter: I) -> impl Iterator<Item = String>
     where
         I: Iterator<Item = T>,
