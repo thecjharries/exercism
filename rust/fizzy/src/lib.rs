@@ -39,8 +39,9 @@ impl<T> Fizzy<T> {
 
     // feel free to change the signature to `mut self` if you like
     #[must_use]
-    pub fn add_matcher(self, _matcher: Matcher<T>) -> Self {
-        unimplemented!()
+    pub fn add_matcher(mut self, _matcher: Matcher<'static, T>) -> Self {
+        self.0.push(_matcher);
+        self
     }
 
     /// map this fizzy onto every element of an iterator, returning a new iterator
