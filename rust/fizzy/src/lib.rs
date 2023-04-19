@@ -30,7 +30,7 @@ impl<'a, T> Matcher<'a, T> {
 /// here because it's a simpler interface for students to implement.
 ///
 /// Also, it's a good excuse to try out using impl trait.
-pub struct Fizzy<T>(std::marker::PhantomData<T>);
+pub struct Fizzy<T>(Vec<Matcher<'static, T>>);
 
 impl<T> Fizzy<T> {
     pub fn new() -> Self {
