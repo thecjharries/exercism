@@ -25,6 +25,7 @@ fn cipher_is_reversible_given_key() {
 #[test]
 fn cipher_can_double_shift_encode() {
     let plain_text = "iamapandabear";
+    println!("{}", encode(plain_text, plain_text).unwrap());
     assert_eq!(
         encode(plain_text, plain_text),
         Some("qayaeaagaciai".to_string())
