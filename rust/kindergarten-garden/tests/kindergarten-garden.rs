@@ -1,6 +1,15 @@
 use kindergarten_garden::*;
 
 #[test]
+#[should_panic]
+fn test_garden_with_bar_chars() {
+    let diagram = "VC
+RQ";
+    let student = "Alice";
+    plants(diagram, student);
+}
+
+#[test]
 fn test_garden_with_single_student() {
     let diagram = "RC
 GG";
