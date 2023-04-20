@@ -5,7 +5,7 @@ const STUDENTS: [&str; 12] = [
 
 pub fn plants(_diagram: &str, _student: &str) -> Vec<&'static str> {
     let index = STUDENTS.iter().position(|&s| s == _student).unwrap();
-    let mut plants: Vec<Vec<char>> = _diagram
+    let plants: Vec<Vec<char>> = _diagram
         .lines()
         .map(|l| l.chars().collect::<Vec<char>>())
         .collect::<Vec<_>>();
