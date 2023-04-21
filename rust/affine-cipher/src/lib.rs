@@ -16,11 +16,17 @@ fn gcd(a: i32, b: i32) -> i32 {
 /// Encodes the plaintext using the affine cipher with key (`a`, `b`). Note that, rather than
 /// returning a return code, the more common convention in Rust is to return a `Result`.
 pub fn encode(plaintext: &str, a: i32, b: i32) -> Result<String, AffineCipherError> {
-    unimplemented!("Encode {plaintext} with the key ({a}, {b})");
+    if 1 != gcd(a, 26) {
+        return Err(AffineCipherError::NotCoprime(a));
+    }
+    Ok("".to_string())
 }
 
 /// Decodes the ciphertext using the affine cipher with key (`a`, `b`). Note that, rather than
 /// returning a return code, the more common convention in Rust is to return a `Result`.
 pub fn decode(ciphertext: &str, a: i32, b: i32) -> Result<String, AffineCipherError> {
-    unimplemented!("Decode {ciphertext} with the key ({a}, {b})");
+    if 1 != gcd(a, 26) {
+        return Err(AffineCipherError::NotCoprime(a));
+    }
+    Ok("".to_string())
 }
