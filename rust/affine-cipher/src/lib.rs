@@ -5,14 +5,6 @@ pub enum AffineCipherError {
     NotCoprime(i32),
 }
 
-fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
-}
-
 fn extended_gcd(a: i32, b: i32) -> (i32, i32, i32) {
     if b == 0 {
         (a, 1, 0)
@@ -25,7 +17,8 @@ fn extended_gcd(a: i32, b: i32) -> (i32, i32, i32) {
 /// Encodes the plaintext using the affine cipher with key (`a`, `b`). Note that, rather than
 /// returning a return code, the more common convention in Rust is to return a `Result`.
 pub fn encode(plaintext: &str, a: i32, b: i32) -> Result<String, AffineCipherError> {
-    if 1 != gcd(a, 26) {
+    if let (1, _, _) = extended_gcd(a, 26) {
+    } else {
         return Err(AffineCipherError::NotCoprime(a));
     }
     let mut ciphertext = String::new();
@@ -56,7 +49,8 @@ pub fn encode(plaintext: &str, a: i32, b: i32) -> Result<String, AffineCipherErr
 /// Decodes the ciphertext using the affine cipher with key (`a`, `b`). Note that, rather than
 /// returning a return code, the more common convention in Rust is to return a `Result`.
 pub fn decode(ciphertext: &str, a: i32, b: i32) -> Result<String, AffineCipherError> {
-    if 1 != gcd(a, 26) {
+    if let (1, _, _) = extended_gcd(a, 26) {
+    } else {
         return Err(AffineCipherError::NotCoprime(a));
     }
     Ok("".to_string())
