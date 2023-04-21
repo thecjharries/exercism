@@ -46,7 +46,7 @@ pub fn encode(plaintext: &str, a: i32, b: i32) -> Result<String, AffineCipherErr
     Ok(ciphertext)
 }
 
-fn modular_inverse(a: i32, m: i32) -> Result<i32, AffineCipherError> {
+pub fn modular_inverse(a: i32, m: i32) -> Result<i32, AffineCipherError> {
     let (g, x, _) = extended_gcd(a, m);
     if 1 == g {
         Ok((x % m + m) % m)

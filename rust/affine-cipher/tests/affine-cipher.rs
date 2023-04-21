@@ -1,6 +1,14 @@
 use affine_cipher::*;
 
 #[test]
+fn modular_inverse_error() {
+    assert_eq!(
+        affine_cipher::modular_inverse(6, 26),
+        Err(AffineCipherError::NotCoprime(6))
+    );
+}
+
+#[test]
 fn encode_yes() {
     assert_eq!(encode("yes", 5, 7).unwrap(), "xbt")
 }
