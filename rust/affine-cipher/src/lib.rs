@@ -19,7 +19,29 @@ pub fn encode(plaintext: &str, a: i32, b: i32) -> Result<String, AffineCipherErr
     if 1 != gcd(a, 26) {
         return Err(AffineCipherError::NotCoprime(a));
     }
-    Ok("".to_string())
+    let mut ciphertext = String::new();
+    let plaintext = plaintext
+        .chars()
+        .filter(|c| c.is_alphanumeric())
+        .map(|c| c.to_ascii_lowercase())
+        .collect::<String>();
+    let mut counter = 0;
+    for c in plaintext.chars() {
+        if 0 != counter && 0 == counter % 5 {
+            ciphertext.push(' ');
+        }
+        if c.is_alphabetic() {
+            let c = c as u8 - b'a';
+            let c = (a * c as i32 + b) % 26;
+            let c = c as u8 + b'a';
+            ciphertext.push(c as char);
+            counter += 1;
+        } else if c.is_numeric() {
+            ciphertext.push(c);
+            counter += 1;
+        }
+    }
+    Ok(ciphertext)
 }
 
 /// Decodes the ciphertext using the affine cipher with key (`a`, `b`). Note that, rather than
