@@ -62,5 +62,23 @@ pub fn decode(ciphertext: &str, a: i32, b: i32) -> Result<String, AffineCipherEr
     } else {
         return Err(AffineCipherError::NotCoprime(a));
     }
-    Ok("".to_string())
+    let mut plaintext = String::new();
+    let ciphertext = ciphertext
+        .chars()
+        .filter(|c| c.is_alphanumeric())
+        .map(|c| c.to_ascii_lowercase())
+        .collect::<String>();
+    let a_inv = modular_inverse(a, 26)?;
+    for c in ciphertext.chars() {
+        if c.is_alphabetic() {
+            let c = c as u8 - b'a';
+            let c = ((a_inv * (c as i32 - b)) % 26 + 26) % 26;
+            println!("c: {}", c);
+            let c = c as u8 + b'a';
+            plaintext.push(c as char);
+        } else if c.is_numeric() {
+            plaintext.push(c);
+        }
+    }
+    Ok(plaintext)
 }
