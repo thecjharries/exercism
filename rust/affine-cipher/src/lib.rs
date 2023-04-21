@@ -13,6 +13,15 @@ fn gcd(a: i32, b: i32) -> i32 {
     }
 }
 
+fn extended_gcd(a: i32, b: i32) -> (i32, i32, i32) {
+    if b == 0 {
+        (a, 1, 0)
+    } else {
+        let (g, x, y) = extended_gcd(b, a % b);
+        (g, y, x - (a / b) * y)
+    }
+}
+
 /// Encodes the plaintext using the affine cipher with key (`a`, `b`). Note that, rather than
 /// returning a return code, the more common convention in Rust is to return a `Result`.
 pub fn encode(plaintext: &str, a: i32, b: i32) -> Result<String, AffineCipherError> {
