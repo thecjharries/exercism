@@ -1,4 +1,5 @@
 pub fn answer(command: &str) -> Option<i32> {
+    let command = command.replace("by", "");
     let command = command
         .trim_start_matches("What is ")
         .trim_end_matches('?')
@@ -15,11 +16,9 @@ pub fn answer(command: &str) -> Option<i32> {
             &"plus" => result += operand,
             &"minus" => result -= operand,
             &"multiplied" => {
-                iter.next()?;
                 result *= operand;
             }
             &"divided" => {
-                iter.next()?;
                 result /= operand;
             }
             _ => return None,
