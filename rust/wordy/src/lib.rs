@@ -7,5 +7,23 @@ pub fn answer(command: &str) -> Option<i32> {
     if 1 == command.len() {
         return command[0].parse::<i32>().ok();
     }
-    unimplemented!("Return the result of the command '' or None, if the command is invalid.");
+    let mut result = command[0].parse::<i32>().ok()?;
+    let mut iter = command.iter().skip(1);
+    while let Some(operator) = iter.next() {
+        let operand = iter.next()?.parse::<i32>().ok()?;
+        match operator {
+            &"plus" => result += operand,
+            &"minus" => result -= operand,
+            &"multiplied" => {
+                iter.next()?;
+                result *= operand;
+            }
+            &"divided" => {
+                iter.next()?;
+                result /= operand;
+            }
+            _ => return None,
+        }
+    }
+    Some(result)
 }
