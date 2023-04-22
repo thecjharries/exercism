@@ -1,6 +1,12 @@
 use wordy::answer;
 
 #[test]
+fn failure() {
+    let command = "What is 1 qqq 2?";
+    assert_eq!(None, answer(command));
+}
+
+#[test]
 fn just_a_number() {
     let command = "What is 5?";
     assert_eq!(Some(5), answer(command));
