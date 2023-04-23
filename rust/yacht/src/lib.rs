@@ -1,3 +1,4 @@
+#[derive(Debug, PartialEq)]
 pub enum Category {
     Ones,
     Twos,
@@ -16,7 +17,12 @@ pub enum Category {
 type Dice = [u8; 5];
 pub fn score(_dice: Dice, _category: Category) -> u8 {
     match _category {
-        Ones => _dice.iter().filter(|&x| *x == 1).sum(),
+        Category::Ones => _dice.iter().filter(|&x| *x == 1).sum(),
+        Category::Twos => _dice.iter().filter(|&x| *x == 2).sum(),
+        Category::Threes => _dice.iter().filter(|&x| *x == 3).sum(),
+        Category::Fours => _dice.iter().filter(|&x| *x == 4).sum(),
+        Category::Fives => _dice.iter().filter(|&x| *x == 5).sum(),
+        Category::Sixes => _dice.iter().filter(|&x| *x == 6).sum(),
         _ => 0,
     }
 }
