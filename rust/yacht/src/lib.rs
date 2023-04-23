@@ -47,7 +47,7 @@ pub fn score(_dice: Dice, _category: Category) -> u8 {
             } else {
                 0
             }
-        },
+        }
         Category::LittleStraight => {
             let mut dice = _dice;
             dice.sort();
@@ -56,7 +56,7 @@ pub fn score(_dice: Dice, _category: Category) -> u8 {
             } else {
                 0
             }
-        },
+        }
         Category::BigStraight => {
             let mut dice = _dice;
             dice.sort();
@@ -65,7 +65,18 @@ pub fn score(_dice: Dice, _category: Category) -> u8 {
             } else {
                 0
             }
-        },
-        _ => 0,
+        }
+        Category::Choice => _dice.iter().sum(),
+        Category::Yacht => {
+            let mut counts = [0; 6];
+            for &d in _dice.iter() {
+                counts[d as usize - 1] += 1;
+            }
+            if counts.iter().filter(|&x| *x == 5).count() == 1 {
+                50
+            } else {
+                0
+            }
+        }
     }
 }
