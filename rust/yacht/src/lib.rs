@@ -47,7 +47,25 @@ pub fn score(_dice: Dice, _category: Category) -> u8 {
             } else {
                 0
             }
-        }
+        },
+        Category::LittleStraight => {
+            let mut dice = _dice;
+            dice.sort();
+            if dice == [1, 2, 3, 4, 5] {
+                30
+            } else {
+                0
+            }
+        },
+        Category::BigStraight => {
+            let mut dice = _dice;
+            dice.sort();
+            if dice == [2, 3, 4, 5, 6] {
+                30
+            } else {
+                0
+            }
+        },
         _ => 0,
     }
 }
