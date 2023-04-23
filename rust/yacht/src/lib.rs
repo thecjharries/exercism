@@ -36,6 +36,18 @@ pub fn score(_dice: Dice, _category: Category) -> u8 {
                 0
             }
         }
+        Category::FourOfAKind => {
+            let mut counts = [0; 6];
+            for &d in _dice.iter() {
+                counts[d as usize - 1] += 1;
+            }
+            if counts.iter().filter(|&x| *x >= 4).count() == 1 {
+                let index = counts.iter().position(|&x| x >= 4).unwrap();
+                (index + 1) as u8 * 4
+            } else {
+                0
+            }
+        }
         _ => 0,
     }
 }
