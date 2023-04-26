@@ -53,21 +53,20 @@ impl Flags {
 
 pub fn grep(pattern: &str, flags: &Flags, files: &[&str]) -> Result<Vec<String>, Error> {
     let mut results = Vec::new();
-    let mut search_pattern: Regex;
-    if flags.case_insensitive {
-        search_pattern = Regex::new(&format!("(?i){}", pattern))?;
-    } else {
-        search_pattern = Regex::new(pattern)?;
+    let mut pattern_string = String::from(pattern);
+    if flags.match_entire_lines {
+        pattern_string = format!("^{}$", pattern_string);
     }
+    if flags.case_insensitive {
+        pattern_string = format!("(?i){}", pattern_string);
+    }
+    let search_pattern = Regex::new(&pattern_string)?;
     for file in files {
         let contents = std::fs::read_to_string(file)?;
         let mut lines = contents.lines();
         let mut line_number = 1;
         while let Some(line) = lines.next() {
             let mut line_matches = search_pattern.is_match(line);
-            if flags.match_entire_lines {
-                line_matches = line_matches && search_pattern.as_str() == line;
-            }
             if flags.invert_match {
                 line_matches = !line_matches;
             }
