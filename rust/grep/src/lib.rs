@@ -76,6 +76,10 @@ pub fn grep(pattern: &str, flags: &Flags, files: &[&str]) -> Result<Vec<String>,
                     result.push_str(file);
                 } else {
                     if flags.line_numbers {
+                        if 1 < files.len() {
+                            result.push_str(file);
+                            result.push(':');
+                        }
                         result.push_str(&line_number.to_string());
                         result.push(':');
                     }
