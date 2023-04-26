@@ -1,4 +1,5 @@
 use anyhow::Error;
+use itertools::Itertools;
 use regex::Regex;
 
 /// While using `&[&str]` to handle flags is convenient for exercise purposes,
@@ -89,6 +90,9 @@ pub fn grep(pattern: &str, flags: &Flags, files: &[&str]) -> Result<Vec<String>,
             }
             line_number += 1;
         }
+    }
+    if 1 < files.len() && flags.file_names {
+        results = results.into_iter().unique().collect::<Vec<String>>();
     }
     Ok(results)
 }
