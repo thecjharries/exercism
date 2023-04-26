@@ -13,7 +13,13 @@ use anyhow::Error;
 /// [`std::env::args`]: https://doc.rust-lang.org/std/env/fn.args.html
 /// [`structopt`]: https://crates.io/crates/structopt
 #[derive(Debug)]
-pub struct Flags;
+pub struct Flags{
+    line_numbers: bool,
+    file_names: bool,
+    case_insensitive: bool,
+    invert_match: bool,
+    match_entire_lines: bool,
+};
 
 impl Flags {
     pub fn new(flags: &[&str]) -> Self {
