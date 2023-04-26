@@ -23,9 +23,30 @@ pub struct Flags{
 
 impl Flags {
     pub fn new(flags: &[&str]) -> Self {
-        unimplemented!(
-            "Given the flags {flags:?} implement your own 'Flags' struct to handle flags-related logic"
-        );
+        let mut line_numbers = false;
+        let mut file_names = false;
+        let mut case_insensitive = false;
+        let mut invert_match = false;
+        let mut match_entire_lines = false;
+
+        for flag in flags {
+            match flag {
+                &"-n" => line_numbers = true,
+                &"-l" => file_names = true,
+                &"-i" => case_insensitive = true,
+                &"-v" => invert_match = true,
+                &"-x" => match_entire_lines = true,
+                _ => (),
+            }
+        }
+
+        Flags {
+            line_numbers,
+            file_names,
+            case_insensitive,
+            invert_match,
+            match_entire_lines,
+        }
     }
 }
 
