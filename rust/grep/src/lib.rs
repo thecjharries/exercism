@@ -75,13 +75,13 @@ pub fn grep(pattern: &str, flags: &Flags, files: &[&str]) -> Result<Vec<String>,
                 let mut result = String::new();
                 if flags.file_names {
                     result.push_str(file);
-                    result.push(':');
+                } else {
+                    if flags.line_numbers {
+                        result.push_str(&line_number.to_string());
+                        result.push(':');
+                    }
+                    result.push_str(line);
                 }
-                if flags.line_numbers {
-                    result.push_str(&line_number.to_string());
-                    result.push(':');
-                }
-                result.push_str(line);
                 results.push(result);
             }
             line_number += 1;
