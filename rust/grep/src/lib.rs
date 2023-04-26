@@ -59,8 +59,25 @@ pub fn grep(pattern: &str, flags: &Flags, files: &[&str]) -> Result<Vec<String>,
         let mut lines = contents.lines();
         let mut line_number = 1;
         while let Some(line) = lines.next() {
-            if search_pattern.is_match(line) {
-                results.push(line.to_string());
+            let mut line_matches = search_pattern.is_match(line);
+            if flags.match_entire_lines {
+                line_matches = line_matches && search_pattern.as_str() == line;
+            }
+            if flags.invert_match {
+                line_matches = !line_matches;
+            }
+            if line_matches {
+                let mut result = String::new();
+                if flags.file_names {
+                    result.push_str(file);
+                    result.push(':');
+                }
+                if flags.line_numbers {
+                    result.push_str(&line_number.to_string());
+                    result.push(':');
+                }
+                result.push_str(line);
+                results.push(result);
             }
             line_number += 1;
         }
