@@ -1,4 +1,5 @@
 use anyhow::Error;
+use regex::Regex;
 
 /// While using `&[&str]` to handle flags is convenient for exercise purposes,
 /// and resembles the output of [`std::env::args`], in real-world projects it is
@@ -13,13 +14,13 @@ use anyhow::Error;
 /// [`std::env::args`]: https://doc.rust-lang.org/std/env/fn.args.html
 /// [`structopt`]: https://crates.io/crates/structopt
 #[derive(Debug)]
-pub struct Flags{
+pub struct Flags {
     line_numbers: bool,
     file_names: bool,
     case_insensitive: bool,
     invert_match: bool,
     match_entire_lines: bool,
-};
+}
 
 impl Flags {
     pub fn new(flags: &[&str]) -> Self {
@@ -51,7 +52,18 @@ impl Flags {
 }
 
 pub fn grep(pattern: &str, flags: &Flags, files: &[&str]) -> Result<Vec<String>, Error> {
-    unimplemented!(
-        "Search the files '{files:?}' for '{pattern}' pattern and save the matches in a vector. Your search logic should be aware of the given flags '{flags:?}'"
-    );
+    let mut results = Vec::new();
+    let mut search_pattern = Regex::new(pattern)?;
+    for file in files {
+        let contents = std::fs::read_to_string(file)?;
+        let mut lines = contents.lines();
+        let mut line_number = 1;
+        while let Some(line) = lines.next() {
+            if search_pattern.is_match(line) {
+                results.push(line.to_string());
+            }
+            line_number += 1;
+        }
+    }
+    Ok(results)
 }
