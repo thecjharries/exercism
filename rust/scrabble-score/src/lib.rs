@@ -13,5 +13,5 @@ fn score_letter(letter: char) -> u64 {
 
 /// Compute the Scrabble score for a word.
 pub fn score(word: &str) -> u64 {
-    unimplemented!("Score {word} in Scrabble.");
+    word.to_lowercase().chars().map(score_letter).sum()
 }
