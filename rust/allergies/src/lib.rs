@@ -1,4 +1,5 @@
-pub struct Allergies;
+#[derive(Debug, PartialEq, Eq)]
+pub struct Allergies(Vec<Allergen>);
 
 #[derive(Debug, PartialEq, Eq)]
 #[repr(u32)]
