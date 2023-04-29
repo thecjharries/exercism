@@ -3,7 +3,7 @@ use enum_iterator::{all, next_cycle, previous_cycle, Sequence};
 // The code below is a stub. Just enough to satisfy the compiler.
 // In order to pass the tests you can add-to or change any of this code.
 
-#[derive(PartialEq, Eq, Debug, Sequence)]
+#[derive(PartialEq, Eq, Debug, Sequence, Copy, Clone)]
 #[repr(u8)]
 pub enum Direction {
     North = 1,
@@ -12,7 +12,7 @@ pub enum Direction {
     West = 4,
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
 pub struct Robot {
     x: i32,
     y: i32,
@@ -26,7 +26,12 @@ impl Robot {
 
     #[must_use]
     pub fn turn_right(self) -> Self {
-        unimplemented!()
+        let next_direction = next_cycle(&self.d).unwrap();
+        Robot {
+            x: self.x,
+            y: self.y,
+            d: next_direction,
+        }
     }
 
     #[must_use]
