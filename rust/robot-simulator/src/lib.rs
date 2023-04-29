@@ -9,7 +9,12 @@ pub enum Direction {
     West,
 }
 
-pub struct Robot;
+#[derive(Debug, PartialEq, Eq)]
+pub struct Robot {
+    x: i32,
+    y: i32,
+    d: Direction,
+};
 
 impl Robot {
     pub fn new(x: i32, y: i32, d: Direction) -> Self {
