@@ -28,7 +28,7 @@ impl Allergies {
     }
 
     pub fn is_allergic_to(&self, allergen: &Allergen) -> bool {
-        unimplemented!("Determine if the patient is allergic to the '{allergen:?}' allergen.");
+        self.0.contains(allergen)
     }
 
     pub fn allergies(&self) -> Vec<Allergen> {
