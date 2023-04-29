@@ -1,4 +1,4 @@
-use enum_iterator::{all, next_cycle, previous_cycle, Sequence}
+use enum_iterator::{all, next_cycle, previous_cycle, Sequence};
 
 // The code below is a stub. Just enough to satisfy the compiler.
 // In order to pass the tests you can add-to or change any of this code.
@@ -17,11 +17,11 @@ pub struct Robot {
     x: i32,
     y: i32,
     d: Direction,
-};
+}
 
 impl Robot {
     pub fn new(x: i32, y: i32, d: Direction) -> Self {
-        unimplemented!("Create a robot at (x, y) ({x}, {y}) facing {d:?}")
+        Robot { x, y, d }
     }
 
     #[must_use]
