@@ -46,7 +46,13 @@ impl Robot {
 
     #[must_use]
     pub fn advance(self) -> Self {
-        unimplemented!()
+        let (x, y) = match self.d {
+            Direction::North => (self.x, self.y + 1),
+            Direction::East => (self.x + 1, self.y),
+            Direction::South => (self.x, self.y - 1),
+            Direction::West => (self.x - 1, self.y),
+        };
+        Robot { x, y, d: self.d }
     }
 
     #[must_use]
