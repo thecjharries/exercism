@@ -1,12 +1,15 @@
+use enum_iterator::{all, next_cycle, previous_cycle, Sequence}
+
 // The code below is a stub. Just enough to satisfy the compiler.
 // In order to pass the tests you can add-to or change any of this code.
 
-#[derive(PartialEq, Eq, Debug)]
+#[derive(PartialEq, Eq, Debug, Sequence)]
+#[repr(u8)]
 pub enum Direction {
-    North,
-    East,
-    South,
-    West,
+    North = 1,
+    East = 2,
+    South = 3,
+    West = 4,
 }
 
 #[derive(Debug, PartialEq, Eq)]
