@@ -1,9 +1,9 @@
 use enum_iterator::{all, Sequence};
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct Allergies(Vec<Allergen>);
 
-#[derive(Debug, PartialEq, Eq, Sequence)]
+#[derive(Debug, PartialEq, Eq, Sequence, Clone)]
 #[repr(u32)]
 pub enum Allergen {
     Eggs = 1,
@@ -32,6 +32,6 @@ impl Allergies {
     }
 
     pub fn allergies(&self) -> Vec<Allergen> {
-        unimplemented!("Return the list of allergens contained within the score with which the Allergies struct was made.");
+        self.0.clone()
     }
 }
