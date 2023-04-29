@@ -1,4 +1,4 @@
-use enum_iterator::{all, next_cycle, previous_cycle, Sequence};
+use enum_iterator::{next_cycle, previous_cycle, Sequence};
 
 // The code below is a stub. Just enough to satisfy the compiler.
 // In order to pass the tests you can add-to or change any of this code.
@@ -72,6 +72,6 @@ impl Robot {
     }
 
     pub fn direction(&self) -> &Direction {
-        self.d
+        &self.d
     }
 }
