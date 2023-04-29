@@ -1,6 +1,13 @@
 use robot_simulator::*;
 
 #[test]
+#[should_panic(expected = "Invalid instruction")]
+fn panic_on_bad_instruction() {
+    let robot = Robot::new(0, 0, Direction::North).instructions("X");
+    assert_eq!((0, 0), robot.position());
+}
+
+#[test]
 fn robots_are_created_with_position_and_direction() {
     let robot = Robot::new(0, 0, Direction::North);
     assert_eq!((0, 0), robot.position());
