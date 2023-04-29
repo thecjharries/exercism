@@ -36,7 +36,12 @@ impl Robot {
 
     #[must_use]
     pub fn turn_left(self) -> Self {
-        unimplemented!()
+        let previous_direction = previous_cycle(&self.d).unwrap();
+        Robot {
+            x: self.x,
+            y: self.y,
+            d: previous_direction,
+        }
     }
 
     #[must_use]
