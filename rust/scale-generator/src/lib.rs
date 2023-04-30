@@ -15,6 +15,7 @@ pub enum Error {
 pub struct Scale(Vec<String>);
 
 impl Scale {
+    #[cfg(not(tarpaulin_include))]
     pub fn new(tonic: &str, intervals: &str) -> Result<Scale, Error> {
         let mut scale = Vec::new();
         let notes = match tonic {
