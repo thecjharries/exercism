@@ -25,6 +25,6 @@ impl Scale {
     }
 
     pub fn enumerate(&self) -> Vec<String> {
-        unimplemented!()
+        self.0.clone()
     }
 }
