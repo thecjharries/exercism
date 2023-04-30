@@ -12,7 +12,8 @@
 #[derive(Debug)]
 pub struct Error;
 
-pub struct Scale;
+#[derive(Debug, PartialEq, Eq, Clone)]
+pub struct Scale(Vec<String>);
 
 impl Scale {
     pub fn new(tonic: &str, intervals: &str) -> Result<Scale, Error> {
