@@ -20,7 +20,7 @@ impl Scale {
     }
 
     pub fn chromatic(tonic: &str) -> Result<Scale, Error> {
-        unimplemented!("Construct a new chromatic scale with tonic {tonic}")
+        Scale::new(tonic, "mmmmmmmmmmmm")
     }
 
     pub fn enumerate(&self) -> Vec<String> {
