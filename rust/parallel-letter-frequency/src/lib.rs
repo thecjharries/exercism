@@ -1,11 +1,29 @@
 use std::collections::HashMap;
+use std::rc::Rc;
+use std::sync::Mutex;
+use std::thread;
 
 pub fn frequency(input: &[&str], worker_count: usize) -> HashMap<char, usize> {
-    unimplemented!(
-        "Count the frequency of letters in the given input '{input:?}'. Ensure that you are using {} to process the input.",
-        match worker_count {
-            1 => "1 worker".to_string(),
-            _ => format!("{worker_count} workers"),
-        }
-    );
+    let frequencies: Rc<Mutex<HashMap<char, usize>>> = Rc::new(Mutex::new(HashMap::new()));
+    let mut handles = Vec::new();
+    for text in input.iter() {
+        let frequencies = Rc::clone(&frequencies);
+        let handle = thread::spawn(move || {
+            let mut map = frequencies.lock().unwrap();
+            for c in text.to_lowercase().chars().filter(|c| c.is_alphabetic()) {
+                let counter = map.entry(c).or_insert(0);
+                *counter += 1;
+            }
+        });
+        handles.push(handle);
+    }
+    for handle in handles {
+        handle.join().unwrap();
+    }
+    let mut map = frequencies.lock().unwrap();
+    let mut result = HashMap::new();
+    for (k, v) in map.drain() {
+        result.insert(k, v);
+    }
+    result
 }
