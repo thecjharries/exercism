@@ -1,13 +1,16 @@
 use std::cmp::min;
 use std::collections::HashMap;
 use std::sync::mpsc;
-use std::sync::Arc;
 use std::thread;
 
 pub fn frequency(input: &[&str], worker_count: usize) -> HashMap<char, usize> {
+    let mut map = HashMap::new();
     let input = input.join("");
     let mut data = input.chars();
     let worker_count = min(worker_count, input.len());
+    if 0 == worker_count {
+        return map;
+    }
     let mut chunk_size = (input.len() / worker_count).max(1);
     if input.len() > chunk_size * worker_count {
         chunk_size += 1;
@@ -27,7 +30,6 @@ pub fn frequency(input: &[&str], worker_count: usize) -> HashMap<char, usize> {
         });
     }
     drop(tx);
-    let mut map = HashMap::new();
     for m in rx {
         for (k, v) in m {
             *map.entry(k).or_insert(0) += v;
