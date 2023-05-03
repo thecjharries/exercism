@@ -1,7 +1,7 @@
+#[derive(Debug, PartialEq, Eq)]
 pub struct CircularBuffer<T> {
-    // We fake using T here, so the compiler does not complain that
-    // "parameter `T` is never used". Delete when no longer needed.
-    phantom: std::marker::PhantomData<T>,
+    buffer: Vec<T>,
+    capacity: usize,
 }
 
 #[derive(Debug, PartialEq, Eq)]
