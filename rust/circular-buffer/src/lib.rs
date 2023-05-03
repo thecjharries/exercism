@@ -19,7 +19,12 @@ impl<T> CircularBuffer<T> {
     }
 
     pub fn write(&mut self, _element: T) -> Result<(), Error> {
-        unimplemented!("Write the passed element to the CircularBuffer or return FullBuffer error if CircularBuffer is full.");
+        if self.capacity == self.buffer.len() {
+            Err(Error::FullBuffer)
+        } else {
+            self.buffer.push(_element);
+            Ok(())
+        }
     }
 
     pub fn read(&mut self) -> Result<T, Error> {
