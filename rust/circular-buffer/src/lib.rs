@@ -23,7 +23,11 @@ impl<T> CircularBuffer<T> {
     }
 
     pub fn read(&mut self) -> Result<T, Error> {
-        unimplemented!("Read the oldest element from the CircularBuffer or return EmptyBuffer error if CircularBuffer is empty.");
+        if 0 == self.buffer.len() {
+            Err(Error::EmptyBuffer)
+        } else {
+            Ok(self.buffer.remove(0))
+        }
     }
 
     pub fn clear(&mut self) {
