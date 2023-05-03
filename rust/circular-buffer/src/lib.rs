@@ -27,7 +27,7 @@ impl<T> CircularBuffer<T> {
     }
 
     pub fn clear(&mut self) {
-        unimplemented!("Clear the CircularBuffer.");
+        self.buffer.clear();
     }
 
     pub fn overwrite(&mut self, _element: T) {
