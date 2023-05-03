@@ -12,13 +12,10 @@ pub enum Error {
 
 impl<T> CircularBuffer<T> {
     pub fn new(capacity: usize) -> Self {
-        unimplemented!(
-            "Construct a new CircularBuffer with the capacity to hold {}.",
-            match capacity {
-                1 => "1 element".to_string(),
-                _ => format!("{capacity} elements"),
-            }
-        );
+        CircularBuffer {
+            buffer: Vec::with_capacity(capacity),
+            capacity,
+        }
     }
 
     pub fn write(&mut self, _element: T) -> Result<(), Error> {
