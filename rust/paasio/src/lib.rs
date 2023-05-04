@@ -14,7 +14,11 @@ impl<R: Read> ReadStats<R> {
     // can't be passed through format!(). For actual implementation you will likely
     // wish to remove the leading underscore so the variable is not ignored.
     pub fn new(_wrapped: R) -> ReadStats<R> {
-        unimplemented!()
+        ReadStats {
+            _wrapped,
+            bytes_through: 0,
+            reads: 0,
+        }
     }
 
     pub fn get_ref(&self) -> &R {
