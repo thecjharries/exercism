@@ -43,7 +43,11 @@ impl<R: Read> Read for ReadStats<R> {
     }
 }
 
-pub struct WriteStats<W>(::std::marker::PhantomData<W>);
+pub struct WriteStats<W> {
+    _wrapped: W,
+    bytes_through: usize,
+    writes: usize,
+}
 
 impl<W: Write> WriteStats<W> {
     // _wrapped is ignored because W is not bounded on Debug or Display and therefore
