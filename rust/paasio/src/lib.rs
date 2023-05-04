@@ -21,6 +21,7 @@ impl<R: Read> ReadStats<R> {
         }
     }
 
+    #[cfg(not(tarpaulin_include))]
     pub fn get_ref(&self) -> &R {
         &self._wrapped
     }
@@ -61,6 +62,7 @@ impl<W: Write> WriteStats<W> {
         }
     }
 
+    #[cfg(not(tarpaulin_include))]
     pub fn get_ref(&self) -> &W {
         &self._wrapped
     }
