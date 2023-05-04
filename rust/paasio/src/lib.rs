@@ -26,17 +26,20 @@ impl<R: Read> ReadStats<R> {
     }
 
     pub fn bytes_through(&self) -> usize {
-        &self.bytes_through
+        self.bytes_through
     }
 
     pub fn reads(&self) -> usize {
-        &self.reads
+        self.reads
     }
 }
 
 impl<R: Read> Read for ReadStats<R> {
     fn read(&mut self, buf: &mut [u8]) -> Result<usize> {
-        unimplemented!("Collect statistics about this call reading {buf:?}")
+        let bytes_read = self._wrapped.read(buf)?;
+        self.bytes_through += bytes_read;
+        self.reads += 1;
+        Ok(bytes_read)
     }
 }
 
