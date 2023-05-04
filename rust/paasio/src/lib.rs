@@ -62,15 +62,15 @@ impl<W: Write> WriteStats<W> {
     }
 
     pub fn get_ref(&self) -> &W {
-        unimplemented!()
+        &self._wrapped
     }
 
     pub fn bytes_through(&self) -> usize {
-        unimplemented!()
+        self.bytes_through
     }
 
     pub fn writes(&self) -> usize {
-        unimplemented!()
+        self.writes
     }
 }
 
