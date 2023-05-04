@@ -3,7 +3,11 @@ use std::io::{Read, Result, Write};
 // the PhantomData instances in this file are just to stop compiler complaints
 // about missing generics; feel free to remove them
 
-pub struct ReadStats<R>(::std::marker::PhantomData<R>);
+pub struct ReadStats<R> {
+    _wrapped: R,
+    bytes_through: usize,
+    reads: usize,
+}
 
 impl<R: Read> ReadStats<R> {
     // _wrapped is ignored because R is not bounded on Debug or Display and therefore
