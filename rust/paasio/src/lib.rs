@@ -54,7 +54,11 @@ impl<W: Write> WriteStats<W> {
     // can't be passed through format!(). For actual implementation you will likely
     // wish to remove the leading underscore so the variable is not ignored.
     pub fn new(_wrapped: W) -> WriteStats<W> {
-        unimplemented!()
+        WriteStats {
+            _wrapped,
+            bytes_through: 0,
+            writes: 0,
+        }
     }
 
     pub fn get_ref(&self) -> &W {
