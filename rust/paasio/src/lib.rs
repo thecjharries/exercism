@@ -22,7 +22,7 @@ impl<R: Read> ReadStats<R> {
     }
 
     pub fn get_ref(&self) -> &R {
-        unimplemented!()
+        &self._wrapped
     }
 
     pub fn bytes_through(&self) -> usize {
