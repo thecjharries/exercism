@@ -26,11 +26,11 @@ impl<R: Read> ReadStats<R> {
     }
 
     pub fn bytes_through(&self) -> usize {
-        unimplemented!()
+        &self.bytes_through
     }
 
     pub fn reads(&self) -> usize {
-        unimplemented!()
+        &self.reads
     }
 }
 
