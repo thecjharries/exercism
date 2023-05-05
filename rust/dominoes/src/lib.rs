@@ -1,6 +1,9 @@
 use itertools::Itertools;
 
 pub fn chain(input: &[(u8, u8)]) -> Option<Vec<(u8, u8)>> {
+    if input.is_empty() {
+        return Some(vec![]);
+    }
     for mut possible_chain in input.into_iter().permutations(input.len()).unique() {
         let result: Vec<(u8, u8)> = possible_chain.iter().map(|&x| *x).collect();
         let first_element = possible_chain.first().copied().unwrap();
