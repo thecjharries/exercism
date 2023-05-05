@@ -2,3 +2,6 @@
 edition = "2021"
 name = "dominoes"
 version = "2.1.0"
+
+[dependencies]
+itertools = "0.10.5"
