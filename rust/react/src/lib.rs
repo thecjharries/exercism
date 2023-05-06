@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 /// `InputCellId` is a unique identifier for an input cell.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct InputCellId();
@@ -36,6 +38,7 @@ pub struct Reactor<T> {
     // Just so that the compiler doesn't complain about an unused type parameter.
     // You probably want to delete this field.
     dummy: ::std::marker::PhantomData<T>,
+    ids: HashSet<u64>,
 }
 
 // You are guaranteed that Reactor will only be tested against types that are Copy + PartialEq.
