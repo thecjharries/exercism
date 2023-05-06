@@ -108,7 +108,22 @@ impl<T: Copy + PartialEq> Reactor<T> {
     // It turns out this introduces a significant amount of extra complexity to this exercise.
     // We chose not to cover this here, since this exercise is probably enough work as-is.
     pub fn value(&self, id: CellId) -> Option<T> {
-        unimplemented!("Get the value of the cell whose id is {id:?}")
+        match id {
+            CellId::Input(id) => self.input_cells.get(&id).copied(),
+            CellId::Compute(id) => {
+                let (dependencies, compute_func) = self.compute_cells.get(&id)?;
+                let mut values = Vec::new();
+                for dependency in dependencies.iter() {
+                    match dependency {
+                        CellId::Input(id) => values.push(self.input_cells.get(&id).copied()?),
+                        CellId::Compute(id) => {
+                            values.push(self.value(CellId::Compute(*id))?);
+                        }
+                    }
+                }
+                Some(compute_func(&values))
+            }
+        }
     }
 
     // Sets the value of the specified input cell.
