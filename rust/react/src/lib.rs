@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 /// `InputCellId` is a unique identifier for an input cell.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub struct InputCellId(u64);
 /// `ComputeCellId` is a unique identifier for a compute cell.
 /// Values of type `InputCellId` and `ComputeCellId` should not be mutually assignable,
@@ -17,7 +17,7 @@ pub struct InputCellId(u64);
 /// let input = r.create_input(111);
 /// let compute: react::InputCellId = r.create_compute(&[react::CellId::Input(input)], |_| 222).unwrap();
 /// ```
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub struct ComputeCellId(u64);
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct CallbackId(u64);
@@ -36,7 +36,7 @@ pub enum RemoveCallbackError {
 
 pub struct Reactor<T> {
     input_cells: HashMap<InputCellId, T>,
-    compute_cells: HashMap<ComputeCellId, (Vec<CellId>, Box<Fn(&[T]) -> T>)>,
+    compute_cells: HashMap<ComputeCellId, (Vec<CellId>, Box<dyn Fn(&[T]) -> T>)>,
     id_counter: u64,
 }
 
@@ -46,6 +46,7 @@ impl<T: Copy + PartialEq> Reactor<T> {
         Reactor {
             input_cells: HashMap::new(),
             compute_cells: HashMap::new(),
+            id_counter: 0,
         }
     }
 
@@ -74,7 +75,7 @@ impl<T: Copy + PartialEq> Reactor<T> {
     // Notice that there is no way to *remove* a cell.
     // This means that you may assume, without checking, that if the dependencies exist at creation
     // time they will continue to exist as long as the Reactor exists.
-    pub fn create_compute<F: Fn(&[T]) -> T>(
+    pub fn create_compute<F: Fn(&[T]) -> T + 'static>(
         &mut self,
         _dependencies: &[CellId],
         _compute_func: F,
@@ -94,7 +95,8 @@ impl<T: Copy + PartialEq> Reactor<T> {
                 }
             }
         }
-        self.compute_cells.insert(id, (_dependencies.to_vec(), Box::new(_compute_func)));
+        self.compute_cells
+            .insert(id, (_dependencies.to_vec(), Box::new(_compute_func)));
         Ok(id)
     }
 
