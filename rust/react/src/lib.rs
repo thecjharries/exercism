@@ -56,7 +56,9 @@ impl<T: Copy + PartialEq> Reactor<T> {
 
     // Creates an input cell with the specified initial value, returning its ID.
     pub fn create_input(&mut self, _initial: T) -> InputCellId {
-        unimplemented!()
+        let id = InputCellId(self.next_id());
+        self.input_cells.insert(id, _initial);
+        id
     }
 
     // Creates a compute cell with the specified dependencies and compute function.
@@ -77,7 +79,23 @@ impl<T: Copy + PartialEq> Reactor<T> {
         _dependencies: &[CellId],
         _compute_func: F,
     ) -> Result<ComputeCellId, CellId> {
-        unimplemented!()
+        let id = ComputeCellId(self.next_id());
+        for dependency in _dependencies.iter() {
+            match dependency {
+                CellId::Input(id) => {
+                    if !self.input_cells.contains_key(id) {
+                        return Err(CellId::Input(*id));
+                    }
+                }
+                CellId::Compute(id) => {
+                    if !self.compute_cells.contains_key(id) {
+                        return Err(CellId::Compute(*id));
+                    }
+                }
+            }
+        }
+        self.compute_cells.insert(id, (_dependencies.to_vec(), Box::new(_compute_func)));
+        Ok(id)
     }
 
     // Retrieves the current value of the cell, or None if the cell does not exist.
