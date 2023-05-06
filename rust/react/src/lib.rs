@@ -42,7 +42,10 @@ pub struct Reactor<T> {
 // You are guaranteed that Reactor will only be tested against types that are Copy + PartialEq.
 impl<T: Copy + PartialEq> Reactor<T> {
     pub fn new() -> Self {
-        unimplemented!()
+        Reactor {
+            input_cells: HashMap::new(),
+            compute_cells: HashMap::new(),
+        }
     }
 
     // Creates an input cell with the specified initial value, returning its ID.
