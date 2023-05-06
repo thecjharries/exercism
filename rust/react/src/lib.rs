@@ -19,7 +19,7 @@ pub struct InputCellId(u64);
 /// ```
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub struct ComputeCellId(u64);
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub struct CallbackId(u64);
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -37,6 +37,7 @@ pub enum RemoveCallbackError {
 pub struct Reactor<T> {
     input_cells: HashMap<InputCellId, T>,
     compute_cells: HashMap<ComputeCellId, (Vec<CellId>, Box<dyn Fn(&[T]) -> T>)>,
+    callbacks: HashMap<ComputeCellId, HashMap<CallbackId, Box<dyn FnMut(T)>>>,
     id_counter: u64,
 }
 
@@ -160,7 +161,16 @@ impl<T: Copy + PartialEq> Reactor<T> {
         _id: ComputeCellId,
         _callback: F,
     ) -> Option<CallbackId> {
-        unimplemented!()
+        if self.compute_cells.contains_key(&_id) {
+            let id = CallbackId(self.next_id());
+            self.callbacks
+                .entry(_id)
+                .or_insert_with(HashMap::new)
+                .insert(id, Box::new(_callback));
+            Some(id)
+        } else {
+            None
+        }
     }
 
     // Removes the specified callback, using an ID returned from add_callback.
