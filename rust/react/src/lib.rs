@@ -37,6 +37,7 @@ pub enum RemoveCallbackError {
 pub struct Reactor<T> {
     input_cells: HashMap<InputCellId, T>,
     compute_cells: HashMap<ComputeCellId, (Vec<CellId>, Box<Fn(&[T]) -> T>)>,
+    id_counter: u64,
 }
 
 // You are guaranteed that Reactor will only be tested against types that are Copy + PartialEq.
@@ -46,6 +47,11 @@ impl<T: Copy + PartialEq> Reactor<T> {
             input_cells: HashMap::new(),
             compute_cells: HashMap::new(),
         }
+    }
+
+    fn next_id(&mut self) -> u64 {
+        self.id_counter += 1;
+        self.id_counter
     }
 
     // Creates an input cell with the specified initial value, returning its ID.
