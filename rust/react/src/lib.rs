@@ -1,8 +1,8 @@
-use std::collections::HashSet;
+use std::collections::HashMap;
 
 /// `InputCellId` is a unique identifier for an input cell.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub struct InputCellId();
+pub struct InputCellId(u64);
 /// `ComputeCellId` is a unique identifier for a compute cell.
 /// Values of type `InputCellId` and `ComputeCellId` should not be mutually assignable,
 /// demonstrated by the following tests:
@@ -18,9 +18,9 @@ pub struct InputCellId();
 /// let compute: react::InputCellId = r.create_compute(&[react::CellId::Input(input)], |_| 222).unwrap();
 /// ```
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub struct ComputeCellId();
+pub struct ComputeCellId(u64);
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub struct CallbackId();
+pub struct CallbackId(u64);
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum CellId {
@@ -35,10 +35,8 @@ pub enum RemoveCallbackError {
 }
 
 pub struct Reactor<T> {
-    // Just so that the compiler doesn't complain about an unused type parameter.
-    // You probably want to delete this field.
-    dummy: ::std::marker::PhantomData<T>,
-    ids: HashSet<u64>,
+    input_cells: HashMap<InputCellId, T>,
+    compute_cells: HashMap<ComputeCellId, (Vec<CellId>, Box<Fn(&[T]) -> T>)>,
 }
 
 // You are guaranteed that Reactor will only be tested against types that are Copy + PartialEq.
