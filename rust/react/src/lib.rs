@@ -47,6 +47,7 @@ impl<T: Copy + PartialEq> Reactor<T> {
         Reactor {
             input_cells: HashMap::new(),
             compute_cells: HashMap::new(),
+            callbacks: HashMap::new(),
             id_counter: 0,
         }
     }
@@ -156,7 +157,7 @@ impl<T: Copy + PartialEq> Reactor<T> {
     // * Exactly once if the compute cell's value changed as a result of the set_value call.
     //   The value passed to the callback should be the final value of the compute cell after the
     //   set_value call.
-    pub fn add_callback<F: FnMut(T)>(
+    pub fn add_callback<F: FnMut(T) + 'static>(
         &mut self,
         _id: ComputeCellId,
         _callback: F,
@@ -183,8 +184,13 @@ impl<T: Copy + PartialEq> Reactor<T> {
         cell: ComputeCellId,
         callback: CallbackId,
     ) -> Result<(), RemoveCallbackError> {
-        unimplemented!(
-            "Remove the callback identified by the CallbackId {callback:?} from the cell {cell:?}"
-        )
+        if !self.compute_cells.contains_key(&cell) {
+            return Err(RemoveCallbackError::NonexistentCell);
+        }
+        if !self.callbacks.contains_key(&cell) {
+            return Err(RemoveCallbackError::NonexistentCallback);
+        }
+        self.callbacks.get_mut(&cell).unwrap().remove(&callback);
+        Ok(())
     }
 }
