@@ -137,12 +137,32 @@ impl<T: Copy + PartialEq> Reactor<T> {
     //
     // As before, that turned out to add too much extra complexity.
     pub fn set_value(&mut self, _id: InputCellId, _new_value: T) -> bool {
-        if self.input_cells.contains_key(&_id) {
-            self.input_cells.insert(_id, _new_value);
-            true
-        } else {
-            false
+        if !self.input_cells.contains_key(&_id) {
+            return false;
         }
+        let current_value = self.input_cells.get(&_id).unwrap();
+        for (compute_id, (dependencies, compute_func)) in self.compute_cells.iter() {
+            if dependencies.contains(&CellId::Input(_id)) {
+                let mut values = Vec::new();
+                for dependency in dependencies.iter() {
+                    match dependency {
+                        CellId::Input(id) => {
+                            values.push(self.input_cells.get(&id).copied().unwrap())
+                        }
+                        CellId::Compute(id) => {
+                            values.push(self.value(CellId::Compute(*id)).unwrap());
+                        }
+                    }
+                }
+                let new_value = compute_func(&values);
+                if new_value != *current_value {
+                    for callback in self.callbacks.get_mut(compute_id).unwrap().values_mut() {
+                        callback(new_value);
+                    }
+                }
+            }
+        }
+        true
     }
 
     // Adds a callback to the specified compute cell.
