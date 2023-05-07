@@ -20,6 +20,9 @@ pub fn lowest_price(books: &[u32]) -> u32 {
         let mut lowest_price_group = usize::MAX;
         for (i, _group) in groups.iter().enumerate() {
             let mut new_groups = groups.clone();
+            if new_groups[i].contains(book) {
+                continue;
+            }
             new_groups[i].push(*book);
             let new_price = calculate_price(new_groups);
             if new_price < lowest_price {
@@ -39,5 +42,6 @@ pub fn lowest_price(books: &[u32]) -> u32 {
             groups.push(vec![*book]);
         }
     }
+    println!("{:?}", groups);
     calculate_price(groups)
 }
