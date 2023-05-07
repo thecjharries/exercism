@@ -14,5 +14,30 @@ pub fn calculate_price(groups: Vec<Vec<u32>>) -> u32 {
 }
 
 pub fn lowest_price(books: &[u32]) -> u32 {
-    unimplemented!("Find the lowest price of the bookbasket with books {books:?}")
+    let mut groups: Vec<Vec<u32>> = Vec::new();
+    for book in books {
+        let mut lowest_price = u32::MAX;
+        let mut lowest_price_group = usize::MAX;
+        for (i, _group) in groups.iter().enumerate() {
+            let mut new_groups = groups.clone();
+            new_groups[i].push(*book);
+            let new_price = calculate_price(new_groups);
+            if new_price < lowest_price {
+                lowest_price = new_price;
+                lowest_price_group = i;
+            }
+        }
+        let mut new_groups = groups.clone();
+        new_groups.push(vec![*book]);
+        let new_price = calculate_price(new_groups);
+        if new_price < lowest_price {
+            lowest_price_group = groups.len();
+        }
+        if lowest_price_group < groups.len() {
+            groups[lowest_price_group].push(*book);
+        } else {
+            groups.push(vec![*book]);
+        }
+    }
+    calculate_price(groups)
 }
