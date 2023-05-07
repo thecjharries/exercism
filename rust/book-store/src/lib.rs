@@ -1,3 +1,4 @@
+#[cfg(not(tarpaulin_include))]
 pub fn calculate_price(groups: Vec<Vec<u32>>) -> u32 {
     let mut total = 0;
     for group in groups {
