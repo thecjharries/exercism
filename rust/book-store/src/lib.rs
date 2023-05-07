@@ -42,6 +42,5 @@ pub fn lowest_price(books: &[u32]) -> u32 {
             groups.push(vec![*book]);
         }
     }
-    println!("{:?}", groups);
     calculate_price(groups)
 }
