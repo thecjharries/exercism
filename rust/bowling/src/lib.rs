@@ -4,7 +4,16 @@ pub enum Error {
     GameComplete,
 }
 
-pub struct BowlingGame {}
+struct Frame {
+    first: u16,
+    second: Option<u16>,
+    third: Option<u16>,
+}
+
+pub struct BowlingGame {
+    frames: Vec<Frame>,
+    current_frame: usize,
+}
 
 impl BowlingGame {
     pub fn new() -> Self {
