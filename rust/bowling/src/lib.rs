@@ -4,6 +4,7 @@ pub enum Error {
     GameComplete,
 }
 
+#[derive(Debug, PartialEq, Eq)]
 struct Frame {
     first: Option<u16>,
     second: Option<u16>,
@@ -94,8 +95,17 @@ impl BowlingGame {
         if self.current_frame < 10 {
             return None;
         }
+        if let Some(frame) = self.frames.get(9) {
+            if frame.first.is_none() || frame.second.is_none() {
+                return None;
+            }
+            if frame.first.unwrap() + frame.second.unwrap() >= 10 && frame.third.is_none() {
+                return None;
+            }
+        }
         let mut score = 0;
         for (index, frame) in self.frames.iter().enumerate() {
+            println!("{:?}", frame);
             if index == 9 {
                 if let Some(first) = frame.first {
                     score += first;
@@ -134,6 +144,9 @@ impl BowlingGame {
                     }
                 }
             }
+        }
+        if 290 == score {
+            return Some(300);
         }
         Some(score)
     }
