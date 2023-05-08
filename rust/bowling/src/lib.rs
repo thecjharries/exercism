@@ -75,6 +75,47 @@ impl BowlingGame {
     }
 
     pub fn score(&self) -> Option<u16> {
-        unimplemented!("Return the score if the game is complete, or None if not.");
+        let mut score = 0;
+        for (index, frame) in self.frames.iter().enumerate() {
+            if index == 9 {
+                if let Some(first) = frame.first {
+                    score += first;
+                }
+                if let Some(second) = frame.second {
+                    score += second;
+                }
+                if let Some(third) = frame.third {
+                    score += third;
+                }
+            } else if let Some(first) = frame.first {
+                score += first;
+                if 10 == first {
+                    if let Some(next_frame) = self.frames.get(index + 1) {
+                        if let Some(next_first) = next_frame.first {
+                            score += next_first;
+                            if 10 == next_first {
+                                if let Some(next_next_frame) = self.frames.get(index + 2) {
+                                    if let Some(next_next_first) = next_next_frame.first {
+                                        score += next_next_first;
+                                    }
+                                }
+                            } else if let Some(next_second) = next_frame.second {
+                                score += next_second;
+                            }
+                        }
+                    }
+                } else if let Some(second) = frame.second {
+                    score += second;
+                    if first + second == 10 {
+                        if let Some(next_frame) = self.frames.get(index + 1) {
+                            if let Some(next_first) = next_frame.first {
+                                score += next_first;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Some(score)
     }
 }
