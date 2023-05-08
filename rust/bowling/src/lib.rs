@@ -49,12 +49,12 @@ impl BowlingGame {
                     frame.first = Some(pins);
                     Ok(())
                 } else if 10 == frame.first.unwrap() {
-                    if 10 == frame.second.unwrap() {
+                    if frame.second.is_none() {
+                        frame.second = Some(pins);
+                        Ok(())
+                    } else if 10 == frame.second.unwrap() {
                         frame.third = Some(pins);
                         self.current_frame += 1;
-                        Ok(())
-                    } else if frame.second.is_none() {
-                        frame.second = Some(pins);
                         Ok(())
                     } else if frame.second.unwrap() + pins > 10 {
                         Err(Error::NotEnoughPinsLeft)
