@@ -21,6 +21,7 @@ impl Frame {
     }
 }
 
+#[derive(Debug, PartialEq, Eq)]
 pub struct BowlingGame {
     frames: Vec<Frame>,
     current_frame: usize,
@@ -64,12 +65,20 @@ impl BowlingGame {
                         self.current_frame += 1;
                         Ok(())
                     }
-                } else if frame.first.unwrap() + pins > 10 {
+                } else if frame.second.is_none() && frame.first.unwrap() + pins > 10 {
                     Err(Error::NotEnoughPinsLeft)
                 } else {
-                    frame.second = Some(pins);
-                    self.current_frame += 1;
-                    Ok(())
+                    if frame.second.is_none() {
+                        frame.second = Some(pins);
+                        if frame.first.unwrap() + pins < 10 {
+                            self.current_frame += 1;
+                        }
+                        Ok(())
+                    } else {
+                        frame.third = Some(pins);
+                        self.current_frame += 1;
+                        Ok(())
+                    }
                 }
             }
             _ => {

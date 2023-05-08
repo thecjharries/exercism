@@ -368,7 +368,9 @@ fn if_the_last_frame_is_a_spare_you_cannot_create_a_score_before_extra_roll_is_t
 
     assert_eq!(game.score(), None);
 
+    println!("{:?}", game);
     let _ = game.roll(10);
+    println!("{:?}", game);
 
     assert!(game.score().is_some());
 }
