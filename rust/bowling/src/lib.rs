@@ -91,6 +91,9 @@ impl BowlingGame {
     }
 
     pub fn score(&self) -> Option<u16> {
+        if self.current_frame < 10 {
+            return None;
+        }
         let mut score = 0;
         for (index, frame) in self.frames.iter().enumerate() {
             if index == 9 {
