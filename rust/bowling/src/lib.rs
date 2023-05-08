@@ -17,7 +17,10 @@ pub struct BowlingGame {
 
 impl BowlingGame {
     pub fn new() -> Self {
-        unimplemented!();
+        Self {
+            frames: Vec::new(),
+            current_frame: 0,
+        }
     }
 
     pub fn roll(&mut self, pins: u16) -> Result<(), Error> {
