@@ -38,13 +38,15 @@ impl BowlingGame {
     }
 
     pub fn roll(&mut self, pins: u16) -> Result<(), Error> {
+        if 10 < pins {
+            return Err(Error::NotEnoughPinsLeft);
+        }
         match self.current_frame {
             10..=usize::MAX => Err(Error::GameComplete),
             9 => {
                 let frame = self.frames.get_mut(self.current_frame).unwrap();
                 if frame.first.is_none() {
                     frame.first = Some(pins);
-
                     Ok(())
                 } else if 10 == frame.first.unwrap() {
                     if 10 == frame.second.unwrap() {
