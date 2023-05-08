@@ -65,8 +65,6 @@ impl BowlingGame {
                         self.current_frame += 1;
                         Ok(())
                     }
-                } else if frame.second.is_none() && frame.first.unwrap() + pins > 10 {
-                    Err(Error::NotEnoughPinsLeft)
                 } else {
                     if frame.second.is_none() {
                         frame.second = Some(pins);
@@ -103,14 +101,6 @@ impl BowlingGame {
     pub fn score(&self) -> Option<u16> {
         if self.current_frame < 10 {
             return None;
-        }
-        if let Some(frame) = self.frames.get(9) {
-            if frame.first.is_none() || frame.second.is_none() {
-                return None;
-            }
-            if frame.first.unwrap() + frame.second.unwrap() >= 10 && frame.third.is_none() {
-                return None;
-            }
         }
         let mut score = 0;
         for (index, frame) in self.frames.iter().enumerate() {
