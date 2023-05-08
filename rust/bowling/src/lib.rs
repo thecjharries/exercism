@@ -10,6 +10,16 @@ struct Frame {
     third: Option<u16>,
 }
 
+impl Frame {
+    pub fn new() -> Self {
+        Self {
+            first: None,
+            second: None,
+            third: None,
+        }
+    }
+}
+
 pub struct BowlingGame {
     frames: Vec<Frame>,
     current_frame: usize,
@@ -17,8 +27,12 @@ pub struct BowlingGame {
 
 impl BowlingGame {
     pub fn new() -> Self {
+        let mut frames = Vec::new();
+        for _ in 0..10 {
+            frames.push(Frame::new());
+        }
         Self {
-            frames: Vec::new(),
+            frames,
             current_frame: 0,
         }
     }
