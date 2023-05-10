@@ -18,5 +18,30 @@ pub fn convert(input: &str) -> Result<String, Error> {
     if 0 != column_count % 3 {
         return Err(Error::InvalidColumnCount(column_count));
     }
+    for numbers in lines.chunks(4) {
+        if result.len() > 0 {
+            result.push(',');
+        }
+        for index in (0..numbers[0].len()).step_by(3) {
+            let mut digit = String::new();
+            for line in numbers.iter().take(3) {
+                digit.push_str(&line[index..index + 3]);
+            }
+            println!("'{}'", digit);
+            match digit.as_str() {
+                " _ | ||_|" => result.push('0'),
+                "     |  |" => result.push('1'),
+                " _  _||_ " => result.push('2'),
+                " _  _| _|" => result.push('3'),
+                "   |_|  |" => result.push('4'),
+                " _ |_  _|" => result.push('5'),
+                " _ |_ |_|" => result.push('6'),
+                " _   |  |" => result.push('7'),
+                " _ |_||_|" => result.push('8'),
+                " _ |_| _|" => result.push('9'),
+                _ => result.push('?'),
+            }
+        }
+    }
     Ok(result)
 }
