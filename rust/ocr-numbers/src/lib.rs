@@ -8,5 +8,15 @@ pub enum Error {
 }
 
 pub fn convert(input: &str) -> Result<String, Error> {
-    unimplemented!("Convert the input '{input}' to a string");
+    let mut result = String::new();
+    let mut lines = input.lines().collect::<Vec<&str>>();
+    if 0 != lines.len() % 4 {
+        return Err(Error::InvalidRowCount(lines.len()));
+    }
+    let mut line = lines[0];
+    let mut column_count = line.len();
+    if 0 != column_count % 3 {
+        return Err(Error::InvalidColumnCount(column_count));
+    }
+    Ok(result)
 }
