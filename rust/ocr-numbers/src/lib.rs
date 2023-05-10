@@ -9,12 +9,11 @@ pub enum Error {
 
 pub fn convert(input: &str) -> Result<String, Error> {
     let mut result = String::new();
-    let mut lines = input.lines().collect::<Vec<&str>>();
+    let lines = input.lines().collect::<Vec<&str>>();
     if 0 != lines.len() % 4 {
         return Err(Error::InvalidRowCount(lines.len()));
     }
-    let mut line = lines[0];
-    let mut column_count = line.len();
+    let column_count = lines[0].len();
     if 0 != column_count % 3 {
         return Err(Error::InvalidColumnCount(column_count));
     }
