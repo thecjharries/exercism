@@ -21,7 +21,44 @@ pub fn count(lines: &[&str]) -> u32 {
             for &next_x in &x_corners {
                 for &next_y in &y_corners {
                     if '+' == grid[next_y][next_x] {
-                        rectangle_count += 1;
+                        let mut okay_to_add = true;
+                        for x in x + 1..next_x {
+                            match grid[y][x] {
+                                '-' | '+' => {}
+                                _ => {
+                                    okay_to_add = false;
+                                    break;
+                                }
+                            }
+                            match grid[next_y][x] {
+                                '-' | '+' => {}
+                                _ => {
+                                    okay_to_add = false;
+                                    break;
+                                }
+                            }
+                        }
+                        if okay_to_add {
+                            for y in y + 1..next_y {
+                                match grid[y][x] {
+                                    '|' | '+' => {}
+                                    _ => {
+                                        okay_to_add = false;
+                                        break;
+                                    }
+                                }
+                                match grid[y][next_x] {
+                                    '|' | '+' => {}
+                                    _ => {
+                                        okay_to_add = false;
+                                        break;
+                                    }
+                                }
+                            }
+                            if okay_to_add {
+                                rectangle_count += 1;
+                            }
+                        }
                     }
                 }
             }
