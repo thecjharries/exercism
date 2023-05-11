@@ -23,13 +23,6 @@ pub fn count(lines: &[&str]) -> u32 {
                     if '+' == grid[next_y][next_x] {
                         let mut okay_to_add = true;
                         for x in x + 1..next_x {
-                            match grid[y][x] {
-                                '-' | '+' => {}
-                                _ => {
-                                    okay_to_add = false;
-                                    break;
-                                }
-                            }
                             match grid[next_y][x] {
                                 '-' | '+' => {}
                                 _ => {

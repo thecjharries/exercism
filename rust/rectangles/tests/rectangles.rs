@@ -96,6 +96,15 @@ fn test_incomplete_rectangles() {
         "| | -",
         "+-+-+",
     ];
+    assert_eq!(1, count(lines));
+    #[rustfmt::skip]
+    let lines = &[
+        "  +-+",
+        "    |",
+        "+-+-+",
+        "| | |",
+        "+-+|+",
+    ];
     assert_eq!(1, count(lines))
 }
 
