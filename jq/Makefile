@@ -59,7 +59,7 @@ submit:
 
 # Finish the branch
 .PHONY: finish
-finish: coverage submit clean
+finish: test submit clean
 	$(GIT) push -u origin feat/$(TRACK)/$(EXERCISE)
 	$(GH) pr create --fill
 	$(GH) pr merge --merge --delete-branch
