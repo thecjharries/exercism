@@ -23,7 +23,7 @@
 # You'll need to use parentheses to control order of operations
 
 # Task 1: replace `null` with the "name" element of the shopping list.
-null,
+.name,
 
 # Task 2: replace `null` with the count of the required ingredients.
 (null),
