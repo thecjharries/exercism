@@ -26,7 +26,7 @@
 .name,
 
 # Task 2: replace `null` with the count of the required ingredients.
-(null),
+(.ingredients | length),
 
 # Task 3: replace `null` with the amount of sugar.
 (null),
