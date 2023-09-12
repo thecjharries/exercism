@@ -14,7 +14,7 @@ def message:
 
 # Task 2. Get log level from a log line
 def log_level:
-  . # implement the body of this function
+  match("^.*\\[(\\w+)\\].*$").captures[0].string | ascii_downcase # implement the body of this function
 ;
 
 # Task 3. Reformat a log line
