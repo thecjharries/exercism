@@ -19,5 +19,5 @@ def log_level:
 
 # Task 3. Reformat a log line
 def reformat:
-  . # implement the body of this function
+  message + " (\(log_level))" # implement the body of this function
 ;
