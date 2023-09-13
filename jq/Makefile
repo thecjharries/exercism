@@ -39,6 +39,9 @@ boot: create
 	echo "-include ../Makefile" >> $(EXERCISE)/Makefile
 	$(GIT) add $(EXERCISE)/Makefile
 	$(GIT) commit -m "Add Makefile"
+	$(FIND) ./$(EXERCISE)/test*.bats -type f -name 'test*.bats' -exec $(SED) -i '/BATS_RUN_SKIPPED/d' {} \;
+	$(GIT) add $(EXERCISE)/test*.bats
+	$(GIT) commit -m "Enable all tests"
 	$(CODE) --reuse-window $(EXERCISE)/*.jq
 
 # Run the tests
