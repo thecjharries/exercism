@@ -5,7 +5,7 @@ load bats-extra
 @test 'no name given' {
     #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
-    run jq -r -f two-fer.jq << 'END_INPUT'
+    run jq -r -f two-fer.jq <<'END_INPUT'
         {
           "name": null
         }
@@ -17,9 +17,9 @@ END_INPUT
 }
 
 @test 'a name given' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
+    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
-    run jq -r -f two-fer.jq << 'END_INPUT'
+    run jq -r -f two-fer.jq <<'END_INPUT'
         {
           "name": "Alice"
         }
@@ -31,9 +31,9 @@ END_INPUT
 }
 
 @test 'another name given' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
+    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
-    run jq -r -f two-fer.jq << 'END_INPUT'
+    run jq -r -f two-fer.jq <<'END_INPUT'
         {
           "name": "Bob"
         }
@@ -43,4 +43,3 @@ END_INPUT
     expected='One for Bob, one for me.'
     assert_equal "$output" "$expected"
 }
-
