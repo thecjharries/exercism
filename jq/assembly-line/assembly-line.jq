@@ -1,5 +1,5 @@
 # We will get more in-depth about jq functions in a later lesson.
-# A function begins with "def", ends with ";", and consists of a 
+# A function begins with "def", ends with ";", and consists of a
 # single pipeline just like a "main" jq program.
 #
 # For now, your job is to implement the logic of the tasks in the function
@@ -8,7 +8,17 @@
 # Task 1: calculate the production rate per hour
 def production_rate_per_hour:
   # remove the constant and implement this function
-  -1
+  if 0 < . && . <= 4 then
+    1
+  elif 4 < . && . <= 8 then
+    .9
+  elif 8 < . && . <= 9 then
+    .8
+  elif 9 < . && . <= 10 then
+    .77
+  else
+    0
+  end
 ;
 
 # Task 2: calculate the number of working items produces per minute
