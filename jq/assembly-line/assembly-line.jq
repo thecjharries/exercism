@@ -9,13 +9,13 @@
 def production_rate_per_hour:
   # remove the constant and implement this function
   if 0 < . and . <= 4 then
-    1
+    1 * 221 * .
   elif 4 < . and . <= 8 then
-    .9
+    .9 * 221 * .
   elif 8 < . and . <= 9 then
-    .8
+    .8 * 221 * .
   elif 9 < . and . <= 10 then
-    .77
+    .77 * 221 * .
   else
     0
   end
