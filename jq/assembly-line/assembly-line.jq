@@ -5,20 +5,24 @@
 # For now, your job is to implement the logic of the tasks in the function
 # bodies, so that they output the correct values.
 
-# Task 1: calculate the production rate per hour
-def production_rate_per_hour:
-  # remove the constant and implement this function
+def production_multiplier:
   if 0 < . and . <= 4 then
-    1 * 221 * .
+    1
   elif 4 < . and . <= 8 then
-    .9 * 221 * .
+    .9
   elif 8 < . and . <= 9 then
-    .8 * 221 * .
+    .8
   elif 9 < . and . <= 10 then
-    .77 * 221 * .
+    .77
   else
     0
   end
+;
+
+# Task 1: calculate the production rate per hour
+def production_rate_per_hour:
+  # remove the constant and implement this function
+  . * 221 * (. | production_multiplier)
 ;
 
 # Task 2: calculate the number of working items produces per minute
