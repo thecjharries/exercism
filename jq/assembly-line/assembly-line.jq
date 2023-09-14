@@ -8,13 +8,13 @@
 # Task 1: calculate the production rate per hour
 def production_rate_per_hour:
   # remove the constant and implement this function
-  if 0 < . && . <= 4 then
+  if 0 < . and . <= 4 then
     1
-  elif 4 < . && . <= 8 then
+  elif 4 < . and . <= 8 then
     .9
-  elif 8 < . && . <= 9 then
+  elif 8 < . and . <= 9 then
     .8
-  elif 9 < . && . <= 10 then
+  elif 9 < . and . <= 10 then
     .77
   else
     0
