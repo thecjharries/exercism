@@ -6,6 +6,12 @@
 )\(
     if 0 == . % 5
     then "Plang"
-    else "" end
+    else ""
+    end
+)\(
+    if 0 == . % 7
+    then "Plong"
+    else ""
+    end
 )"
 
