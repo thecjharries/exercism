@@ -1,1 +1,1 @@
-"Remove this line and implement your solution" | halt_error
+.number | if 0 == . % 3 then "Pling" else "" end
