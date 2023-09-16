@@ -13,5 +13,10 @@
     then "Plong"
     else ""
     end
+)\(
+    if 0 != . % 3 and 0 != . % 5 and 0 != . % 7
+    then "\(.)"
+    else ""
+    end
 )"
 
