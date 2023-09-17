@@ -15,7 +15,7 @@
   yesterday: (.[-1][-2]),
 
   # Task 3: output sum of counts for this week's data
-  total: ("Replace this value with the needed expression"),
+  total: (.[-1] | add),
 
   # Task 4: output number of days with 5 or more birds in this week's data
   busy_days: ("Replace this value with the needed expression"),
