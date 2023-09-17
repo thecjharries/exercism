@@ -18,7 +18,7 @@
   total: (.[-1] | add),
 
   # Task 4: output number of days with 5 or more birds in this week's data
-  busy_days: ("Replace this value with the needed expression"),
+  busy_days: (.[-1] | map(select(. >= 5)) | length),
 
   # Task 5: output true if any day this week has zero birds
   has_day_without_birds: ("Replace this value with the needed expression")
