@@ -21,5 +21,5 @@
   busy_days: (.[-1] | map(select(. >= 5)) | length),
 
   # Task 5: output true if any day this week has zero birds
-  has_day_without_birds: ("Replace this value with the needed expression")
+  has_day_without_birds: (.[-1] | any(. == 0)),
 }
