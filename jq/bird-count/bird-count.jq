@@ -12,7 +12,7 @@
   last_week: (.[-2]),
 
   # Task 2: output count for yesterday in this week's data
-  yesterday: ("Replace this value with the needed expression"),
+  yesterday: (.[-1][-2]),
 
   # Task 3: output sum of counts for this week's data
   total: ("Replace this value with the needed expression"),
