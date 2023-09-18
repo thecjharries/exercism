@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'zero pieces' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f proverb.jq << 'END_INPUT'
         {
@@ -17,7 +16,6 @@ END_INPUT
 }
 
 @test 'one piece' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f proverb.jq << 'END_INPUT'
         {
@@ -33,7 +31,6 @@ END_INPUT
 }
 
 @test 'two pieces' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f proverb.jq << 'END_INPUT'
         {
@@ -50,7 +47,6 @@ END_INPUT
 }
 
 @test 'three pieces' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f proverb.jq << 'END_INPUT'
         {
@@ -68,7 +64,6 @@ END_INPUT
 }
 
 @test 'full proverb' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f proverb.jq << 'END_INPUT'
         {
@@ -90,7 +85,6 @@ END_INPUT
 }
 
 @test 'four pieces modernized' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f proverb.jq << 'END_INPUT'
         {
