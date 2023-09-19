@@ -8,7 +8,7 @@ def create_score_board:
 #   input: a score board object.
 #   output: the score board with the new player added.
 def add_player(player; score):
-  halt_error("Please implement the add_player function");
+  .[player] = score;
 
 # Remove a player from a score board.
 #   input: a score board object.
