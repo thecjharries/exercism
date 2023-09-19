@@ -14,7 +14,7 @@ def add_player(player; score):
 #   input: a score board object.
 #   output: the score board with the player removed, if they exist.
 def remove_player(player):
-  halt_error("Please implement the remove_player function");
+  del(.[player]);
 
 # Increase a player's score by the given amount.
 #   input: a score board object.
