@@ -26,7 +26,7 @@ def update_score(player; points):
 #   input: a score board object.
 #   output: the score board with each player's score increased.
 def apply_monday_bonus:
-  halt_error("Please implement the apply_monday_bonus function");
+  map_values(. + 100);
 
 # Calculate the total score of all players.
 #   input: a score board object.
