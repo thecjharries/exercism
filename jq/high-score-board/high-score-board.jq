@@ -2,7 +2,7 @@
 #   input: none.
 #   output: a score board object with a default player and score.
 def create_score_board:
-  halt_error("Please implement the create_score_board function");
+  {"The Best Ever": 1000000};
 
 # Add a player to a score board.
 #   input: a score board object.
