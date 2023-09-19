@@ -20,7 +20,7 @@ def remove_player(player):
 #   input: a score board object.
 #   output: the score board with the player's score increased, if they exist.
 def update_score(player; points):
-  halt_error("Please implement the update_score function");
+  .[player] += points;
 
 # Apply 100 bonus points to all players on the board.
 #   input: a score board object.
