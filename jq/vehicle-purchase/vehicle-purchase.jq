@@ -24,4 +24,7 @@ def choose_vehicle:
 # output: {number} expected resell price in the dealership
 
 def resell_price:
-  halt_error("Please implement the calculateResellPrice function");
+  if .age < 3 then .original_price * 0.8
+  elif .age <= 10 then .original_price * 0.70
+  else .original_price * 0.5
+  end;
