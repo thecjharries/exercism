@@ -5,7 +5,7 @@
 # output: {boolean} whether a license is required
 
 def needs_license:
-  halt_error("Please implement the needsLicense function");
+  "car" == . or "truck" == .;
 
 # Task 2
 # Helps choosing between two options by recommending the one that
