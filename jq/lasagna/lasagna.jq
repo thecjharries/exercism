@@ -8,9 +8,13 @@
 #
 # Task: output a JSON object with keys:
 
+. |
+40 as $expected_minutes_in_oven |
+(.actual_minutes_in_oven // 0) as $actual_minutes_in_oven |
+($expected_minutes_in_oven - $actual_minutes_in_oven) as $remaining_minutes_in_oven |
 {
-  "expected_minutes_in_oven": 40,
-  "remaining_minutes_in_oven": 0,
+  "expected_minutes_in_oven": $expected_minutes_in_oven,
+  "remaining_minutes_in_oven": $remaining_minutes_in_oven,
   "preparation_time": 0,
   "total_time": 0
 }
