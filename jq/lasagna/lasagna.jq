@@ -9,8 +9,8 @@
 # Task: output a JSON object with keys:
 
 {
-  # "expected_minutes_in_oven",
-  # "remaining_minutes_in_oven",
-  # "preparation_time",
-  # "total_time"
+  "expected_minutes_in_oven": 40,
+  "remaining_minutes_in_oven": 0,
+  "preparation_time": 0,
+  "total_time": 0
 }
