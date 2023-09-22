@@ -25,4 +25,14 @@ def letter_grade:
 # students with that grade
 
 def count_letter_grades:
-  halt_error("Implement this function using reduce");
+    {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "F": 0
+    } as $grades |
+    reduce .[] as $student (
+        $grades;
+        .[$student | letter_grade] += 1
+    );
