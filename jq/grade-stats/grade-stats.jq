@@ -6,11 +6,22 @@
 # - "F" is  0% - 59%
 
 def letter_grade:
-  halt_error("Implement this function");
+    if 90 <= . then
+        "A"
+    elif 80 <= . then
+        "B"
+    elif 70 <= . then
+        "C"
+    elif 60 <= . then
+        "D"
+    else
+        "F"
+    end;
+
 
 
 # Given an object that maps a student's name to their grade,
-# generate an object that maps the letter grade to the number of 
+# generate an object that maps the letter grade to the number of
 # students with that grade
 
 def count_letter_grades:
