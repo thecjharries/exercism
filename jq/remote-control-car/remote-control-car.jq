@@ -18,7 +18,7 @@ def new_remote_control_car(nickname):
 
 def display_distance:
   # Implement the required output string
-  ""
+  "\(.distance_driven_in_meters) meters"
 ;
 
 def display_battery:
