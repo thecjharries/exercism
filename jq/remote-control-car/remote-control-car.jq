@@ -28,5 +28,11 @@ def display_battery:
 
 def drive:
   # Update the input's attributes as required
-  .
+  . |
+    if .battery_percentage > 0 then
+      .battery_percentage -= 1 |
+      .distance_driven_in_meters += 20
+    else
+      .
+    end
 ;
