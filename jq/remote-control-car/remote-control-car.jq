@@ -1,6 +1,10 @@
 def new_remote_control_car:
   # Populate the object with the required attributes
-  {}
+  {
+    "battery_percentage": 100,
+    "distance_driven_in_meters": 0,
+    "nickname": null
+  }
 ;
 
 def new_remote_control_car(nickname):
