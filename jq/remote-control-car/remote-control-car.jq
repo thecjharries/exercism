@@ -23,7 +23,11 @@ def display_distance:
 
 def display_battery:
   # Implement the required output string
-  "Battery at \(.battery_percentage)%"
+  if 0 < .battery_percentage then
+    "Battery at \(.battery_percentage)%"
+  else
+    "Battery empty"
+  end
 ;
 
 def drive:
