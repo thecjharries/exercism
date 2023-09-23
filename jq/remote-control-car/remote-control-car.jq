@@ -23,7 +23,7 @@ def display_distance:
 
 def display_battery:
   # Implement the required output string
-  ""
+  "Battery at \(.battery_percentage)%"
 ;
 
 def drive:
