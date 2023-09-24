@@ -17,7 +17,14 @@ def array_add:
 #   [1, 2, 3] | array_reverse       # => [3, 2, 1]
 
 def array_reverse:
-  halt_error("Implement this as a recursive function.");
+  if length == 0 then
+    []
+  elif length == 1 then
+    .
+  else
+    [.[-1]] + (.[0:-1] | array_reverse)
+  end
+  ;
 
 # Run the filter `f` for each element of the input array,
 # and return the outputs in a new array.
