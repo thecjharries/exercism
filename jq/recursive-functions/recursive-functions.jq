@@ -33,4 +33,9 @@ def array_reverse:
 #   [1, 2, 3] | array_map(. + 1)    # => [2, 3, 4]
 
 def array_map(f):
-  halt_error("Implement this as a recursive function.");
+  if length == 0 then
+    []
+  else
+    [.[0] | f] + (.[1:] | array_map(f))
+  end
+  ;
