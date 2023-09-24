@@ -4,7 +4,12 @@
 #   [1, 2, 3] | array_add           # => 6
 
 def array_add:
-  halt_error("Implement this as a recursive function.");
+    if length == 0 then
+        0
+    else
+        .[0] + (.[1:] | array_add)
+    end
+;
 
 # Reverse the input array, and return the result in a new array.
 #
