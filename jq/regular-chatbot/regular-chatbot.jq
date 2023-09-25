@@ -60,5 +60,5 @@ def nice_to_meet_you:
 # input: {string} comma-separated row
 # output: {array} fields
 def parse_csv:
-  . # implement the body of this function
+  split("\\s*,\\s*"; "g")
 ;
