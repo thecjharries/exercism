@@ -6,10 +6,10 @@
 # output: {boolean} whether or not the command is valid
 #
 def is_valid_command:
-  . # implement the body of this function
+  test("^chatbot"; "i")
 ;
 
-# Given a certain message, help the Chatbot get rid of all the 
+# Given a certain message, help the Chatbot get rid of all the
 # "encrypted" emojis throught the message.
 # - an "encrypted emoji" is the string "emoji" followed by digits
 #
