@@ -6,7 +6,7 @@
 # output: {boolean} whether or not the command is valid
 #
 def is_valid_command:
-  test("^chatbot"; "i")
+  test("^chatbot[^\\w]"; "i")
 ;
 
 # Given a certain message, help the Chatbot get rid of all the
