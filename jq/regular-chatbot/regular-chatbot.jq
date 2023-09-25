@@ -16,7 +16,7 @@ def is_valid_command:
 # input: {string} message
 # output: {string} the message without the emojis
 def remove_emoji:
-  . # implement the body of this function
+  gsub("emoji[0-9]+"; "")
 ;
 
 # Given a certain phone number, help the Chatbot recognize
