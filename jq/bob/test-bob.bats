@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'stating something' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -17,7 +16,6 @@ END_INPUT
 }
 
 @test 'shouting' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -31,7 +29,6 @@ END_INPUT
 }
 
 @test 'shouting gibberish' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -45,7 +42,6 @@ END_INPUT
 }
 
 @test 'asking a question' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -59,7 +55,6 @@ END_INPUT
 }
 
 @test 'asking a numeric question' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -73,7 +68,6 @@ END_INPUT
 }
 
 @test 'asking gibberish' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -87,7 +81,6 @@ END_INPUT
 }
 
 @test 'talking forcefully' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -101,7 +94,6 @@ END_INPUT
 }
 
 @test 'using acronyms in regular speech' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -115,7 +107,6 @@ END_INPUT
 }
 
 @test 'forceful question' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -129,7 +120,6 @@ END_INPUT
 }
 
 @test 'shouting numbers' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -143,7 +133,6 @@ END_INPUT
 }
 
 @test 'no letters' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -157,7 +146,6 @@ END_INPUT
 }
 
 @test 'question with no letters' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -171,7 +159,6 @@ END_INPUT
 }
 
 @test 'shouting with special characters' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -185,7 +172,6 @@ END_INPUT
 }
 
 @test 'shouting with no exclamation mark' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -199,7 +185,6 @@ END_INPUT
 }
 
 @test 'statement containing question mark' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -213,7 +198,6 @@ END_INPUT
 }
 
 @test 'non-letters with question' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -227,7 +211,6 @@ END_INPUT
 }
 
 @test 'prattling on' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -241,7 +224,6 @@ END_INPUT
 }
 
 @test 'silence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -255,7 +237,6 @@ END_INPUT
 }
 
 @test 'prolonged silence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -269,7 +250,6 @@ END_INPUT
 }
 
 @test 'alternate silence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -283,7 +263,6 @@ END_INPUT
 }
 
 @test 'multiple line question' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -297,7 +276,6 @@ END_INPUT
 }
 
 @test 'starting with whitespace' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -311,7 +289,6 @@ END_INPUT
 }
 
 @test 'ending with whitespace' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -325,7 +302,6 @@ END_INPUT
 }
 
 @test 'other whitespace' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
@@ -339,7 +315,6 @@ END_INPUT
 }
 
 @test 'non-question ending with whitespace' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f bob.jq << 'END_INPUT'
         {
