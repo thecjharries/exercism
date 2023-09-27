@@ -1,1 +1,5 @@
-"Remove this line and implement your solution" | halt_error
+if test("?$") then
+  "Sure."
+else
+  "Whatever."
+end
