@@ -1,4 +1,4 @@
-if test("?$") then
+.heyBob | if test("\\?$") then
   "Sure."
 else
   "Whatever."
