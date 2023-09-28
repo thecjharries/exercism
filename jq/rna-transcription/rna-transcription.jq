@@ -1,2 +1,12 @@
 def toRna:
-  "Implement this function" | halt_error;
+  split("") |
+  map(
+    {
+      G: "C",
+      C: "G",
+      T: "A",
+      A: "U"
+    }[.]
+  ) |
+  join("")
+;
