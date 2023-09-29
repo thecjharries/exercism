@@ -1,1 +1,3 @@
-"Remove this line and implement your solution" | halt_error
+. as  {series: $series, sliceLength: $sliceLength} |
+[ range(0; ($series | length) - $sliceLength + 1) ] |
+map($series[. : . + $sliceLength])
