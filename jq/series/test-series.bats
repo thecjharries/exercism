@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'slices of one from one' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
@@ -23,7 +22,6 @@ END_EXPECTED
 }
 
 @test 'slices of one from two' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
@@ -44,7 +42,6 @@ END_EXPECTED
 }
 
 @test 'slices of two' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
@@ -64,7 +61,6 @@ END_EXPECTED
 }
 
 @test 'slices of two overlap' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
@@ -86,7 +82,6 @@ END_EXPECTED
 }
 
 @test 'slices can include duplicates' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
@@ -109,7 +104,6 @@ END_EXPECTED
 }
 
 @test 'slices of a long series' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
@@ -136,7 +130,6 @@ END_EXPECTED
 }
 
 @test 'slice length is too large' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
@@ -152,7 +145,6 @@ END_INPUT
 }
 
 @test 'slice length is way too large' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
@@ -168,7 +160,6 @@ END_INPUT
 }
 
 @test 'slice length cannot be zero' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
@@ -184,7 +175,6 @@ END_INPUT
 }
 
 @test 'slice length cannot be negative' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
@@ -200,7 +190,6 @@ END_INPUT
 }
 
 @test 'empty series is invalid' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f series.jq << 'END_INPUT'
 {
