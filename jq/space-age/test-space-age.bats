@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'age on Earth' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f space-age.jq << 'END_INPUT'
         {
@@ -18,7 +17,6 @@ END_INPUT
 }
 
 @test 'age on Mercury' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f space-age.jq << 'END_INPUT'
         {
@@ -33,7 +31,6 @@ END_INPUT
 }
 
 @test 'age on Venus' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f space-age.jq << 'END_INPUT'
         {
@@ -48,7 +45,6 @@ END_INPUT
 }
 
 @test 'age on Mars' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f space-age.jq << 'END_INPUT'
         {
@@ -63,7 +59,6 @@ END_INPUT
 }
 
 @test 'age on Jupiter' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f space-age.jq << 'END_INPUT'
         {
@@ -78,7 +73,6 @@ END_INPUT
 }
 
 @test 'age on Saturn' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f space-age.jq << 'END_INPUT'
         {
@@ -93,7 +87,6 @@ END_INPUT
 }
 
 @test 'age on Uranus' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f space-age.jq << 'END_INPUT'
         {
@@ -108,7 +101,6 @@ END_INPUT
 }
 
 @test 'age on Neptune' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f space-age.jq << 'END_INPUT'
         {
@@ -123,7 +115,6 @@ END_INPUT
 }
 
 @test 'invalid planet causes error' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f space-age.jq << 'END_INPUT'
         {
