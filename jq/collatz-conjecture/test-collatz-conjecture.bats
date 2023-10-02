@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'zero steps for one' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r 'import "./collatz-conjecture" as Collatz; .number | Collatz::steps' << 'END_INPUT'
         {
@@ -17,7 +16,6 @@ END_INPUT
 }
 
 @test 'divide if even' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r 'import "./collatz-conjecture" as Collatz; .number | Collatz::steps' << 'END_INPUT'
         {
@@ -31,7 +29,6 @@ END_INPUT
 }
 
 @test 'even and odd steps' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r 'import "./collatz-conjecture" as Collatz; .number | Collatz::steps' << 'END_INPUT'
         {
@@ -45,7 +42,6 @@ END_INPUT
 }
 
 @test 'large number of even and odd steps' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r 'import "./collatz-conjecture" as Collatz; .number | Collatz::steps' << 'END_INPUT'
         {
@@ -59,7 +55,6 @@ END_INPUT
 }
 
 @test 'zero is an error' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r 'import "./collatz-conjecture" as Collatz; .number | Collatz::steps' << 'END_INPUT'
         {
@@ -73,7 +68,6 @@ END_INPUT
 }
 
 @test 'negative value is an error' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r 'import "./collatz-conjecture" as Collatz; .number | Collatz::steps' << 'END_INPUT'
         {
