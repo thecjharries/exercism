@@ -1,1 +1,5 @@
-"Remove this line and implement your solution" | halt_error
+if .preorder | length == 0 then
+  {}
+else
+  {}
+end
