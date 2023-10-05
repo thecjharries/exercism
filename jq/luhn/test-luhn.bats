@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'single digit strings can not be valid' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"1"'
 
@@ -13,7 +12,6 @@ load bats-extra
 }
 
 @test 'a single zero is invalid' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"0"'
 
@@ -23,7 +21,6 @@ load bats-extra
 }
 
 @test 'a simple valid SIN that remains valid if reversed' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"059"'
 
@@ -33,7 +30,6 @@ load bats-extra
 }
 
 @test 'a simple valid SIN that becomes invalid if reversed' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"59"'
 
@@ -43,7 +39,6 @@ load bats-extra
 }
 
 @test 'a valid Canadian SIN' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"055 444 285"'
 
@@ -53,7 +48,6 @@ load bats-extra
 }
 
 @test 'invalid Canadian SIN' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"055 444 286"'
 
@@ -63,7 +57,6 @@ load bats-extra
 }
 
 @test 'invalid credit card' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"8273 1232 7352 0569"'
 
@@ -73,7 +66,6 @@ load bats-extra
 }
 
 @test 'invalid long number with an even remainder' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"1 2345 6789 1234 5678 9012"'
 
@@ -83,7 +75,6 @@ load bats-extra
 }
 
 @test 'invalid long number with a remainder divisible by 5' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"1 2345 6789 1234 5678 9013"'
 
@@ -93,7 +84,6 @@ load bats-extra
 }
 
 @test 'valid number with an even number of digits' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"095 245 88"'
 
@@ -103,7 +93,6 @@ load bats-extra
 }
 
 @test 'valid number with an odd number of spaces' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"234 567 891 234"'
 
@@ -113,7 +102,6 @@ load bats-extra
 }
 
 @test 'valid strings with a non-digit added at the end become invalid' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"059a"'
 
@@ -123,7 +111,6 @@ load bats-extra
 }
 
 @test 'valid strings with punctuation included become invalid' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"055-444-285"'
 
@@ -133,7 +120,6 @@ load bats-extra
 }
 
 @test 'valid strings with symbols included become invalid' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"055# 444$ 285"'
 
@@ -143,7 +129,6 @@ load bats-extra
 }
 
 @test 'single zero with space is invalid' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '" 0"'
 
@@ -153,7 +138,6 @@ load bats-extra
 }
 
 @test 'more than a single zero is valid' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"0000 0"'
 
@@ -163,7 +147,6 @@ load bats-extra
 }
 
 @test 'input digit 9 is correctly converted to output digit 9' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"091"'
 
@@ -173,7 +156,6 @@ load bats-extra
 }
 
 @test 'very long input is valid' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"9999999999 9999999999 9999999999 9999999999"'
 
@@ -183,7 +165,6 @@ load bats-extra
 }
 
 @test 'valid luhn with an odd number of digits and non zero first digit' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"109"'
 
@@ -193,7 +174,6 @@ load bats-extra
 }
 
 @test 'using ascii value for non-doubled non-digit isn'\''t allowed' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"055b 444 285"'
 
@@ -203,7 +183,6 @@ load bats-extra
 }
 
 @test 'using ascii value for doubled non-digit isn'\''t allowed' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '":9"'
 
@@ -213,7 +192,6 @@ load bats-extra
 }
 
 @test 'non-numeric, non-space char in the middle with a sum that'\''s divisible by 10 isn'\''t allowed' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f luhn.jq <<< '"59%59"'
 
