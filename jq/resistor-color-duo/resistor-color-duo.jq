@@ -21,3 +21,6 @@ def colorToNumber:
     0
   end
 ;
+
+(.colors[0] | colorToNumber) * 10 + (.colors[1] | colorToNumber)
+
