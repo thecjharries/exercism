@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'Orange and orange and black' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f resistor-color-trio.jq << 'END_INPUT'
 {
@@ -27,7 +26,6 @@ END_EXPECTED
 }
 
 @test 'Blue and grey and brown' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f resistor-color-trio.jq << 'END_INPUT'
 {
@@ -51,7 +49,6 @@ END_EXPECTED
 }
 
 @test 'Red and black and red' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f resistor-color-trio.jq << 'END_INPUT'
 {
@@ -75,7 +72,6 @@ END_EXPECTED
 }
 
 @test 'Green and brown and orange' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f resistor-color-trio.jq << 'END_INPUT'
 {
@@ -99,7 +95,6 @@ END_EXPECTED
 }
 
 @test 'Yellow and violet and yellow' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f resistor-color-trio.jq << 'END_INPUT'
 {
@@ -123,7 +118,6 @@ END_EXPECTED
 }
 
 @test 'Blue and violet and blue' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f resistor-color-trio.jq << 'END_INPUT'
 {
@@ -147,7 +141,6 @@ END_EXPECTED
 }
 
 @test 'Minimum possible value' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f resistor-color-trio.jq << 'END_INPUT'
 {
@@ -171,7 +164,6 @@ END_EXPECTED
 }
 
 @test 'Maximum possible value' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f resistor-color-trio.jq << 'END_INPUT'
 {
@@ -195,7 +187,6 @@ END_EXPECTED
 }
 
 @test 'First two colors make an invalid octal number' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f resistor-color-trio.jq << 'END_INPUT'
 {
@@ -219,7 +210,6 @@ END_EXPECTED
 }
 
 @test 'Ignore extra colors' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f resistor-color-trio.jq << 'END_INPUT'
 {
