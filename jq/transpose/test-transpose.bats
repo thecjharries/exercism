@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'empty string' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -17,7 +16,6 @@ END_INPUT
 }
 
 @test 'two characters in a row' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -33,7 +31,6 @@ END_INPUT
 }
 
 @test 'two characters in a column' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -50,7 +47,6 @@ END_INPUT
 }
 
 @test 'simple' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -67,7 +63,6 @@ END_INPUT
 }
 
 @test 'single line' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -83,7 +78,6 @@ END_INPUT
 }
 
 @test 'first line longer than second line' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -100,7 +94,6 @@ END_INPUT
 }
 
 @test 'second line longer than first line' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -117,7 +110,6 @@ END_INPUT
 }
 
 @test 'mixed line length' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -136,7 +128,6 @@ END_INPUT
 }
 
 @test 'square' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -156,7 +147,6 @@ END_INPUT
 }
 
 @test 'rectangle' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -175,7 +165,6 @@ END_INPUT
 }
 
 @test 'triangle' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
@@ -196,7 +185,6 @@ END_INPUT
 }
 
 @test 'jagged triangle' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f transpose.jq << 'END_INPUT'
         {
