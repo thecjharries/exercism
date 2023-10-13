@@ -34,3 +34,4 @@ def rnaToProtein:
   end
 ;
 
+.strand | rnaToProtein
