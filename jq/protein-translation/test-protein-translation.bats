@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'Empty RNA sequence results in no proteins' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -17,7 +16,6 @@ END_INPUT
 }
 
 @test 'Methionine RNA sequence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -31,7 +29,6 @@ END_INPUT
 }
 
 @test 'Phenylalanine RNA sequence 1' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -45,7 +42,6 @@ END_INPUT
 }
 
 @test 'Phenylalanine RNA sequence 2' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -59,7 +55,6 @@ END_INPUT
 }
 
 @test 'Leucine RNA sequence 1' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -73,7 +68,6 @@ END_INPUT
 }
 
 @test 'Leucine RNA sequence 2' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -87,7 +81,6 @@ END_INPUT
 }
 
 @test 'Serine RNA sequence 1' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -101,7 +94,6 @@ END_INPUT
 }
 
 @test 'Serine RNA sequence 2' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -115,7 +107,6 @@ END_INPUT
 }
 
 @test 'Serine RNA sequence 3' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -129,7 +120,6 @@ END_INPUT
 }
 
 @test 'Serine RNA sequence 4' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -143,7 +133,6 @@ END_INPUT
 }
 
 @test 'Tyrosine RNA sequence 1' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -157,7 +146,6 @@ END_INPUT
 }
 
 @test 'Tyrosine RNA sequence 2' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -171,7 +159,6 @@ END_INPUT
 }
 
 @test 'Cysteine RNA sequence 1' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -185,7 +172,6 @@ END_INPUT
 }
 
 @test 'Cysteine RNA sequence 2' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -199,7 +185,6 @@ END_INPUT
 }
 
 @test 'Tryptophan RNA sequence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -213,7 +198,6 @@ END_INPUT
 }
 
 @test 'STOP codon RNA sequence 1' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -227,7 +211,6 @@ END_INPUT
 }
 
 @test 'STOP codon RNA sequence 2' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -241,7 +224,6 @@ END_INPUT
 }
 
 @test 'STOP codon RNA sequence 3' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -255,7 +237,6 @@ END_INPUT
 }
 
 @test 'Sequence of two protein codons translates into proteins' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -269,7 +250,6 @@ END_INPUT
 }
 
 @test 'Sequence of two different protein codons translates into proteins' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -283,7 +263,6 @@ END_INPUT
 }
 
 @test 'Translate RNA strand into correct protein list' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -297,7 +276,6 @@ END_INPUT
 }
 
 @test 'Translation stops if STOP codon at beginning of sequence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -311,7 +289,6 @@ END_INPUT
 }
 
 @test 'Translation stops if STOP codon at end of two-codon sequence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -325,7 +302,6 @@ END_INPUT
 }
 
 @test 'Translation stops if STOP codon at end of three-codon sequence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -339,7 +315,6 @@ END_INPUT
 }
 
 @test 'Translation stops if STOP codon in middle of three-codon sequence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -353,7 +328,6 @@ END_INPUT
 }
 
 @test 'Translation stops if STOP codon in middle of six-codon sequence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -367,7 +341,6 @@ END_INPUT
 }
 
 @test 'Non-existing codon can'\''t translate' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -381,7 +354,6 @@ END_INPUT
 }
 
 @test 'Unknown amino acids, not part of a codon, can'\''t translate' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -395,7 +367,6 @@ END_INPUT
 }
 
 @test 'Incomplete RNA sequence can'\''t translate' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
@@ -409,7 +380,6 @@ END_INPUT
 }
 
 @test 'Incomplete RNA sequence can translate if valid until a STOP codon' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f protein-translation.jq << 'END_INPUT'
         {
