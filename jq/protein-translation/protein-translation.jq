@@ -16,5 +16,21 @@ def codonToProtein:
     "Tryptophan"
   elif "UAA" == . or "UAG" == . or "UGA" == . then
     "STOP"
+  else
+    "Invalid codon" | halt_error
   end
 ;
+
+def rnaToProtein:
+  if 0 == length then
+    []
+  else
+    (.[0:3] | codonToProtein) as $protein |
+    if "STOP" == $protein then
+      []
+    else
+      [$protein] + (.[3:] | rnaToProtein)
+    end
+  end
+;
+
