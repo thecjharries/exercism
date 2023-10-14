@@ -1,9 +1,8 @@
+# These solutions only use reduce and split
+# They completely avoid regex
+
 def encode:
-  . |
-    split("") |
-    .[0] as $current |
-    0 as $count |
-    reduce .[] as $char (
+  reduce split("")[] as $char (
       {
         current: "",
         count: 0,
@@ -25,4 +24,21 @@ def encode:
 ;
 
 def decode:
-  "Implement this function" | halt_error;
+  reduce split("")[] as $char (
+      {
+        count: "",
+        output: ""
+      };
+      if (try ($char | tonumber) catch false) then
+        .count += $char
+      else
+        if .count == "" then
+          .output += $char
+        else
+          .output += ($char * (.count | tonumber))
+        end |
+        .count = ""
+      end
+    ) |
+    .output
+  ;
