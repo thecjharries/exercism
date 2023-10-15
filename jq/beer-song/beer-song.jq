@@ -1,1 +1,3 @@
-"Remove this line and implement your solution" | halt_error
+def capitalize:
+  (.[:1] | ascii_upcase) + .[1:]
+;
