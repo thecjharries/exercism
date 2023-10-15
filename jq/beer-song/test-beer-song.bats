@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'verse:single verse:first generic verse' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f beer-song.jq << 'END_INPUT'
         {
@@ -18,7 +17,6 @@ END_INPUT
 }
 
 @test 'verse:single verse:last generic verse' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f beer-song.jq << 'END_INPUT'
         {
@@ -33,7 +31,6 @@ END_INPUT
 }
 
 @test 'verse:single verse:verse with 2 bottles' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f beer-song.jq << 'END_INPUT'
         {
@@ -48,7 +45,6 @@ END_INPUT
 }
 
 @test 'verse:single verse:verse with 1 bottle' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f beer-song.jq << 'END_INPUT'
         {
@@ -63,7 +59,6 @@ END_INPUT
 }
 
 @test 'verse:single verse:verse with 0 bottles' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f beer-song.jq << 'END_INPUT'
         {
@@ -78,7 +73,6 @@ END_INPUT
 }
 
 @test 'lyrics:multiple verses:first two verses' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f beer-song.jq << 'END_INPUT'
         {
@@ -93,7 +87,6 @@ END_INPUT
 }
 
 @test 'lyrics:multiple verses:last three verses' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f beer-song.jq << 'END_INPUT'
         {
@@ -108,7 +101,6 @@ END_INPUT
 }
 
 @test 'lyrics:multiple verses:all verses' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -c -f beer-song.jq << 'END_INPUT'
         {
