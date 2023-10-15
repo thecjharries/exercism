@@ -3,7 +3,6 @@
 load bats-extra
 
 @test 'encode:encode yes' {
-    #[[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -20,7 +19,6 @@ END_INPUT
 }
 
 @test 'encode:encode no' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -37,7 +35,6 @@ END_INPUT
 }
 
 @test 'encode:encode OMG' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -54,7 +51,6 @@ END_INPUT
 }
 
 @test 'encode:encode spaces' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -71,7 +67,6 @@ END_INPUT
 }
 
 @test 'encode:encode mindblowingly' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -88,7 +83,6 @@ END_INPUT
 }
 
 @test 'encode:encode numbers' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -105,7 +99,6 @@ END_INPUT
 }
 
 @test 'encode:encode deep thought' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -122,7 +115,6 @@ END_INPUT
 }
 
 @test 'encode:encode all the letters' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -139,7 +131,6 @@ END_INPUT
 }
 
 @test 'decode:decode exercism' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -156,7 +147,6 @@ END_INPUT
 }
 
 @test 'decode:decode a sentence' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -173,7 +163,6 @@ END_INPUT
 }
 
 @test 'decode:decode numbers' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -190,7 +179,6 @@ END_INPUT
 }
 
 @test 'decode:decode all the letters' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -207,7 +195,6 @@ END_INPUT
 }
 
 @test 'decode:decode with too many spaces' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
@@ -224,7 +211,6 @@ END_INPUT
 }
 
 @test 'decode:decode with no spaces' {
-    [[ $BATS_RUN_SKIPPED == "true" ]] || skip
 
     run jq -r -f atbash-cipher.jq << 'END_INPUT'
         {
