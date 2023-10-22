@@ -4,7 +4,9 @@ EXERCISM ?= exercism
 FIND ?= find
 GH ?= gh
 GIT ?= git
+GREP ?= grep
 RM ?= rm
+SBCL ?= sbcl
 SED ?= sed
 XDG_OPEN ?= xdg-open
 
@@ -44,7 +46,11 @@ boot: create
 # Run the tests
 .PHONY: test
 test:
-	$(BATS) ./*test.lisp
+	$(SBCL) \
+		--load "$$HOME/.sbclrc" \
+		--load "$(EXERCISE)-test.lisp" \
+		--non-interactive \
+		--eval "(let ((result ($(EXERCISE)-test:run-tests))) (cond ((null result) (uiop:quit 1)) (t (uiop:quit))))"
 
 # Remove any built artifacts
 .PHONY: clean
@@ -55,7 +61,7 @@ clean:
 .PHONY: submit
 submit:
 	$(GIT) diff-index --quiet HEAD || (echo "Uncommitted changes"; exit 1)
-	$(EXERCISM) submit *.jq
+	$(EXERCISM) submit $(SUBMISSION)
 
 # Finish the branch
 .PHONY: finish
