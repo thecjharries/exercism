@@ -27,7 +27,7 @@
 
 ;; Evaluates to the first part of CONS
 (defun first-thing (cons)
-  ;; put the code to get the first part of CONS here
+  (pop cons)
   )
 
 ;; Evaluates to the 'rest' of the CONS
