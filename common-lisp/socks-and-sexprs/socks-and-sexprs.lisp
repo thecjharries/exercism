@@ -17,12 +17,12 @@
 
 ;; Evaluates to T if THING is an atom, NIL otherwise
 (defun is-an-atom-p (thing)
-  ;; put the code to determine if THING is an atom here
+  (atom thing)
   )
 
 ;; Evaluates to T if THING is a cons, NIL otherwise
 (defun is-a-cons-p (thing)
-  ;; put the code to determine if THING is a CONS here
+  (not (atom thing))
   )
 
 ;; Evaluates to the first part of CONS
