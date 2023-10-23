@@ -7,12 +7,12 @@
 
 ;; Evaluates to some symbol (not a keyword)
 (defun lennys-favorite-food ()
-  ;; put your symbol here
+  'Lasagna
   )
 
 ;; Evaluates to some keyword
 (defun lennys-secret-keyword ()
-  ;; put your keyword here
+  :ALIENS-ARE-REAL
   )
 
 ;; Evaluates to T if THING is an atom, NIL otherwise
