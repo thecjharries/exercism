@@ -5,7 +5,16 @@
 
 (in-package :pizza-pi)
 
-(defun dough-calculator (pizzas diameter))
+(defun dough-calculator (pizzas diameter) (round (
+  * pizzas (
+    + 200 (
+      / (
+        * 45 pi diameter
+      )
+      20
+    )
+  )
+)))
 
 (defun size-from-sauce (sauce))
 
