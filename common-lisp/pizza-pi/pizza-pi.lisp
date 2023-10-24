@@ -16,7 +16,7 @@
   )
 )))
 
-(defun size-from-sauce (sauce))
+(defun size-from-sauce (sauce) (sqrt (/ (* 40 sauce) (* 3 pi))))
 
 (defun pizzas-per-cube (cube-size diameter))
 
