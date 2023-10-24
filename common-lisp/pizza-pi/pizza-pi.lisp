@@ -22,4 +22,4 @@
   / (* 2 (expt cube-size 3)) (* 3 pi (expt diameter 2))
 )))
 
-(defun fair-share-p (pizzas friends))
+(defun fair-share-p (pizzas friends) (= (floor (/ (* pizzas 8) friends)) (/ (* pizzas 8) friends)))
