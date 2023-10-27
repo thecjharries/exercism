@@ -34,4 +34,4 @@
 
 (defun list-append (list1 list2) (append list1 list2))
 
-(defun just-how-long (list))
+(defun just-how-long (list) (length list))
