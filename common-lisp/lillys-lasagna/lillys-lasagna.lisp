@@ -8,6 +8,7 @@
 (in-package :lillys-lasagna)
 
 ;; Define function expected-time-in-oven
+(defun expected-time-in-oven () 337)
 
 ;; Define function remaining-minutes-in-oven
 
