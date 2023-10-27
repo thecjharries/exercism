@@ -32,6 +32,6 @@
 
 (defun remove-first-item (list) (rest list))
 
-(defun list-append (list1 list2))
+(defun list-append (list1 list2) (append list1 list2))
 
 (defun just-how-long (list))
