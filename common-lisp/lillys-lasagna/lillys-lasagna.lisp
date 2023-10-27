@@ -11,6 +11,8 @@
 (defun expected-time-in-oven () 337)
 
 ;; Define function remaining-minutes-in-oven
+(defun remaining-minutes-in-oven (time-in-oven)
+  (- (expected-time-in-oven) time-in-oven))
 
 ;; Define function preparation-time-in-minutes
 
