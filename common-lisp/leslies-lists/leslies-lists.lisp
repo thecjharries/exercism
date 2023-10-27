@@ -18,7 +18,7 @@
 
 (defun new-list () '())
 
-(defun list-of-things (thing1 thing2 thing3))
+(defun list-of-things (thing1 thing2 thing3) (list thing1 thing2 thing3))
 
 (defun add-to-list (item list))
 
