@@ -15,5 +15,7 @@
   (- (expected-time-in-oven) time-in-oven))
 
 ;; Define function preparation-time-in-minutes
+(defun preparation-time-in-minutes (number-of-layers)
+  (* number-of-layers 19))
 
 ;; Define function elapsed-time-in-minutes
