@@ -19,3 +19,5 @@
   (* number-of-layers 19))
 
 ;; Define function elapsed-time-in-minutes
+(defun elapsed-time-in-minutes (number-of-layers time-in-oven)
+  (+ (preparation-time-in-minutes number-of-layers) time-in-oven))
