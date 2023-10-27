@@ -30,7 +30,7 @@
 
 (defun twenty-third-thing (list) (nth 22 list))
 
-(defun remove-first-item (list))
+(defun remove-first-item (list) (rest list))
 
 (defun list-append (list1 list2))
 
