@@ -16,7 +16,7 @@
 
 (in-package :leslies-lists)
 
-(defun new-list () 'this-is-wrong)
+(defun new-list () '())
 
 (defun list-of-things (thing1 thing2 thing3))
 
