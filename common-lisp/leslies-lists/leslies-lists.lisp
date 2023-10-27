@@ -22,13 +22,13 @@
 
 (defun add-to-list (item list) (append (list item) list))
 
-(defun first-thing (list))
+(defun first-thing (list) (first list))
 
-(defun second-thing (list))
+(defun second-thing (list) (nth 1 list))
 
-(defun third-thing (list))
+(defun third-thing (list) (nth 2 list))
 
-(defun twenty-third-thing (list))
+(defun twenty-third-thing (list) (nth 22 list))
 
 (defun remove-first-item (list))
 
