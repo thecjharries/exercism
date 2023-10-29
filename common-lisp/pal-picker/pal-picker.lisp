@@ -5,7 +5,15 @@
 
 (in-package :pal-picker)
 
-(defun pal-picker (personality))
+(defun pal-picker (personality) (
+  case personality
+    (:lazy "Cat")
+    (:energetic "Dog")
+    (:quiet "Fish")
+    (:hungry "Rabbit")
+    (:talkative "Bird")
+    (otherwise "I don't know... A dragon?")
+))
 
 (defun habitat-fitter (weight))
 
