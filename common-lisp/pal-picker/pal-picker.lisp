@@ -30,6 +30,10 @@
     '"It's feeding time!"
 ))
 
-(defun pet (pet))
+(defun pet (pet) (
+  if (string= pet '"Fish") '"Maybe not with this pet..."
+))
 
-(defun play-fetch (pet))
+(defun play-fetch (pet) (
+  if (string/= pet "Dog") '"Maybe not with this pet..."
+))
