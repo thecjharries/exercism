@@ -15,7 +15,14 @@
     (otherwise "I don't know... A dragon?")
 ))
 
-(defun habitat-fitter (weight))
+(defun habitat-fitter (weight) (
+  cond
+    ((>= weight 40) :massive)
+    ((>= weight 20) :large)
+    ((>= weight 10) :medium)
+    ((>= weight 1) :small)
+    (t :just-your-imagination)
+))
 
 (defun feeding-time-p (fullness))
 
