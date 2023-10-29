@@ -24,7 +24,11 @@
     (t :just-your-imagination)
 ))
 
-(defun feeding-time-p (fullness))
+(defun feeding-time-p (fullness) (
+  if (> fullness 20)
+    '"All is well."
+    '"It's feeding time!"
+))
 
 (defun pet (pet))
 
