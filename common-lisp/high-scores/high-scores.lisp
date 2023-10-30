@@ -10,6 +10,8 @@
   (make-hash-table))
 
 ;; Define add-player function
+(defun add-player (table player)
+  (setf (gethash player table) 0))
 
 ;; Define set-score function
 
