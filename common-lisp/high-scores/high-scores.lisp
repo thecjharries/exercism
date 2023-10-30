@@ -22,3 +22,5 @@
   (gethash player table 0))
 
 ;; Define remove-player function
+(defun remove-player (table player)
+  (remhash player table))
