@@ -6,6 +6,8 @@
 (in-package :high-scores)
 
 ;; Define make-high-scores-table function
+(defun make-high-scores-table ()
+  (make-hash-table))
 
 ;; Define add-player function
 
