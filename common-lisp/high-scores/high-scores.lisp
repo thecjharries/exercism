@@ -14,10 +14,12 @@
   (setf (gethash player table) 0))
 
 ;; Define set-score function
-
 (defun set-score (table player score)
   (setf (gethash player table) score))
 
 ;; Define get-score function
+(defun get-score (table player)
+  (setq score (gethash player table))
+  (if score score 0))
 
 ;; Define remove-player function
