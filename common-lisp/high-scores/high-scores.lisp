@@ -19,7 +19,6 @@
 
 ;; Define get-score function
 (defun get-score (table player)
-  (setq score (gethash player table))
-  (if score score 0))
+  (gethash player table 0))
 
 ;; Define remove-player function
