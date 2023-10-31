@@ -17,4 +17,10 @@
   )
 )
 
-(defun log-format (log-string))
+(defun log-format (log-string)
+  (setq message (log-message log-string))
+  (case (log-severity log-string)
+    (:everything-ok (string-downcase message))
+    (:getting-worried (string-capitalize message))
+    (:run-for-cover (string-upcase message)))
+)
