@@ -4,7 +4,9 @@
 
 (in-package :log-levels)
 
-(defun log-message (log-string))
+(defun log-message (log-string) (
+  subseq log-string 8
+))
 
 (defun log-severity (log-string))
 
