@@ -11,5 +11,8 @@
 ))
 
 ;; Define format-two-quarters function.
+(defun format-two-quarters (stream first-quarter first-value second-quarter second-value) (
+  format stream "~%The value ~a quarter: ~a~%The value ~a quarter: ~a~%" first-quarter first-value second-quarter second-value
+))
 
 ;; Define format-two-quarters-for-reading function.
