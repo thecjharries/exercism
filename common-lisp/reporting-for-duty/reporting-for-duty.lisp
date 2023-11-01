@@ -16,3 +16,9 @@
 ))
 
 ;; Define format-two-quarters-for-reading function.
+(defun format-two-quarters-for-reading (stream first-quarter first-value second-quarter second-value) (
+  format stream "(~s ~s)"
+    (format-quarter-value first-quarter first-value)
+    (format-quarter-value second-quarter second-value)
+)
+)
