@@ -6,6 +6,9 @@
 (in-package :reporting-for-duty)
 
 ;; Define format-quarter-value function.
+(defun format-quarter-value (quarter value) (
+  format nil "The value ~a quarter: ~a" quarter value
+))
 
 ;; Define format-two-quarters function.
 
