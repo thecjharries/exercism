@@ -24,4 +24,7 @@
     (aref board row-num 1)
     (aref board row-num 2)))
 
-(defun column (board col-num))
+(defun column (board col-num)
+  (vector (aref board 0 col-num)
+    (aref board 1 col-num)
+    (aref board 2 col-num)))
