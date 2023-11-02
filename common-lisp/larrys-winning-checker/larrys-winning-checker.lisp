@@ -15,7 +15,9 @@
 (defun make-board-from-list (list)
   (make-array '(3 3) :initial-contents list))
 
-(defun all-the-same-p (row-or-col))
+(defun all-the-same-p (row-or-col)
+  (and (eq (aref row-or-col 0) (aref row-or-col 1))
+       (eq (aref row-or-col 1) (aref row-or-col 2))))
 
 (defun row (board row-num))
 
