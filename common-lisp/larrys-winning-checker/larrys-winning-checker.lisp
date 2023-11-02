@@ -9,7 +9,8 @@
 
 (in-package :larrys-winning-checker)
 
-(defun make-empty-board ())
+(defun make-empty-board ()
+  (make-array '(3 3) :initial-element nil))
 
 (defun make-board-from-list (list))
 
