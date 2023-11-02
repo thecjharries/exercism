@@ -12,7 +12,8 @@
 (defun make-empty-board ()
   (make-array '(3 3) :initial-element nil))
 
-(defun make-board-from-list (list))
+(defun make-board-from-list (list)
+  (make-array '(3 3) :initial-contents list))
 
 (defun all-the-same-p (row-or-col))
 
