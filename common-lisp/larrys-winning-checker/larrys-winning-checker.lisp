@@ -19,6 +19,9 @@
   (and (eq (aref row-or-col 0) (aref row-or-col 1))
        (eq (aref row-or-col 1) (aref row-or-col 2))))
 
-(defun row (board row-num))
+(defun row (board row-num)
+  (vector (aref board row-num 0)
+    (aref board row-num 1)
+    (aref board row-num 2)))
 
 (defun column (board col-num))
