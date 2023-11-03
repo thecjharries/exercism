@@ -10,3 +10,5 @@
 ))
 
 ;; Define only-the-best function
+(defun only-the-best (function list)
+  (remove 1 (remove-if function list)))
