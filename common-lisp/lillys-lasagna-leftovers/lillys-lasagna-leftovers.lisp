@@ -23,3 +23,8 @@
 ))
 
 ;; Define function split-leftovers
+(defun split-leftovers (&key (alien 10) (human 10) (weight nil weight-p))
+  (cond
+    ((and (not weight) weight-p) :looks-like-someone-was-hungry)
+    ((not weight) :just-split-it)
+    (t (- weight alien human))))
