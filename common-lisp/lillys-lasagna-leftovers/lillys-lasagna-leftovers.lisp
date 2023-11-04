@@ -13,5 +13,13 @@
 ))
 
 ;; Define function remaining-minutes-in-oven
+(defun remaining-minutes-in-oven (&optional (change :normal)) (
+  + 337 (cond ((eq change :shorter) -100)
+              ((eq change :very-short) -200)
+              ((eq change :longer) 100)
+              ((eq change :very-long) 200)
+              ((eq change nil) -337)
+              (t 0))
+))
 
 ;; Define function split-leftovers
