@@ -11,3 +11,5 @@
     (cons (cons number (car list)) (cdr list))))
 
 ;; Define partition-numbers function
+(defun partition-numbers (list)
+  (reduce #'categorize-number list :initial-value '(() . ())))
