@@ -5,5 +5,9 @@
 (in-package :logans-numeric-partition)
 
 ;; Define categorize-number function
+(defun categorize-number (list number)
+  (if (evenp number)
+    (cons (car list) (cons number (cdr list)))
+    (cons (cons number (car list)) (cdr list))))
 
 ;; Define partition-numbers function
