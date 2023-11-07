@@ -14,7 +14,12 @@
           :less-than
           :greater-than)))
 
-(defun size-of-char (char))
+(defun size-of-char (char)
+  (if (alpha-char-p char)
+    (if (upper-case-p char)
+        :big
+        :small)
+    :no-size))
 
 (defun change-size-of-char (char wanted-size))
 
