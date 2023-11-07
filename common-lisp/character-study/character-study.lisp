@@ -26,4 +26,9 @@
       (char-upcase char)
       (char-downcase char)))
 
-(defun type-of-char (char))
+(defun type-of-char (char)
+  (cond ((alpha-char-p char) :alpha)
+        ((digit-char-p char) :numeric)
+        ((char= #\Space char) :space)
+        ((char= #\Newline char) :newline)
+        (t :unknown)))
