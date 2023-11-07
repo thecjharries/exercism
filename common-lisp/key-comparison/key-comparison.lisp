@@ -17,7 +17,7 @@
    :key-arrays-loosely))
 (in-package :key-comparison)
 
-(defun key-object-identity (x y))
+(defun key-object-identity (x y) (eq x y))
 (defun key-numbers (x y))
 (defun key-numbers-of-different-types (x y))
 (defun key-characters (x y))
