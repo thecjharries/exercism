@@ -7,7 +7,12 @@
    :type-of-char))
 (in-package :character-study)
 
-(defun compare-chars (char1 char2))
+(defun compare-chars (char1 char2)
+  (if (char= char1 char2)
+      :equal-to
+      (if (char< char1 char2)
+          :less-than
+          :greater-than)))
 
 (defun size-of-char (char))
 
