@@ -21,6 +21,9 @@
         :small)
     :no-size))
 
-(defun change-size-of-char (char wanted-size))
+(defun change-size-of-char (char wanted-size)
+  (if (eq wanted-size :big)
+      (char-upcase char)
+      (char-downcase char)))
 
 (defun type-of-char (char))
