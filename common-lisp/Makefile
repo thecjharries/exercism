@@ -14,7 +14,7 @@ XDG_OPEN ?= xdg-open
 ifeq (,$(IN))
 EXERCISE = $(shell basename $(CURDIR))
 else
-EXERCISE = $(shell echo $(IN) | sed 's/.*--exercise=\([^ ]*\) --.*/\1/')
+EXERCISE = $(shell echo $(IN) | sed 's/.*--exercise=\([^ ]*\).*/\1/')
 endif
 TRACK = common-lisp
 SUBMISSION = $(shell find . -type f -name '*.lisp' -not -name '*test*')
