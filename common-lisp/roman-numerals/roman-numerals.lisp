@@ -6,4 +6,4 @@
 
 (defun romanize (number)
   "Returns the Roman numeral representation for a given number."
-  )
+  (format nil "~@R" number))
