@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "Average-user"
+  ],
+  "files": {
+    "solution": [
+      "isogram.lisp"
+    ],
+    "test": [
+      "isogram-test.lisp"
+    ],
+    "example": [
+      ".meta/example.lisp"
+    ]
+  },
+  "blurb": "Determine if a word or phrase is an isogram.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Isogram"
+}
