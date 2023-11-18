@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "wsgac"
+  ],
+  "files": {
+    "solution": [
+      "binary-search.lisp"
+    ],
+    "test": [
+      "binary-search-test.lisp"
+    ],
+    "example": [
+      ".meta/example.lisp"
+    ]
+  },
+  "blurb": "Implement a binary search algorithm.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Binary_search_algorithm"
+}
