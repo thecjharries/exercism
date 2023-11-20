@@ -8,7 +8,7 @@
 
 (defun square-of-sum (n)
   "Calculates the square of the sum for a given number."
-  )
+  (expt (/ (* n (1+ n)) 2) 2))
 
 (defun sum-of-squares (n)
   "Calculates the sum of squares for a given number."
