@@ -16,4 +16,4 @@
 
 (defun difference (n)
   "Finds the diff. between the square of the sum and the sum of the squares."
-  )
+  (- (square-of-sum n) (sum-of-squares n)))
