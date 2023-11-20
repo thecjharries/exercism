@@ -12,7 +12,7 @@
 
 (defun sum-of-squares (n)
   "Calculates the sum of squares for a given number."
-  )
+  (/ (* n (1+ n) (1+ (* 2 n))) 6))
 
 (defun difference (n)
   "Finds the diff. between the square of the sum and the sum of the squares."
