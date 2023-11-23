@@ -37,4 +37,4 @@
 
 (defun score-word (word)
   "Computes the score for an entire word."
-  )
+  (reduce #'+ (mapcar #'letter-score-p (coerce (string-downcase word) 'list))))
