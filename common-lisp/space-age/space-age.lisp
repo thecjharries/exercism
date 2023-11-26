@@ -10,3 +10,6 @@
            :on-neptune))
 
 (in-package :space-age)
+
+(defun rounds-to (number)
+  (/ (round (* number 100)) 100.0))
