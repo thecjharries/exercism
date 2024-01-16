@@ -48,7 +48,7 @@ boot: create
 	$(CD) $(EXERCISE) && $(PIPENV) install --dev
 	$(GIT) add $(EXERCISE)/Pipfile $(EXERCISE)/Pipfile.lock
 	$(GIT) commit -m "Add Pipfile"
-	$(CODE) --reuse-window $(EXERCISE)/src/lib.rs $(EXERCISE)/tests/*.rs
+	$(CODE) --reuse-window $(EXERCISE)/*.py
 
 # Run the tests
 .PHONY: test
