@@ -1,9 +1,13 @@
 # Aliases for executables
+CD ?= cd
 CODE ?= code
+CP ?= cp
 EXERCISM ?= exercism
-FIND ?= find
 GH ?= gh
 GIT ?= git
+GREP ?= grep
+LS ?= ls
+PIPENV ?= pipenv
 RM ?= rm
 SED ?= sed
 XDG_OPEN ?= xdg-open
@@ -12,17 +16,18 @@ XDG_OPEN ?= xdg-open
 ifeq (,$(IN))
 EXERCISE = $(shell basename $(CURDIR))
 else
-EXERCISE = $(shell echo $(IN) | sed 's/.*--exercise=\([^ ]*\) --.*/\1/')
+EXERCISE = $(shell echo $(IN) | sed 's/.*--exercise=\([^ ]*\)/\1/')
 endif
-SUBMISSIONS = src/lib.rs Cargo.toml
-TRACK = rust
+# find's -maxdepth flag is not universal
+SUBMISSIONS = $(shell $(LS) | $(GREP) '.py' | $(GREP) -v 'test.py')
+TRACK = python
 
 # Debug the variables
 .PHONY: debug
 debug:
 	@echo "EXERCISE: $(EXERCISE)"
 	@echo "IN: $(IN)"
-	@echo "SUBMISSION: $(SUBMISSION)"
+	@echo "SUBMISSIONS: $(SUBMISSIONS)"
 	@echo "TRACK: $(TRACK)"
 
 # Create the exercise
@@ -39,33 +44,27 @@ boot: create
 	echo "-include ../Makefile" >> $(EXERCISE)/Makefile
 	$(GIT) add $(EXERCISE)/Makefile
 	$(GIT) commit -m "Add Makefile"
-	$(FIND) ./$(EXERCISE)/tests/ -type f -name '*.rs' -exec $(SED) -i '/#\[ignore]/d' {} \;
-	$(GIT) add $(EXERCISE)/tests/*.rs
-	$(GIT) commit -m "Enable all tests"
+	$(CP) ./Pipfile $(EXERCISE)/Pipfile
+	$(CD) $(EXERCISE) && $(PIPENV) install --dev
+	$(GIT) add $(EXERCISE)/Pipfile $(EXERCISE)/Pipfile.lock
+	$(GIT) commit -m "Add Pipfile"
 	$(CODE) --reuse-window $(EXERCISE)/src/lib.rs $(EXERCISE)/tests/*.rs
 
 # Run the tests
 .PHONY: test
 test:
-	$(CARGO) test
+	$(PIPENV) run pytest
 
 # Get code coverage
 .PHONY: coverage
 coverage:
-	$(CARGO) tarpaulin -v --fail-under=100
-
-# Build coverage report
-.PHONY: coverage-report
-coverage-report:
-	$(CARGO) tarpaulin -v --fail-under=100 --out HTML; $(XDG_OPEN) tarpaulin-report.html
+	@echo "Coverage is not supported for Python yet"
 
 # Remove any built artifacts
 .PHONY: clean
 clean:
-	$(RM) -rf target
-	$(RM) -rf Cargo.lock
-	$(RM) -rf tarpaulin-report.html
-	$(RM) -rf main
+	$(RM) -rf .pytest_cache
+	$(RM) -rf $$($(PIPENV) --venv)
 
 # Submit the solution
 .PHONY: submit
