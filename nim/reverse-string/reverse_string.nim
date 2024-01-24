@@ -1,2 +1,3 @@
-proc reverse*(s: string): string =
-  discard
+import unicode
+
+proc reverse*(s: string): string = s.reversed
