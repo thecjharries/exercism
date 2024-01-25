@@ -34,6 +34,23 @@ make
 
 Submit `<snake_case_exercise>.{h,cpp}`
 
+### JavaScript
+
+```bash
+pnpm install
+sed -i 's/xtest/test/g' <dash-case-exercise>.spec.js
+```
+
+```bash
+pnpm test
+```
+
+Submit `<dash-case-exercise>.js`
+
+```bash
+rm -rf node_modules pnpm-lock.yaml
+```
+
 ### Nim
 
 ```bash
