@@ -38,6 +38,7 @@ Submit `<snake_case_exercise>.{h,cpp}`
 
 ```bash
 pnpm install
+sed -i 's/xtest/test/g' <dash-case-exercise>.spec.js
 ```
 
 ```bash
