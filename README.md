@@ -34,6 +34,22 @@ make
 
 Submit `<snake_case_exercise>.{h,cpp}`
 
+### JavaScript
+
+```bash
+pnpm install
+```
+
+```bash
+pnpm test
+```
+
+Submit `<dash-case-exercise>.js`
+
+```bash
+rm -rf node_modules
+```
+
 ### Nim
 
 ```bash
