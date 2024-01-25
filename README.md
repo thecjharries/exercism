@@ -47,7 +47,7 @@ pnpm test
 Submit `<dash-case-exercise>.js`
 
 ```bash
-rm -rf node_modules
+rm -rf node_modules pnpm-lock.yaml
 ```
 
 ### Nim
