@@ -25,3 +25,18 @@ boot-makefile: boot-feature-branch
 	echo "-include ../../.global.mk" >> $(EXERCISE)/Makefile
 	$(GIT) add $(EXERCISE)/Makefile
 	$(GIT) commit -m "Add Makefile"
+
+# Create exercise tests
+.PHONY: boot-tests
+boot-tests::
+	@echo "Creating tests..."
+
+# Launch VS Code
+.PHONY: boot-vscode
+boot-vscode::
+	@echo "Launching VS Code..."
+
+# Full boot target
+.PHONY: boot
+boot:: create boot-feature-branch boot-makefile boot-tests boot-vscode
+	@echo "Boot complete."
