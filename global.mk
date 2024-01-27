@@ -24,8 +24,8 @@ boot-feature-branch: create
 .PHONY: boot-makefile
 boot-makefile: boot-feature-branch
 	@echo "Creating Makefile..."
-	echo "-include ../Makefile" >> $(EXERCISE)/Makefile
 	echo "-include ../../.global.mk" >> $(EXERCISE)/Makefile
+	echo "-include ../Makefile" >> $(EXERCISE)/Makefile
 	$(GIT) add $(EXERCISE)/Makefile
 	$(GIT) commit -m "Add Makefile"
 
