@@ -40,3 +40,33 @@ boot-vscode::
 .PHONY: boot
 boot:: create boot-feature-branch boot-makefile boot-tests boot-vscode
 	@echo "Boot complete."
+
+# Run the tests
+.PHONY: test
+test::
+	@echo "Running tests..."
+
+# Get code coverage
+.PHONY: coverage
+coverage::
+	@echo "Getting code coverage..."
+
+# Remove any built artifacts
+.PHONY: clean
+clean::
+	@echo "Cleaning up..."
+
+# Submit the solution
+.PHONY: submit
+submit::
+	@echo "Submitting solution..."
+	$(GIT) diff-index --quiet HEAD || (echo "Uncommitted changes"; exit 1)
+	$(EXERCISM) submit $(SUBMISSIONS)
+
+# Finish the branch
+.PHONY: finish
+finish:: coverage submit clean
+	@echo "Finishing up..."
+	$(GIT) push -u origin feat/$(TRACK)/$(EXERCISE)
+	$(GH) pr create --fill
+	$(GH) pr merge --merge --delete-branch
