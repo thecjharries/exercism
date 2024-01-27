@@ -9,11 +9,13 @@ debug::
 # Create the exercise
 .PHONY: create
 create:
+	@echo "Creating exercise..."
 	$(EXERCISM) download --exercise=$(EXERCISE) --track=$(TRACK)
 
 # Create the feature branch
 .PHONY: boot-feature-branch
 boot-feature-branch: create
+	@echo "Creating feature branch..."
 	$(GIT) checkout -b feat/$(TRACK)/$(EXERCISE)
 	$(GIT) add $(EXERCISE)
 	$(GIT) commit -m "Create $(TRACK):$(EXERCISE) exercise"
@@ -21,6 +23,7 @@ boot-feature-branch: create
 # Create exercise Makefile
 .PHONY: boot-makefile
 boot-makefile: boot-feature-branch
+	@echo "Creating Makefile..."
 	echo "-include ../Makefile" >> $(EXERCISE)/Makefile
 	echo "-include ../../.global.mk" >> $(EXERCISE)/Makefile
 	$(GIT) add $(EXERCISE)/Makefile
