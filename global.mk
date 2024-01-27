@@ -1,3 +1,20 @@
+# Aliases for executables
+BASENAME ?= basename
+CODE ?= code
+EXERCISM ?= exercism
+GH ?= gh
+GIT ?= git
+SED ?= sed
+
+# Exercism variables
+ifeq (,$(IN))
+EXERCISE = $(shell $(BASENAME) $(CURDIR))
+else
+EXERCISE = $(shell echo $(IN) | $(SED) 's/.*--exercise=\([^ ]*\) --.*/\1/')
+endif
+SUBMISSIONS =
+TRACK =
+
 # Debug the variables
 .PHONY: debug
 debug::
