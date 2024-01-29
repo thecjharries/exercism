@@ -11,6 +11,9 @@ TRACK = javascript
 boot::
 	cd $(EXERCISE) && $(PNPM) install
 
+test::
+	$(PNPM) test
+
 clean::
 	$(RM) -rf node_modules
 	$(RM) -rf pnpm-lock.yaml
