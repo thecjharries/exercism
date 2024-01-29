@@ -1,11 +1,15 @@
-include ../global.mk
+-include ../global.mk
 
 # Aliases for executables
 PNPM ?= pnpm
 RM ?= rm
 
+# Exercism variables
+SUBMISSIONS = $(EXERCISE).js
+TRACK = javascript
+
 boot::
-	$(PNPM) install
+	cd $(EXERCISE) && $(PNPM) install
 
 clean::
 	$(RM) -rf node_modules
