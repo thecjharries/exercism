@@ -34,23 +34,6 @@ make
 
 Submit `<snake_case_exercise>.{h,cpp}`
 
-### JavaScript
-
-```bash
-pnpm install
-sed -i 's/xtest/test/g' <dash-case-exercise>.spec.js
-```
-
-```bash
-pnpm test
-```
-
-Submit `<dash-case-exercise>.js`
-
-```bash
-rm -rf node_modules pnpm-lock.yaml
-```
-
 ### Nim
 
 ```bash
@@ -58,3 +41,14 @@ nim r test_<snake_case_exercise>.nim
 ```
 
 Submit `<snake_case_exercise>.nim`
+
+### R
+
+- Ensure `.Renviron` is set up
+- Make sure `testthat` is installed
+
+  ```bash
+  Rscript -e 'install.packages("testthat")'
+  ```
+
+Submit `<dash-case-exercise>.R`
