@@ -41,3 +41,14 @@ nim r test_<snake_case_exercise>.nim
 ```
 
 Submit `<snake_case_exercise>.nim`
+
+### R
+
+- Ensure `.Renviron` is set up
+- Make sure `testthat` is installed
+
+  ```bash
+  Rscript -e 'install.packages("testthat")'
+  ```
+
+Submit `<dash-case-exercise>.R`
