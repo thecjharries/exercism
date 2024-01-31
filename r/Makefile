@@ -8,4 +8,4 @@ SUBMISSIONS = $(EXERCISE).R
 TRACK = r
 
 test::
-	$(RSCRIPT) test
+	$(RSCRIPT) test*.R

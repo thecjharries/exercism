@@ -10,7 +10,7 @@ SED ?= sed
 ifeq (,$(IN))
 EXERCISE = $(shell $(BASENAME) $(CURDIR))
 else
-EXERCISE = $(shell echo $(IN) | $(SED) 's/.*--exercise=\([^ ]*\) --.*/\1/')
+EXERCISE = $(shell echo $(IN) | $(SED) 's/.*--exercise=\([^ ]*\)/\1/')
 endif
 SUBMISSIONS =
 TRACK =
