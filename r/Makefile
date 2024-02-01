@@ -7,5 +7,9 @@ RSCRIPT ?= Rscript
 SUBMISSIONS = $(EXERCISE).R
 TRACK = r
 
+# Ensure we have the proper test dependency
+boot-tests::
+	Rscript -e 'if (!require("testthat")) install.packages("testthat")'
+
 test::
 	$(RSCRIPT) test*.R
