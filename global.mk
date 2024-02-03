@@ -40,11 +40,16 @@ boot-feature-branch: create
 	$(GIT) commit -m "Create $(TRACK):$(EXERCISE) exercise"
 
 # Create exercise Makefile
-.PHONY: boot-makefile
-boot-makefile: boot-feature-branch
+.PHONY: create-makefile
+create-makefile:
 	@echo "Creating Makefile..."
 	echo "-include ../../global.mk" > $(EXERCISE)/Makefile
 	echo "-include ../Makefile" >> $(EXERCISE)/Makefile
+
+# Create exercise Makefile
+.PHONY: boot-makefile
+boot-makefile: boot-feature-branch create-makefile
+	@echo "Adding Makefile..."
 	$(GIT) add $(EXERCISE)/Makefile
 	$(GIT) commit -m "Add Makefile"
 
