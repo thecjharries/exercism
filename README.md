@@ -52,3 +52,11 @@ Submit `<snake_case_exercise>.nim`
   ```
 
 Submit `<dash-case-exercise>.R`
+
+### Ruby
+
+- Ensure `gem install minitest` has been run
+- `sed -i -e '/skip$/d' <snake_case_exercise>_test.rb`
+- `ruby -r minitest/pride <snake_case_exercise>_test.rb`
+
+Submit `<snake_case_exercise>.rb`
