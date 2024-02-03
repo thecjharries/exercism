@@ -12,6 +12,7 @@ EXERCISE = $(shell $(BASENAME) $(CURDIR))
 else
 EXERCISE = $(shell echo $(IN) | $(SED) 's/.*--exercise=\([^ ]*\)/\1/')
 endif
+EXERCISE_SNAKE_CASE = $(shell echo $(EXERCISE) | $(SED) 's/-/_/g')
 SUBMISSIONS =
 TRACK =
 
@@ -19,6 +20,7 @@ TRACK =
 .PHONY: debug
 debug::
 	@echo "EXERCISE: $(EXERCISE)"
+	@echo "EXERCISE_SNAKE_CASE: $(EXERCISE_SNAKE_CASE)"
 	@echo "IN: $(IN)"
 	@echo "SUBMISSIONS: $(SUBMISSIONS)"
 	@echo "TRACK: $(TRACK)"
