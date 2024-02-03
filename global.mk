@@ -12,6 +12,7 @@ EXERCISE = $(shell $(BASENAME) $(CURDIR))
 else
 EXERCISE = $(shell echo $(IN) | $(SED) 's/.*--exercise=\([^ ]*\)/\1/')
 endif
+EXERCISE_SNAKE_CASE = $(shell echo $(EXERCISE) | $(SED) 's/-/_/g')
 SUBMISSIONS =
 TRACK =
 
@@ -19,6 +20,7 @@ TRACK =
 .PHONY: debug
 debug::
 	@echo "EXERCISE: $(EXERCISE)"
+	@echo "EXERCISE_SNAKE_CASE: $(EXERCISE_SNAKE_CASE)"
 	@echo "IN: $(IN)"
 	@echo "SUBMISSIONS: $(SUBMISSIONS)"
 	@echo "TRACK: $(TRACK)"
@@ -38,11 +40,16 @@ boot-feature-branch: create
 	$(GIT) commit -m "Create $(TRACK):$(EXERCISE) exercise"
 
 # Create exercise Makefile
-.PHONY: boot-makefile
-boot-makefile: boot-feature-branch
+.PHONY: create-makefile
+create-makefile:
 	@echo "Creating Makefile..."
 	echo "-include ../../global.mk" > $(EXERCISE)/Makefile
 	echo "-include ../Makefile" >> $(EXERCISE)/Makefile
+
+# Create exercise Makefile
+.PHONY: boot-makefile
+boot-makefile: boot-feature-branch create-makefile
+	@echo "Adding Makefile..."
 	$(GIT) add $(EXERCISE)/Makefile
 	$(GIT) commit -m "Add Makefile"
 
@@ -88,5 +95,13 @@ submit::
 finish:: coverage submit clean
 	@echo "Finishing up..."
 	$(GIT) push -u origin feat/$(TRACK)/$(EXERCISE)
+	$(GH) pr create --fill
+	$(GH) pr merge --merge --delete-branch
+
+# Unconnected finish
+.PHONY: finish-unconnected
+finish-unconnected:
+	@echo "Finishing up..."
+	$(GIT) push -u origin HEAD
 	$(GH) pr create --fill
 	$(GH) pr merge --merge --delete-branch
