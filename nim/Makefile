@@ -5,8 +5,8 @@ NIM ?= nim
 RM ?= rm
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE).nim
+SUBMISSIONS = $(EXERCISE_SNAKE_CASE).nim
 TRACK = nim
 
 test::
-	$(NIM) r test_$(EXERCISE).nim
+	$(NIM) r test_$(EXERCISE_SNAKE_CASE).nim
