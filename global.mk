@@ -97,3 +97,11 @@ finish:: coverage submit clean
 	$(GIT) push -u origin feat/$(TRACK)/$(EXERCISE)
 	$(GH) pr create --fill
 	$(GH) pr merge --merge --delete-branch
+
+# Unconnected finish
+.PHONY: finish-unconnected
+finish-unconnected:
+	@echo "Finishing up..."
+	$(GIT) push -u origin HEAD
+	$(GH) pr create --fill
+	$(GH) pr merge --merge --delete-branch
