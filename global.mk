@@ -83,11 +83,15 @@ coverage::
 clean::
 	@echo "Cleaning up..."
 
+# Ensure no uncommitted changes
+.PHONY: ensure-committed
+ensure-committed::
+	$(GIT) diff-index --quiet HEAD || (echo "Uncommitted changes"; exit 1)
+
 # Submit the solution
 .PHONY: submit
-submit::
+submit:: ensure-committed
 	@echo "Submitting solution..."
-	$(GIT) diff-index --quiet HEAD || (echo "Uncommitted changes"; exit 1)
 	$(EXERCISM) submit $(SUBMISSIONS)
 
 # Finish the branch
@@ -100,7 +104,7 @@ finish:: coverage submit clean
 
 # Unconnected finish
 .PHONY: finish-unconnected
-finish-unconnected:
+finish-unconnected: ensure-committed
 	@echo "Finishing up..."
 	$(GIT) push -u origin HEAD
 	$(GH) pr create --fill
