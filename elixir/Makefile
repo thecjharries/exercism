@@ -10,3 +10,6 @@ TRACK = elixir
 
 test::
 	$(MIX) test
+
+clean::
+	$(RM) -rf _build
