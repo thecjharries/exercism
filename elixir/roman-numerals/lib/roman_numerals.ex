@@ -4,9 +4,6 @@ defmodule RomanNumerals do
   """
   @spec numeral(pos_integer) :: String.t()
   def numeral(number) do
-    if number < 1 or number > 3000 do
-      raise ArgumentError, "Number must be between 1 and 3000"
-    end
 
     roman_numerals = [
       {1000, "M"},
