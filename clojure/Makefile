@@ -1,7 +1,7 @@
 -include ../global.mk
 
 # Aliases for executables
-CLJ ?= clj
+CLJ ?= clojure
 
 # Exercism variables
 SUBMISSIONS = src/$(EXERCISE_SNAKE_CASE).clj
