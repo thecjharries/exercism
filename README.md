@@ -2,6 +2,13 @@
 
 This repo contains solutions to [exercism](https://exercism.org) exercises.
 
+## Online Tracks
+
+I (so far) do not do these tracks locally for a variety of reasons.
+
+- [MIPS Assembly](https://exercism.org/tracks/mips)
+- [Pharo](https://exercism.org/tracks/pharo-smalltalk)
+
 ## Future Work
 
 These notes talk about how to test and submit. I will eventually (maybe) write Makefiles to automate these, especially if the language appears more than once.
