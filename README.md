@@ -6,14 +6,6 @@ This repo contains solutions to [exercism](https://exercism.org) exercises.
 
 These notes talk about how to test and submit. I will eventually (maybe) write Makefiles to automate these, especially if the language appears more than once.
 
-### Clojure
-
-```bash
-clj -X:test
-```
-
-Submit `src/<snake_case_exercise>.clj`
-
 ### C++
 
 Set up the tests:
