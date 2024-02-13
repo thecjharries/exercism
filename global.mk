@@ -13,6 +13,7 @@ else
 EXERCISE = $(shell echo $(IN) | $(SED) 's/.*--exercise=\([^ ]*\)/\1/')
 endif
 EXERCISE_SNAKE_CASE = $(shell echo $(EXERCISE) | $(SED) 's/-/_/g')
+EXERCISE_PASCAL_CASE = $(shell echo $(EXERCISE) | $(SED) 's/\(^\|-\)\([a-z]\)/\U\2/g')
 SUBMISSIONS =
 TRACK =
 
@@ -21,6 +22,7 @@ TRACK =
 debug::
 	@echo "EXERCISE: $(EXERCISE)"
 	@echo "EXERCISE_SNAKE_CASE: $(EXERCISE_SNAKE_CASE)"
+	@echo "EXERCISE_PASCAL_CASE: $(EXERCISE_PASCAL_CASE)"
 	@echo "IN: $(IN)"
 	@echo "SUBMISSIONS: $(SUBMISSIONS)"
 	@echo "TRACK: $(TRACK)"
