@@ -8,6 +8,11 @@ RM ?= rm
 SUBMISSIONS = $(EXERCISE_PASCAL_CASE).fs
 TRACK = fsharp
 
+boot-tests::
+	$(SED) -i 's/\(Skip[^)]+\)//g' $(EXERCISE)/$(EXERCISE_PASCAL_CASE)Tests.fs
+	$(GIT) add $(EXERCISE)/$(EXERCISE_PASCAL_CASE)Tests.fs
+	$(GIT) commit -m "Enable all tests"
+
 test::
 	$(DOTNET) test
 
