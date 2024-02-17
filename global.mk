@@ -4,6 +4,7 @@ CODE ?= code
 EXERCISM ?= exercism
 GH ?= gh
 GIT ?= git
+MKDIR ?= mkdir
 SED ?= sed
 
 # Exercism variables
@@ -32,6 +33,18 @@ debug::
 create:
 	@echo "Creating exercise..."
 	$(EXERCISM) download --exercise=$(EXERCISE) --track=$(TRACK)
+
+# Boot track
+.PHONY: boot-track
+boot-track:
+	@echo "Booting track..."
+	$(GIT) checkout -b feat/setup-$(TRACK)
+	$(MKDIR) -p $(TRACK)
+	$(CP) ./child.mk $(TRACK)/Makefile
+	$(SED) -i '' 's/@@TRACK@@/$(TRACK)/g' $(TRACK)/Makefile
+	$(GIT) add $(TRACK)/Makefile
+	$(GIT) commit -m "Add $(TRACK) Makefile"
+
 
 # Create the feature branch
 .PHONY: boot-feature-branch
