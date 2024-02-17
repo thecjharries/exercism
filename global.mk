@@ -30,13 +30,13 @@ debug::
 
 # Create the exercise
 .PHONY: create
-create:
+create: guard-EXERCISE guard-TRACK
 	@echo "Creating exercise..."
 	$(EXERCISM) download --exercise=$(EXERCISE) --track=$(TRACK)
 
 # Boot track
 .PHONY: boot-track
-boot-track:
+boot-track: guard-TRACK
 	@echo "Booting track..."
 	$(GIT) checkout -b feat/setup-$(TRACK)
 	$(MKDIR) -p $(TRACK)
@@ -48,7 +48,7 @@ boot-track:
 
 # Create the feature branch
 .PHONY: boot-feature-branch
-boot-feature-branch: create
+boot-feature-branch: guard-TRACK guard-EXERCISE create
 	@echo "Creating feature branch..."
 	$(GIT) checkout -b feat/$(TRACK)/$(EXERCISE)
 	$(GIT) add $(EXERCISE)
@@ -63,7 +63,7 @@ create-makefile:
 
 # Create exercise Makefile
 .PHONY: boot-makefile
-boot-makefile: boot-feature-branch create-makefile
+boot-makefile: guard-EXERCISE boot-feature-branch create-makefile
 	@echo "Adding Makefile..."
 	$(GIT) add $(EXERCISE)/Makefile
 	$(GIT) commit -m "Add Makefile"
@@ -105,13 +105,13 @@ ensure-committed::
 
 # Submit the solution
 .PHONY: submit
-submit:: ensure-committed
+submit:: guard-SUBMISSIONS ensure-committed
 	@echo "Submitting solution..."
 	$(EXERCISM) submit $(SUBMISSIONS)
 
 # Finish the branch
 .PHONY: finish
-finish:: coverage submit clean
+finish:: guard-TRACK guard-EXERCISE coverage submit clean
 	@echo "Finishing up..."
 	$(GIT) push -u origin feat/$(TRACK)/$(EXERCISE)
 	$(GH) pr create --fill
@@ -124,3 +124,12 @@ finish-unconnected: ensure-committed
 	$(GIT) push -u origin HEAD
 	$(GH) pr create --fill
 	$(GH) pr merge --merge --delete-branch
+
+# Guard against missing environment variables
+# https://stackoverflow.com/a/7367903
+.PHONY: guard-%
+guard-%:
+	@ if [ "${${*}}" = "" ]; then \
+		echo "Environment variable $* not set"; \
+		exit 1; \
+	fi
