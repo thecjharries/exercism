@@ -1,6 +1,7 @@
 # Aliases for executables
 BASENAME ?= basename
 CODE ?= code
+CP ?= cp
 EXERCISM ?= exercism
 GH ?= gh
 GIT ?= git
@@ -41,7 +42,7 @@ boot-track: guard-TRACK
 	$(GIT) checkout -b feat/setup-$(TRACK)
 	$(MKDIR) -p $(TRACK)
 	$(CP) ./child.mk $(TRACK)/Makefile
-	$(SED) -i '' 's/@@TRACK@@/$(TRACK)/g' $(TRACK)/Makefile
+	$(SED) -i 's/@@TRACK@@/$(TRACK)/g' $(TRACK)/Makefile
 	$(GIT) add $(TRACK)/Makefile
 	$(GIT) commit -m "Add $(TRACK) Makefile"
 
