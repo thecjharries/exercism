@@ -124,3 +124,12 @@ finish-unconnected: ensure-committed
 	$(GIT) push -u origin HEAD
 	$(GH) pr create --fill
 	$(GH) pr merge --merge --delete-branch
+
+# Guard against missing environment variables
+# https://stackoverflow.com/a/7367903
+.PHONY: guard-%
+guard-%:
+	@ if [ "${${*}}" = "" ]; then \
+		echo "Environment variable $* not set"; \
+		exit 1; \
+	fi
