@@ -9,7 +9,7 @@ SUBMISSIONS = $(EXERCISE_PASCAL_CASE).fs
 TRACK = fsharp
 
 boot-tests::
-	$(SED) -i '/Fact.Skip/d' $(EXERCISE)/$(EXERCISE_PASCAL_CASE)Tests.fs
+	$(SED) -i 's/\(Skip[^)]+\)//g' $(EXERCISE)/$(EXERCISE_PASCAL_CASE)Tests.fs
 	$(GIT) add $(EXERCISE)/$(EXERCISE_PASCAL_CASE)Tests.fs
 	$(GIT) commit -m "Enable all tests"
 
