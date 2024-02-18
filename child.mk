@@ -12,6 +12,8 @@ SUBMISSIONS = $(EXERCISE)
 TRACK = @@TRACK@@
 
 # boot-tests::
+# 	$(GIT) add $(EXERCISE)/
+# 	$(GIT) commit -m "Enable all tests"
 # test::
 # coverage::
 # clean::
