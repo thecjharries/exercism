@@ -5,7 +5,7 @@
 DOTNET ?= dotnet
 # GH ?= gh
 # GIT ?= git
-# RM ?= rm
+RM ?= rm
 # SED ?= sed
 
 # Exercism variables
@@ -20,4 +20,6 @@ test::
 	$(DOTNET) test
 
 # coverage::
-# clean::
+
+clean::
+	$(RM) -rf bin/ obj/
