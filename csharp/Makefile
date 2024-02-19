@@ -12,9 +12,10 @@ RM ?= rm
 SUBMISSIONS = $(EXERCISE_PASCAL_CASE).cs
 TRACK = csharp
 
-# boot-tests::
-# 	$(GIT) add $(EXERCISE)/
-# 	$(GIT) commit -m "Enable all tests"
+boot-tests::
+	$(SED) -Ei 's/\(Skip[^)]+\)//g' $(EXERCISE)/$(EXERCISE_PASCAL_CASE)Tests.cs
+	$(GIT) add $(EXERCISE)/$(EXERCISE_PASCAL_CASE)Tests.cs
+	$(GIT) commit -m "Enable all tests"
 
 test::
 	$(DOTNET) test
