@@ -4,8 +4,9 @@
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
-# RM ?= rm
+RM ?= rm
 # SED ?= sed
+SWIFT ?= swift
 
 # Exercism variables
 SUBMISSIONS = $(EXERCISE)
@@ -14,6 +15,9 @@ TRACK = swift
 # boot-tests::
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+
+test::
+	$(SWIFT) test
+
 # coverage::
 # clean::
