@@ -78,6 +78,7 @@ boot-tests::
 .PHONY: boot-vscode
 boot-vscode::
 	@echo "Launching VS Code..."
+	$(CODE) --reuse-window $(SUBMISSIONS)
 
 # Full boot target
 .PHONY: boot
