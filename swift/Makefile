@@ -20,4 +20,6 @@ test::
 	$(SWIFT) test
 
 # coverage::
-# clean::
+
+clean::
+	$(RM) -rf .build
