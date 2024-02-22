@@ -9,7 +9,7 @@ RM ?= rm
 SWIFT ?= swift
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = Sources/$(EXERCISE_PASCAL_CASE).swift
 TRACK = swift
 
 # boot-tests::
