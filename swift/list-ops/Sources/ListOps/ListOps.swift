@@ -6,4 +6,8 @@ struct ListOps {
     static func concat<T>(_ args: [T]...) -> [T] {
         return args.reduce([], +)
     }
+
+    static func filter<T>(_ list: [T], _ predicate: (T) -> Bool) -> [T] {
+        return list.filter(predicate)
+    }
 }
