@@ -10,4 +10,8 @@ struct ListOps {
     static func filter<T>(_ list: [T], _ predicate: (T) -> Bool) -> [T] {
         return list.filter(predicate)
     }
+
+    static func length<T>(_ list: [T]) -> Int {
+        return list.count
+    }
 }
