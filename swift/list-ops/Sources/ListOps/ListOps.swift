@@ -14,4 +14,8 @@ struct ListOps {
     static func length<T>(_ list: [T]) -> Int {
         return list.count
     }
+
+    static func map<T, U>(_ list: [T], _ transform: (T) -> U) -> [U] {
+        return list.map(transform)
+    }
 }
