@@ -26,4 +26,8 @@ struct ListOps {
     static func foldRight<T, U>(_ list: [T], accumulated: U, combine: (T, U) -> U) -> U {
         return list.reversed().reduce(accumulated, combine)
     }
+
+    static func reverse<T>(_ list: [T]) -> [T] {
+        return list.reversed()
+    }
 }
