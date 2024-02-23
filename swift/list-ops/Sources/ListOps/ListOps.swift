@@ -19,11 +19,11 @@ struct ListOps {
         return list.map(transform)
     }
 
-    static func foldLeft<T, U>(_ list: [T], accumulated: U, combine: (U, T) -> U) -> U {
+    static func foldLeft<T>(_ list: [T], accumulated: T, combine: (T, T) -> T) -> T {
         return list.reduce(accumulated, combine)
     }
 
-    static func foldRight<T, U>(_ list: [T], accumulated: U, combine: (T, U) -> U) -> U {
+    static func foldRight<T>(_ list: [T], accumulated: T, combine: (T, T) -> T) -> T {
         return list.reversed().reduce(accumulated, combine)
     }
 
