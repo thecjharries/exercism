@@ -1,23 +1,33 @@
 fun concat (lists: int list list): int list =
-  raise Fail "'concat' is not implemented"
+    List.concat lists
 
 fun reverse (list: int list): int list =
-  raise Fail "'reverse' is not implemented"
+    List.rev list
 
 fun filter (function: int -> bool, list: int list): int list =
-  raise Fail "'filter' is not implemented"
+    List.filter function list
 
 fun map (function: int -> int, list: int list): int list =
-  raise Fail "'map' is not implemented"
+    List.map function list
 
 fun append (list1: int list, list2: int list): int list =
-  raise Fail "'append' is not implemented"
+    list1 @ list2
 
 fun length (ns: int list): int =
-  raise Fail "'length' is not implemented"
+    List.length ns
 
 fun foldl (function: int * int -> int, initial: int, list: int list): int =
-  raise Fail "'foldl' is not implemented"
+    let
+        fun foldl' _ i [] = i
+          | foldl' f i (x::xs) = foldl' f (f (i, x)) xs
+    in
+        foldl' function initial list
+    end
 
 fun foldr (function: int * int -> int, initial: int, list: int list): int =
-  raise Fail "'foldr' is not implemented"
+    let
+        fun foldr' _ i [] = i
+          | foldr' f i (x::xs) = f(x, (foldr' f i xs))
+    in
+        foldr' function initial list
+    end
