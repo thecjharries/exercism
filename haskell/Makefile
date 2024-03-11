@@ -4,15 +4,16 @@
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
-# RM ?= rm
+RM ?= rm
 # SED ?= sed
 STACK ?= stack
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = $(EXERCISE).hs
 TRACK = haskell
 
-# boot-tests::
+boot-tests::
+	$(STACK) build --test --no-run-tests
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
 
@@ -20,4 +21,7 @@ test::
 	$(STACK) test
 
 # coverage::
-# clean::
+
+clean::
+	$(STACK) clean
+	$(RM) -rf .stack-work $(EXERCISE).cabal stack.yaml.lock
