@@ -13,7 +13,7 @@ SUBMISSIONS = $(EXERCISE).hs
 TRACK = haskell
 
 boot-tests::
-	$(STACK) build --test --no-run-tests
+	cd $(EXERCISE) && $(STACK) build --test --no-run-tests
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
 
