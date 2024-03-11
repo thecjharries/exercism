@@ -1,0 +1,27 @@
+-include ../global.mk
+
+# Aliases for executables
+# CP ?= cp
+# GH ?= gh
+# GIT ?= git
+RM ?= rm
+# SED ?= sed
+STACK ?= stack
+
+# Exercism variables
+SUBMISSIONS = $(EXERCISE).hs
+TRACK = haskell
+
+boot-tests::
+	$(STACK) build --test --no-run-tests
+# 	$(GIT) add $(EXERCISE)/
+# 	$(GIT) commit -m "Enable all tests"
+
+test::
+	$(STACK) test
+
+# coverage::
+
+clean::
+	$(STACK) clean
+	$(RM) -rf .stack-work $(EXERCISE).cabal stack.yaml.lock
