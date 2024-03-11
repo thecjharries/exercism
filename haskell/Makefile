@@ -9,7 +9,7 @@ RM ?= rm
 STACK ?= stack
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE).hs
+SUBMISSIONS = src/$(EXERCISE).hs package.yaml
 TRACK = haskell
 
 boot-tests::
