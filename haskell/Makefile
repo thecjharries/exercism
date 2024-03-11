@@ -8,12 +8,14 @@ RM ?= rm
 # SED ?= sed
 STACK ?= stack
 
+HASKELL_FILENAME = $(shell L1=$(EXERCISE); echo $${L1^})
+
 # Exercism variables
-SUBMISSIONS = $(EXERCISE).hs
+SUBMISSIONS = src/$(HASKELL_FILENAME).hs package.yaml
 TRACK = haskell
 
 boot-tests::
-	$(STACK) build --test --no-run-tests
+	cd $(EXERCISE) && $(STACK) build --test --no-run-tests
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
 
