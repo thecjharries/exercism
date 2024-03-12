@@ -6,14 +6,17 @@
 # GIT ?= git
 # RM ?= rm
 # SED ?= sed
+TCLSH ?= tclsh
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = $(EXERCISE).tcl
 TRACK = tcl
 
 # boot-tests::
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+
+test::
+	RUN_ALL=1 $(TCLSH) $(EXERCISE).test
 # coverage::
 # clean::
