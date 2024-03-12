@@ -17,5 +17,5 @@ Function Get-Acronym() {
     Param (
         [string]$Phrase
     )
-    Throw "Please implement this function"
+    ($Phrase.ToUpper() -split '\s+|-|_' | Where-Object { $_.Length } | ForEach-Object { $_[0] }) -join ''
 }
