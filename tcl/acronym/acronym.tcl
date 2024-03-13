@@ -1,3 +1,8 @@
 proc abbreviate {phrase} {
-    throw {NOT_IMPLEMENTED} "Implement this procedure."
+    set result ""
+    set words [split $phrase " -_"]
+    foreach word $words {
+        set result "${result}[string toupper [string index $word 0]]"
+    }
+    return $result
 }
