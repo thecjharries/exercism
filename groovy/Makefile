@@ -1,6 +1,7 @@
 -include ../global.mk
 
 # Aliases for executables
+CHMOD ?= chmod
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
@@ -8,12 +9,16 @@
 # SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = src/main/groovy/$(EXERCISE_PASCAL_CASE).groovy
 TRACK = groovy
 
-# boot-tests::
+boot-tests::
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+	$(CHMOD) +x $(EXERCISE)/gradlew
+
+test::
+	./gradlew test
+
 # coverage::
 # clean::
