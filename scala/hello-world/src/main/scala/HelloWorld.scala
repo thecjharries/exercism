@@ -1,4 +1,4 @@
 object HelloWorld {
-  def hello() = "Goodbye, Mars!"
+  def hello() = "Hello, World!"
 }
 
