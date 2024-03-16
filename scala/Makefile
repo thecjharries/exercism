@@ -1,0 +1,23 @@
+-include ../global.mk
+
+# Aliases for executables
+# CP ?= cp
+# GH ?= gh
+# GIT ?= git
+# RM ?= rm
+SBT ?= sbt
+# SED ?= sed
+
+# Exercism variables
+SUBMISSIONS = src/main/scala/$(EXERCISE_PASCAL_CASE).scala
+TRACK = scala
+
+# boot-tests::
+# 	$(GIT) add $(EXERCISE)/
+# 	$(GIT) commit -m "Enable all tests"
+
+test::
+	$(SBT) test
+
+# coverage::
+# clean::
