@@ -4,7 +4,7 @@
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
-# RM ?= rm
+RM ?= rm
 SBT ?= sbt
 # SED ?= sed
 
@@ -20,4 +20,6 @@ test::
 	$(SBT) test
 
 # coverage::
-# clean::
+
+clean::
+	$(RM) -rf project target
