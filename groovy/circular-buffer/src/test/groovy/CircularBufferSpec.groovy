@@ -13,7 +13,6 @@ class CircularBufferSpec extends Specification {
         thrown(EmptyBufferException)
     }
 
-    @Ignore
     def "Can read an item just written"() {
         setup:
         CircularBuffer buff = new CircularBuffer(1)
@@ -25,7 +24,6 @@ class CircularBufferSpec extends Specification {
         buff.read() == 1
     }
 
-    @Ignore
     def "Each item may only be read once"() {
         setup:
         CircularBuffer buff = new CircularBuffer(1)
@@ -43,7 +41,6 @@ class CircularBufferSpec extends Specification {
         thrown(EmptyBufferException)
     }
 
-    @Ignore
     def "Items are read in the order they are written"() {
         setup:
         CircularBuffer buff = new CircularBuffer(2)
@@ -57,7 +54,6 @@ class CircularBufferSpec extends Specification {
         buff.read() == 2
     }
 
-    @Ignore
     def "Full buffer can't be written to"() {
         setup:
         CircularBuffer buff = new CircularBuffer(1)
@@ -70,7 +66,6 @@ class CircularBufferSpec extends Specification {
         thrown(FullBufferException)
     }
 
-    @Ignore
     def "A read frees up capacity for another write"() {
         setup:
         CircularBuffer buff = new CircularBuffer(1)
@@ -88,7 +83,6 @@ class CircularBufferSpec extends Specification {
         buff.read() == 2
     }
 
-    @Ignore
     def "Read position is maintained even across multiple writes"() {
         setup:
         CircularBuffer buff = new CircularBuffer(3)
@@ -108,7 +102,6 @@ class CircularBufferSpec extends Specification {
         buff.read() == 3
     }
 
-    @Ignore
     def "Items cleared out of buffer can't be read"() {
         setup:
         CircularBuffer buff = new CircularBuffer(1)
@@ -122,7 +115,6 @@ class CircularBufferSpec extends Specification {
         thrown(EmptyBufferException)
     }
 
-    @Ignore
     def "Clear frees up capacity for another write"() {
         setup:
         CircularBuffer buff = new CircularBuffer(1)
@@ -136,7 +128,6 @@ class CircularBufferSpec extends Specification {
         buff.read() == 2
     }
 
-    @Ignore
     def "Clear does nothing on empty buffer"() {
         setup:
         CircularBuffer buff = new CircularBuffer(1)
@@ -149,7 +140,6 @@ class CircularBufferSpec extends Specification {
         buff.read() == 1
     }
 
-    @Ignore
     def "Overwrite acts like write on non-full buffer"() {
         setup:
         CircularBuffer buff = new CircularBuffer(2)
@@ -163,7 +153,6 @@ class CircularBufferSpec extends Specification {
         buff.read() == 2
     }
 
-    @Ignore
     def "Overwrite replaces the oldest item on full buffer"() {
         setup:
         CircularBuffer buff = new CircularBuffer(2)
@@ -178,7 +167,6 @@ class CircularBufferSpec extends Specification {
         buff.read() == 3
     }
 
-    @Ignore
     def "Overwrite replaces the oldest item remaining in buffer following a read"() {
         setup:
         CircularBuffer buff = new CircularBuffer(3)
@@ -201,7 +189,6 @@ class CircularBufferSpec extends Specification {
         buff.read() == 5
     }
 
-    @Ignore
     def "Initial clear does not affect wrapping around"() {
         setup:
         CircularBuffer buff = new CircularBuffer(2)
