@@ -3,8 +3,14 @@ class FullBufferException extends Exception {}
 
 class CircularBuffer {
 
+    private int[] buffer
+    private int capacity
+    private int readIndex
+
     CircularBuffer(int capacity) {
-        throw new UnsupportedOperationException('Constructor implementation is missing')
+        this.capacity = capacity
+        buffer = new int[capacity]
+        readIndex = 0
     }
 
     def clear() {
