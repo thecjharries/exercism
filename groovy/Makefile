@@ -6,15 +6,16 @@
 GRADLE ?= gradle
 # GIT ?= git
 RM ?= rm
-# SED ?= sed
+SED ?= sed
 
 # Exercism variables
 SUBMISSIONS = src/main/groovy/$(EXERCISE_PASCAL_CASE).groovy
 TRACK = groovy
 
-# boot-tests::
-# 	$(GIT) add $(EXERCISE)/
-# 	$(GIT) commit -m "Enable all tests"
+boot-tests::
+	$(SED) -i '/@Ignore/d' $(EXERCISE)/src/test/groovy/$(EXERCISE_PASCAL_CASE)Spec.groovy
+	$(GIT) add $(EXERCISE)/
+	$(GIT) commit -m "Enable all tests"
 
 test::
 	$(GRADLE) test
