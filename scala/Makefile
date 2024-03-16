@@ -5,15 +5,19 @@
 # GH ?= gh
 # GIT ?= git
 # RM ?= rm
+SBT ?= sbt
 # SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = src/main/scala/$(EXERCISE_PASCAL_CASE).scala
 TRACK = scala
 
 # boot-tests::
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+
+test::
+	$(SBT) test
+
 # coverage::
 # clean::
