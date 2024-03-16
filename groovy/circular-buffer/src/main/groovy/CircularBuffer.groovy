@@ -4,28 +4,42 @@ class FullBufferException extends Exception {}
 class CircularBuffer {
 
     private int[] buffer
-    private int capacity
+    private int size
     private int readIndex
 
     CircularBuffer(int capacity) {
-        this.capacity = capacity
         buffer = new int[capacity]
         readIndex = 0
+        size = 0
     }
 
     def clear() {
-        throw new UnsupportedOperationException('Clear implementation is missing')
+        size = 0
     }
 
     def read() {
-        throw new UnsupportedOperationException('Read implementation is missing')
+        if (0 == size) {
+            throw new EmptyBufferException()
+        }
+        int item = buffer[readIndex]
+        readIndex = (readIndex + 1) % buffer.length
+        size--
+        return item
     }
 
     def write(int item) {
-        throw new UnsupportedOperationException('Write implementation is missing')
+        if (buffer.length == size) {
+            throw new FullBufferException()
+        }
+        overwrite(item)
     }
 
     def overwrite(int item) {
-        throw new UnsupportedOperationException('Overwrite implementation is missing')
+        buffer[(readIndex + size) % buffer.length] = item
+        if (buffer.length == size) {
+            readIndex = (readIndex + 1) % buffer.length
+        } else {
+            size++
+        }
     }
 }
