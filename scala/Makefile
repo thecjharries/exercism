@@ -6,15 +6,16 @@
 # GIT ?= git
 RM ?= rm
 SBT ?= sbt
-# SED ?= sed
+SED ?= sed
 
 # Exercism variables
 SUBMISSIONS = src/main/scala/$(EXERCISE_PASCAL_CASE).scala
 TRACK = scala
 
-# boot-tests::
-# 	$(GIT) add $(EXERCISE)/
-# 	$(GIT) commit -m "Enable all tests"
+boot-tests::
+	$(SED) -Ei '/\s+pending\s*/d' $(EXERCISE)/src/test/scala/$(EXERCISE_PASCAL_CASE)Test.scala
+	$(GIT) add $(EXERCISE)/
+	$(GIT) commit -m "Enable all tests"
 
 test::
 	$(SBT) test
