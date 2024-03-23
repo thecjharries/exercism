@@ -1,18 +1,26 @@
-//
-// This is only a SKELETON file for the 'Allergies' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export class Allergies {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+  static ALLERGENS = [
+    "eggs",
+    "peanuts",
+    "shellfish",
+    "strawberries",
+    "tomatoes",
+    "chocolate",
+    "pollen",
+    "cats",
+  ];
+
+  _list = [];
+
+  constructor(score) {
+    this._list = Allergies.ALLERGENS.filter((_, i) => score & (1 << i));
   }
 
   list() {
-    throw new Error('Remove this statement and implement this function');
+    return this._list;
   }
 
-  allergicTo() {
-    throw new Error('Remove this statement and implement this function');
+  allergicTo(allergen) {
+    return this._list.includes(allergen);
   }
 }
