@@ -12,9 +12,10 @@ RM ?= rm
 SUBMISSIONS = src/$(EXERCISE_PASCAL_CASE).elm
 TRACK = elm
 
-# boot-tests::
-# 	$(GIT) add $(EXERCISE)/
-# 	$(GIT) commit -m "Enable all tests"
+boot-tests::
+	$(SED) -i 's/skip <|//g' $(EXERCISE)/tests/Tests.elm
+	$(GIT) add $(EXERCISE)/
+	$(GIT) commit -m "Enable all tests"
 
 test::
 	$(ELM_TEST)
