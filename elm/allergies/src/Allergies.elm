@@ -1,5 +1,8 @@
 module Allergies exposing (Allergy(..), isAllergicTo, toList)
 
+import Bitwise
+import List
+
 
 type Allergy
     = Eggs
@@ -12,11 +15,19 @@ type Allergy
     | Cats
 
 
+allergies : List Allergy
+allergies =
+    [ Eggs, Peanuts, Shellfish, Strawberries, Tomatoes, Chocolate, Pollen, Cats ]
+
+
 isAllergicTo : Allergy -> Int -> Bool
 isAllergicTo allergy score =
-    Debug.todo "Please implement this function"
+    List.member allergy (toList score)
 
 
 toList : Int -> List Allergy
 toList score =
-    Debug.todo "Please implement this function"
+    allergies
+        |> List.indexedMap (\i allergy -> ( Bitwise.shiftLeftBy i 1, allergy ))
+        |> List.filter (\( bit, _ ) -> Bitwise.and bit score > 0)
+        |> List.map Tuple.second
