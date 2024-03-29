@@ -3,17 +3,24 @@
 # Aliases for executables
 # CP ?= cp
 # GH ?= gh
+GRADLE ?= gradle
 # GIT ?= git
-# RM ?= rm
-# SED ?= sed
+RM ?= rm
+SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = src/main/java/*.java
 TRACK = java
 
 # boot-tests::
+# 	$(SED) -i '/@Ignore/d' $(EXERCISE)/src/test/java/*.java
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+
+test::
+	$(GRADLE) test
+
 # coverage::
-# clean::
+
+clean::
+	$(RM) -rf build/ .gradle/
