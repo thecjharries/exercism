@@ -12,10 +12,10 @@ SED ?= sed
 SUBMISSIONS = src/main/java/*.java
 TRACK = java
 
-# boot-tests::
-# 	$(SED) -i '/@Ignore/d' $(EXERCISE)/src/test/java/*.java
-# 	$(GIT) add $(EXERCISE)/
-# 	$(GIT) commit -m "Enable all tests"
+boot-tests::
+	$(SED) -i '/@Disabled/d' $(EXERCISE)/src/test/java/*.java
+	$(GIT) add $(EXERCISE)/
+	$(GIT) commit -m "Enable all tests"
 
 test::
 	$(GRADLE) test
