@@ -7,12 +7,12 @@ RM ?= rm
 SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = lib/$(EXERCISE_SNAKE_CASE).ex
+SUBMISSIONS = lib/*.ex
 TRACK = elixir
 
 boot-tests::
-	$(SED) -i '/@tag :pending/d' test/$(EXERCISE_SNAKE_CASE)_test.exs
-	$(GIT) add test/$(EXERCISE_SNAKE_CASE)_test.exs
+	$(SED) -i '/@tag :pending/d' $(EXERCISE)/test/*_test.exs
+	$(GIT) add $(EXERCISE)/test/*_test.exs
 	$(GIT) commit -m "Enable all tests"
 
 test::
