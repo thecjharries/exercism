@@ -16,7 +16,7 @@ boot::
 boot-tests::
 	$(SED) -i 's/xit/it/g' $(EXERCISE)/*.test.ts
 	$(GIT) add $(EXERCISE)/*.test.ts
-	$(GIT) commit -m "Enable all tests"
+	$(GIT) commit -m "Enable all tests" || exit 0
 
 test::
 	$(PNPM) test
