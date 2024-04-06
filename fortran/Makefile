@@ -1,0 +1,24 @@
+-include ../global.mk
+
+# Aliases for executables
+CD ?= cd
+CMAKE ?= cmake
+MKDIR ?= mkdir
+RM ?= rm
+
+# Exercism variables
+SUBMISSIONS = $(EXERCISE_SNAKE_CASE).f90
+TRACK = fortran
+CMAKE_GENERATOR ?= "Unix Makefiles"
+
+boot-tests::
+	$(MKDIR) -p build
+	$(CD) build && $(CMAKE) -G $(CMAKE_GENERATOR) ..
+
+test::
+	$(CD) build && $(MAKE)
+
+# coverage::
+
+clean::
+	$(RM) -rf build
