@@ -1,19 +1,24 @@
 -include ../global.mk
 
 # Aliases for executables
-# CP ?= cp
-# GH ?= gh
-# GIT ?= git
-# RM ?= rm
-# SED ?= sed
+CD ?= cd
+CMAKE ?= cmake
+MKDIR ?= mkdir
+RM ?= rm
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = $(EXERCISE_SNAKE_CASE).f90
 TRACK = fortran
+CMAKE_GENERATOR ?= "Unix Makefiles"
 
-# boot-tests::
-# 	$(GIT) add $(EXERCISE)/
-# 	$(GIT) commit -m "Enable all tests"
-# test::
+boot-tests::
+	$(MKDIR) -p build
+	$(CD) build && $(CMAKE) -G $(CMAKE_GENERATOR) ..
+
+test::
+	$(CD) build && $(MAKE)
+
 # coverage::
-# clean::
+
+clean::
+	$(RM) -rf build
