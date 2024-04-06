@@ -1,19 +1,26 @@
 -include ../global.mk
 
 # Aliases for executables
-# CP ?= cp
-# GH ?= gh
-# GIT ?= git
-# RM ?= rm
-# SED ?= sed
+GIT ?= git
+PNPM ?= pnpm
+RM ?= rm
+SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = $(EXERCISE).ts
 TRACK = typescript
 
-# boot-tests::
-# 	$(GIT) add $(EXERCISE)/
-# 	$(GIT) commit -m "Enable all tests"
-# test::
-# coverage::
-# clean::
+boot::
+	cd $(EXERCISE) && $(PNPM) install
+
+boot-tests::
+	$(SED) -i 's/xit/it/g' $(EXERCISE)/*.test.ts
+	$(GIT) add $(EXERCISE)/*.test.ts
+	$(GIT) commit -m "Enable all tests"
+
+test::
+	$(PNPM) test
+
+clean::
+	$(RM) -rf node_modules
+	$(RM) -rf pnpm-lock.yaml
