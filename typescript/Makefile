@@ -22,5 +22,5 @@ test::
 	$(YARN) test
 
 clean::
-	$(RM) -rf node_modules
-	$(RM) -rf pnpm-lock.yaml
+	$(RM) -rf node_modules .yarn/cache/ .yarn/unplugged/
+	$(RM) -rf .pnp.cjs .pnp.loader.mjs .yarn/install-state.gz yarn.lock
