@@ -12,8 +12,8 @@ TRACK = fortran
 CMAKE_GENERATOR ?= "Unix Makefiles"
 
 boot-tests::
-	$(MKDIR) -p build
-	$(CD) build && $(CMAKE) -G $(CMAKE_GENERATOR) ..
+	$(MKDIR) -p $(EXERCISE)/build
+	$(CD) $(EXERCISE)/build && $(CMAKE) -G $(CMAKE_GENERATOR) ..
 
 test::
 	$(CD) build && $(MAKE)
@@ -21,4 +21,4 @@ test::
 # coverage::
 
 clean::
-	$(RM) -rf build
+	$(RM) -rf build testlib
