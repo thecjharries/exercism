@@ -21,4 +21,4 @@ test::
 # coverage::
 
 clean::
-	$(RM) -rf build
+	$(RM) -rf build testlib
