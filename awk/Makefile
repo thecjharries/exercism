@@ -1,6 +1,7 @@
 -include ../global.mk
 
 # Aliases for executables
+BATS ?= bats
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
@@ -8,12 +9,15 @@
 # SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = $(EXERCISE).awk
 TRACK = awk
 
 # boot-tests::
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+
+test::
+	$(BATS) *.bats
+
 # coverage::
 # clean::
