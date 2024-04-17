@@ -17,7 +17,7 @@ TRACK = awk
 # 	$(GIT) commit -m "Enable all tests"
 
 test::
-	$(BATS) *.bats
+	BATS_RUN_SKIPPED=true $(BATS) *.bats
 
 # coverage::
 # clean::
