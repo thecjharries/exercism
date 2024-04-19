@@ -34,7 +34,25 @@
   ;; @returns {i32} The sum of the squares of the first N natural numbers
   ;;
   (func $sumOfSquares (export "sumOfSquares") (param $max i32) (result i32)
-    (i32.const 42)
+    (i32.div_u
+        (i32.mul
+            (i32.mul
+                (local.get $max)
+                (i32.add
+                    (local.get $max)
+                    (i32.const 1)
+                )
+            )
+            (i32.add
+                (i32.mul
+                    (i32.const 2)
+                    (local.get $max)
+                )
+                (i32.const 1)
+            )
+        )
+        (i32.const 6)
+    )
   )
 
   ;;
