@@ -1,19 +1,26 @@
 -include ../global.mk
 
 # Aliases for executables
-# CP ?= cp
-# GH ?= gh
-# GIT ?= git
-# RM ?= rm
-# SED ?= sed
+GIT ?= git
+PNPM ?= pnpm
+RM ?= rm
+SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = $(EXERCISE).wat
 TRACK = wasm
 
-# boot-tests::
-# 	$(GIT) add $(EXERCISE)/
-# 	$(GIT) commit -m "Enable all tests"
-# test::
-# coverage::
-# clean::
+boot-tests::
+	$(SED) -i 's/xtest/test/g' $(EXERCISE)/*.spec.js
+	$(GIT) add $(EXERCISE)/*.spec.js
+	$(GIT) commit -m "Enable all tests" || exit 0
+
+boot::
+	cd $(EXERCISE) && $(PNPM) install
+
+test::
+	$(PNPM) test
+
+clean::
+	$(RM) -rf node_modules
+	$(RM) -rf pnpm-lock.yaml
