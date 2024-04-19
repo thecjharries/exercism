@@ -65,6 +65,9 @@
   ;;                squares of the first N natural numbers.
   ;;
   (func (export "difference") (param $max i32) (result i32)
-    (call $squareOfSum (i32.const 42))
+    (i32.sub
+        (call $squareOfSum (local.get $max))
+        (call $sumOfSquares (local.get $max))
+    )
   )
 )
