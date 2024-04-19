@@ -9,7 +9,7 @@
 ZIG ?= zig
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE).zig
+SUBMISSIONS = $(EXERCISE_SNAKE_CASE).zig
 TRACK = zig
 
 # boot-tests::
@@ -17,7 +17,7 @@ TRACK = zig
 # 	$(GIT) commit -m "Enable all tests"
 
 test::
-	$(ZIG) test test_$(EXERCISE).zig
+	$(ZIG) test test_$(EXERCISE_SNAKE_CASE).zig
 
 # coverage::
 # clean::
