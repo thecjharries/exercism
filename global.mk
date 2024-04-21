@@ -59,7 +59,7 @@ boot-feature-branch: guard-TRACK guard-EXERCISE create
 .PHONY: create-makefile
 create-makefile: guard-EXERCISE
 	@echo "Creating Makefile..."
-	echo "-include ../../global.mk" > $(EXERCISE)/Makefile
+	echo "-include ../../global.mk" >> $(EXERCISE)/Makefile
 	echo "-include ../Makefile" >> $(EXERCISE)/Makefile
 
 # Create exercise Makefile
