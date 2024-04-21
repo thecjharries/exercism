@@ -1,6 +1,7 @@
 -include ../global.mk
 
 # Aliases for executables
+CHEZ ?= chez
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
@@ -15,7 +16,8 @@ TRACK = scheme
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
 
-test:: chez
+test::
+	$(CHEZ) --script test.scm
 
 # coverage::
 # clean::
