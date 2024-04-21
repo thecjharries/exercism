@@ -15,3 +15,5 @@ guile :
 	$(guile) test.scm $(solution)
 
 .PHONY : help check-all chez guile
+-include ../../global.mk
+-include ../Makefile
