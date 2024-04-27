@@ -17,7 +17,7 @@ TRACK = swift
 # 	$(GIT) commit -m "Enable all tests"
 
 test::
-	$(SWIFT) test
+	RUNALL=true $(SWIFT) test
 
 # coverage::
 
