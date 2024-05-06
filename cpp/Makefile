@@ -12,8 +12,8 @@ TRACK = cpp
 CMAKE_GENERATOR ?= "Unix Makefiles"
 
 boot-tests::
-	$(MKDIR) -p build
-	$(CD) build && $(CMAKE) -G $(CMAKE_GENERATOR) ..
+	$(MKDIR) -p $(EXERCISE)/build
+	$(CD) $(EXERCISE)/build && $(CMAKE) -G $(CMAKE_GENERATOR) ..
 
 clean::
 	$(RM) -rf build
