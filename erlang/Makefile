@@ -5,7 +5,7 @@
 # GH ?= gh
 # GIT ?= git
 REBAR3 ?= rebar3
-# RM ?= rm
+RM ?= rm
 # SED ?= sed
 
 # Exercism variables
@@ -18,4 +18,5 @@ TRACK = erlang
 test::
 	$(REBAR3) eunit
 # coverage::
-# clean::
+clean::
+	$(RM) -rf _build
