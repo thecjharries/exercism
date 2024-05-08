@@ -9,7 +9,7 @@ REBAR3 ?= rebar3
 # SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE_SNAKE_CASE).erl
+SUBMISSIONS = src/$(EXERCISE_SNAKE_CASE).erl
 TRACK = erlang
 
 # boot-tests::
