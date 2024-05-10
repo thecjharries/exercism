@@ -1,5 +1,6 @@
 # Aliases for executables
 BASENAME ?= basename
+BATS ?= bats
 CODE ?= code
 CP ?= cp
 EXERCISM ?= exercism
