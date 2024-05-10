@@ -87,6 +87,11 @@ boot-vscode::
 boot:: create boot-feature-branch boot-makefile boot-tests boot-vscode
 	@echo "Boot complete."
 
+# Convenience target for bats tests
+.PHONY: test-bats
+test-bats:
+	BATS_RUN_SKIPPED=true $(BATS) *.bats
+
 # Run the tests
 .PHONY: test
 test::
