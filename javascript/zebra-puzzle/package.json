@@ -22,7 +22,7 @@
   },
   "dependencies": {},
   "scripts": {
-    "test": "jest ./*",
+    "test": "jest --silent=false --verbose=true ./*",
     "watch": "jest --watch ./*",
     "lint": "eslint ."
   }
