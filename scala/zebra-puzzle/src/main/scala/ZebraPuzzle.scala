@@ -9,6 +9,6 @@ object ZebraPuzzle {
 
   case class Solution(waterDrinker: Resident, zebraOwner: Resident)
 
-  lazy val solve: Solution = ???
+  lazy val solve: Solution = Solution(waterDrinker = Norwegian, zebraOwner = Japanese)
 }
 
