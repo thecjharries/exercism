@@ -15,7 +15,7 @@ TRACK = scala
 boot-tests::
 	$(SED) -Ei '/\s+pending\s*/d' $(EXERCISE)/src/test/scala/$(EXERCISE_PASCAL_CASE)Test.scala
 	$(GIT) add $(EXERCISE)/
-	$(GIT) commit -m "Enable all tests"
+	$(GIT) commit -m "Enable all tests" || exit 0
 
 test::
 	$(SBT) test
