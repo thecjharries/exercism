@@ -7,3 +7,5 @@ clean:
 	dune clean
 
 .PHONY: clean
+-include ../../global.mk
+-include ../Makefile
