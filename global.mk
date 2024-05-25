@@ -50,7 +50,7 @@ boot-track: guard-TRACK
 
 # Create the feature branch
 .PHONY: boot-feature-branch
-boot-feature-branch: guard-TRACK guard-EXERCISE create
+boot-feature-branch:: guard-TRACK guard-EXERCISE create
 	@echo "Creating feature branch..."
 	$(GIT) checkout -b feat/$(TRACK)/$(EXERCISE)
 	$(GIT) add $(EXERCISE)
