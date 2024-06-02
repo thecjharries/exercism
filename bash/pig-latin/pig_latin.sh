@@ -1,24 +1,19 @@
 #!/usr/bin/env bash
+set -f
 
-# The following comments should help you get started:
-# - Bash is flexible. You may use functions or write a "raw" script.
-#
-# - Complex code can be made easier to read by breaking it up
-#   into functions, however this is sometimes overkill in bash.
-#
-# - You can find links about good style and other resources
-#   for Bash in './README.md'. It came with this exercise.
-#
-#   Example:
-#   # other functions here
-#   # ...
-#   # ...
-#
-#   main () {
-#     # your main function code here
-#   }
-#
-#   # call main with all of the positional arguments
-#   main "$@"
-#
-# *** PLEASE REMOVE THESE COMMENTS BEFORE SUBMITTING YOUR SOLUTION ***
+translate() {
+    word=$1
+    [[ ${word:0:1} =~ [aeiou] ]] && echo -n "${word}ay" && exit
+    [[ ${word:0:3} =~ (squ|thr|sch) ]] && echo -n "${word:3}${word:0:3}ay" && exit
+    [[ ${word:0:2} =~ (qu|rh|ch|sh|sk|th) ]] && echo -n "${word:2}${word:0:2}ay" && exit
+    [[ ${word:0:2} =~ (yt|xr) ]] && echo -n "${word}ay" && return
+    echo -n "${word:1}${word:0:1}ay" && return
+}
+
+main() {
+    [[ $# -gt 1 ]] && for word in "$@"; do echo -n "$(translate $word) "; done | sed 's/ $//g' && exit 0
+    translate $1
+    exit 0
+}
+
+main "$@"
