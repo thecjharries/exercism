@@ -9,7 +9,7 @@ BATS ?= bats
 # SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE).sh
+SUBMISSIONS = $(EXERCISE_SNAKE_CASE).sh
 TRACK = bash
 
 # boot-tests::
