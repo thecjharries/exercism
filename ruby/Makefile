@@ -13,7 +13,7 @@ TRACK = ruby
 
 boot-tests::
 	$(GEM) install minitest
-	$(SED) -i -e '/skip$/d' $(EXERCISE_SNAKE_CASE)_test.rb
+	$(SED) -i -e '/skip$$/d' $(EXERCISE_SNAKE_CASE)_test.rb
 	$(GIT) add $(EXERCISE_SNAKE_CASE)_test.rb
 	$(GIT) commit -m "Enable all tests"
 
