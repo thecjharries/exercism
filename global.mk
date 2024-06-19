@@ -83,9 +83,14 @@ boot-vscode::
 		$(CODE) --reuse-window $(EXERCISE)/$$submission & \
 	done
 
+# Final boot step for random things
+.PHONY: boot-final
+boot-final::
+	@echo "Finalizing boot..."
+
 # Full boot target
 .PHONY: boot
-boot:: create boot-feature-branch boot-makefile boot-tests boot-vscode
+boot:: create boot-feature-branch boot-makefile boot-tests boot-vscode boot-final
 	@echo "Boot complete."
 
 # Convenience target for bats tests
