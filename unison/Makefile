@@ -2,13 +2,14 @@
 
 # Aliases for executables
 # CP ?= cp
+FIND ?= find
 # GH ?= gh
 # GIT ?= git
 # RM ?= rm
 # SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = $(shell $(FIND) . -type f -name '*.u' -and -not -name '*.test.u')
 TRACK = unison
 
 # boot-tests::
