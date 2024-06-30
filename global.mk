@@ -3,10 +3,12 @@ BASENAME ?= basename
 BATS ?= bats
 CODE ?= code
 CP ?= cp
+DOTNET ?= dotnet
 EXERCISM ?= exercism
 GH ?= gh
 GIT ?= git
 MKDIR ?= mkdir
+RM ?= rm
 SED ?= sed
 
 # Exercism variables
@@ -97,6 +99,16 @@ boot:: create boot-feature-branch boot-makefile boot-tests boot-vscode boot-fina
 .PHONY: test-bats
 test-bats:
 	BATS_RUN_SKIPPED=true $(BATS) *.bats
+
+# Convenience target for dotnet tests
+.PHONY: test-dotnet
+test-dotnet:
+	$(DOTNET) test
+
+# Convenience target for cleaning dotnet
+.PHONY: clean-dotnet
+clean-dotnet:
+	$(RM) -rf bin/ obj/
 
 # Run the tests
 .PHONY: test
