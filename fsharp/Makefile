@@ -1,8 +1,8 @@
 -include ../global.mk
 
 # Aliases for executables
-DOTNET ?= dotnet
-RM ?= rm
+GIT ?= git
+SED ?= sed
 
 # Exercism variables
 SUBMISSIONS = $(EXERCISE_PASCAL_CASE).fs
@@ -13,8 +13,6 @@ boot-tests::
 	$(GIT) add $(EXERCISE)/$(EXERCISE_PASCAL_CASE)Tests.fs
 	$(GIT) commit -m "Enable all tests"
 
-test::
-	$(DOTNET) test
+test:: dotnet-test
 
-clean::
-	$(RM) -rf bin obj
+clean:: dotnet-clean
