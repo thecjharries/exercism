@@ -13,8 +13,8 @@ boot-tests::
 	$(GIT) add $(EXERCISE)/$(EXERCISE_PASCAL_CASE)Tests.vb
 	$(GIT) commit -m "Enable all tests" || exit 0
 
-test:: dotnet-test
+test:: test-dotnet
 
 # coverage::
 
-clean:: dotnet-clean
+clean:: clean-dotnet
