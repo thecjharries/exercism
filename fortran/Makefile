@@ -16,7 +16,7 @@ boot-tests::
 	$(CD) $(EXERCISE)/build && $(CMAKE) -G $(CMAKE_GENERATOR) ..
 
 test::
-	$(CD) build && $(MAKE)
+	$(CD) build && $(MAKE) && $(MAKE) test
 
 # coverage::
 
