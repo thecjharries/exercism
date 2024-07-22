@@ -16,6 +16,8 @@ boot-tests::
 	$(MKDIR) -p $(EXERCISE)/build
 	$(CD) $(EXERCISE)/build && $(CMAKE) -G $(CMAKE_GENERATOR) ..
 	$(SED) -i '1s/^/#define EXERCISM_RUN_ALL_TESTS\n/' $(EXERCISE)/$(EXERCISE_SNAKE_CASE)_test.cpp
+	$(GIT) add $(EXERCISE)/$(EXERCISE_SNAKE_CASE)_test.cpp
+	$(GIT) commit -m "Enable all tests"
 
 clean::
 	$(RM) -rf build

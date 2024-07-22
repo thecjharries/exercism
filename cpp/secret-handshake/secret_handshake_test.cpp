@@ -1,3 +1,4 @@
+#define EXERCISM_RUN_ALL_TESTS
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else
