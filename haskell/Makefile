@@ -8,10 +8,8 @@ RM ?= rm
 # SED ?= sed
 STACK ?= stack
 
-HASKELL_FILENAME = $(shell L1=$(EXERCISE); echo $${L1^})
-
 # Exercism variables
-SUBMISSIONS = src/$(HASKELL_FILENAME).hs package.yaml
+SUBMISSIONS = src/$(EXERCISE_PASCAL_CASE).hs package.yaml
 TRACK = haskell
 
 boot-tests::
