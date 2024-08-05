@@ -3,6 +3,7 @@
 # Aliases for executables
 GIT ?= git
 PNPM ?= pnpm
+PNPX ?= pnpx
 RM ?= rm
 SED ?= sed
 
@@ -19,8 +20,7 @@ boot::
 	cd $(EXERCISE) && $(PNPM) install
 
 test::
-	$(PNPM) test
+	$(PNPX) jest --watchAll --env=node
 
 clean::
-	$(RM) -rf node_modules
-	$(RM) -rf pnpm-lock.yaml
+	$(RM) -rf node_modules pnpm-lock.yaml .bsb.lock .merlin __tests__/$(EXERCISE_PASCAL_CASE)_test.bs.js lib src/$(EXERCISE_PASCAL_CASE).bs.js
