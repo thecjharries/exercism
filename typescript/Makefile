@@ -23,5 +23,5 @@ test::
 	$(PNPX) corepack yarn test
 
 clean::
-	$(RM) -rf node_modules .yarn/cache/ .yarn/unplugged/
+	$(RM) -rf node_modules .yarn/
 	$(RM) -rf .pnp.cjs .pnp.loader.mjs .yarn/install-state.gz yarn.lock
