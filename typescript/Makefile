@@ -2,16 +2,17 @@
 
 # Aliases for executables
 GIT ?= git
+PNPM ?= pnpm
+PNPX ?= pnpx
 RM ?= rm
 SED ?= sed
-YARN ?= yarn
 
 # Exercism variables
 SUBMISSIONS = $(EXERCISE).ts
 TRACK = typescript
 
 boot::
-	cd $(EXERCISE) && $(YARN) install
+	cd $(EXERCISE) && $(PNPX) corepack yarn install
 
 boot-tests::
 	$(SED) -i 's/xit/it/g' $(EXERCISE)/*.test.ts
@@ -19,8 +20,8 @@ boot-tests::
 	$(GIT) commit -m "Enable all tests" || exit 0
 
 test::
-	$(YARN) test
+	$(PNPX) corepack yarn test
 
 clean::
-	$(RM) -rf node_modules .yarn/cache/ .yarn/unplugged/
+	$(RM) -rf node_modules .yarn/
 	$(RM) -rf .pnp.cjs .pnp.loader.mjs .yarn/install-state.gz yarn.lock
