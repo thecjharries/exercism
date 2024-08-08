@@ -2,16 +2,17 @@
 
 # Aliases for executables
 GIT ?= git
+PNPM ?= pnpm
+PNPX ?= pnpx
 RM ?= rm
 SED ?= sed
-YARN ?= yarn
 
 # Exercism variables
 SUBMISSIONS = $(EXERCISE).ts
 TRACK = typescript
 
 boot::
-	cd $(EXERCISE) && $(YARN) install
+	cd $(EXERCISE) && $(PNPX) yarn install
 
 boot-tests::
 	$(SED) -i 's/xit/it/g' $(EXERCISE)/*.test.ts
