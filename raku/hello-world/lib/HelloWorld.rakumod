@@ -5,5 +5,5 @@
 unit module HelloWorld;
 
 sub hello is export {
-    return 'Goodbye, Mars!';
+    return 'Hello, World!';
 }
