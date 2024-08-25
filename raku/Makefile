@@ -5,7 +5,7 @@
 # GH ?= gh
 # GIT ?= git
 RAKU ?= raku
-# RM ?= rm
+RM ?= rm
 # SED ?= sed
 
 # Exercism variables
@@ -18,4 +18,5 @@ TRACK = raku
 test::
 	$(RAKU) t/$(EXERCISE).rakutest
 # coverage::
-# clean::
+clean::
+	$(RM) -rf lib/.precomp
