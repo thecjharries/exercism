@@ -4,16 +4,18 @@
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
+RAKU ?= raku
 # RM ?= rm
 # SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = lib/$(EXERCISE_PASCAL_CASE).rakumod
 TRACK = raku
 
 # boot-tests::
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+test::
+	$(RAKU) t/$(EXERCISE).rakutest
 # coverage::
 # clean::
