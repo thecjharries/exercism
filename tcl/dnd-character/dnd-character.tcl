@@ -3,14 +3,15 @@ namespace eval dnd {
     namespace ensemble create
 
     proc modifier {score} {
-        throw {NOT_IMPLEMENTED} "Implement this procedure."
+        expr {int(($score - 10) / 2)}
     }
 
     proc ability {} {
-        throw {NOT_IMPLEMENTED} "Implement this procedure."
+        expr {int(rand() * 16 + 3)}
     }
 
     proc character {} {
-        throw {NOT_IMPLEMENTED} "Implement this procedure."
+        set consitution [ability]
+        return "charisma [ability] constitution $consitution dexterity [ability] intelligence [ability] strength [ability] wisdom [ability] hitpoints [expr {10 + [modifier $consitution]}]"
     }
 }
