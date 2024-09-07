@@ -8,12 +8,13 @@
 # SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = $(EXERCISE).lua
 TRACK = lua
 
 # boot-tests::
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+test::
+	$$HOME/.luarocks/bin/busted
 # coverage::
 # clean::
