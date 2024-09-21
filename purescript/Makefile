@@ -6,14 +6,16 @@
 # GIT ?= git
 # RM ?= rm
 # SED ?= sed
+SPAGO ?= spago
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = src/$(EXERCISE_PASCAL_CASE).purs
 TRACK = purescript
 
 # boot-tests::
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+test::
+	$(SPAGO) test
 # coverage::
 # clean::
