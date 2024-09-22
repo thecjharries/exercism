@@ -4,7 +4,7 @@
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
-# RM ?= rm
+RM ?= rm
 # SED ?= sed
 SPAGO ?= spago
 
@@ -18,4 +18,5 @@ TRACK = purescript
 test::
 	$(SPAGO) test
 # coverage::
-# clean::
+clean::
+	$(RM) -rf output .spago
