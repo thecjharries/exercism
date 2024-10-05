@@ -4,7 +4,7 @@
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
-PHPUNIT ?= $$(XDG_CONFIG_HOME)/composer/vendor/bin/phpunit
+PHPUNIT ?= $(XDG_CONFIG_HOME)/composer/vendor/bin/phpunit
 # RM ?= rm
 # SED ?= sed
 
