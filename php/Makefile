@@ -4,16 +4,18 @@
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
+PHPUNIT ?= $$(XDG_CONFIG_HOME)/composer/vendor/bin/phpunit
 # RM ?= rm
 # SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = $(EXERCISE_PASCAL_CASE).php
 TRACK = php
 
 # boot-tests::
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+test::
+	$(PHPUNIT) $(EXERCISE_PASCAL_CASE)Test.php
 # coverage::
 # clean::
