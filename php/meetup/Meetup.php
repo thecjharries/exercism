@@ -26,5 +26,19 @@ declare(strict_types=1);
 
 function meetup_day(int $year, int $month, string $which, string $weekday): DateTimeImmutable
 {
-    throw new \BadFunctionCallException("Implement the meetup_day function");
+    $teenth = false;
+    if ($which === 'teenth') {
+        $teenth = true;
+        $which = 'first';
+    }
+    $month = DateTime::createFromFormat('!m', (string) $month);
+    $monthWord = $month->format('F');
+    $conversion = $which . ' ' . $weekday . ' of ' . $monthWord . ' ' . $year;
+    $day = new DateTime($conversion);
+    if ($teenth) {
+        while ($day->format('d') < 13) {
+            $day->modify('+1 week');
+        }
+    }
+    return new DateTimeImmutable($day->format('Y-m-d'));
 }
