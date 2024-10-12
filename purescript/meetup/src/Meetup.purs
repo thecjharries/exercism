@@ -3,9 +3,11 @@ module Meetup
   , Week(..)
   ) where
 
-import Data.Date (Date, Month, Weekday, Year)
+import Data.Array (catMaybes, find, (..))
+import Data.Date (Date, Month, Weekday, Year, canonicalDate, lastDayOfMonth, weekday)
+import Data.Enum (fromEnum, toEnum)
 import Data.Maybe (Maybe)
-import Effect.Exception.Unsafe (unsafeThrow)
+import Prelude (($), (-), (<$>), (==))
 
 data Week
   = First
@@ -16,4 +18,14 @@ data Week
   | Teenth
 
 meetup :: Year -> Month -> Week -> Weekday -> Maybe Date
-meetup = unsafeThrow "You need to implement this function."
+meetup y m w wd =
+    find (\d -> weekday d == wd) $ canonicalDate y m <$> catMaybes (toEnum <$> days)
+        where
+            daysInMonth = fromEnum $ lastDayOfMonth y m
+            days = case w of
+                First -> 1 .. 7
+                Second -> 8 .. 14
+                Third -> 15 .. 21
+                Fourth -> 22 .. 28
+                Teenth -> 13 .. 19
+                Last -> (daysInMonth - 6) .. daysInMonth
