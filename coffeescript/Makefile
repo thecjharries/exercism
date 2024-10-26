@@ -4,16 +4,18 @@
 # CP ?= cp
 # GH ?= gh
 # GIT ?= git
+JASMINE_NODE ?= jasmine-node
 # RM ?= rm
 # SED ?= sed
 
 # Exercism variables
-SUBMISSIONS = $(EXERCISE)
+SUBMISSIONS = $(EXERCISE).coffee
 TRACK = coffeescript
 
 # boot-tests::
 # 	$(GIT) add $(EXERCISE)/
 # 	$(GIT) commit -m "Enable all tests"
-# test::
+test::
+	$(JASMINE_NODE) --coffee .
 # coverage::
 # clean::
