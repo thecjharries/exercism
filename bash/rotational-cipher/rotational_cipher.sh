@@ -1,24 +1,26 @@
 #!/usr/bin/env bash
 
-# The following comments should help you get started:
-# - Bash is flexible. You may use functions or write a "raw" script.
-#
-# - Complex code can be made easier to read by breaking it up
-#   into functions, however this is sometimes overkill in bash.
-#
-# - You can find links about good style and other resources
-#   for Bash in './README.md'. It came with this exercise.
-#
-#   Example:
-#   # other functions here
-#   # ...
-#   # ...
-#
-#   main () {
-#     # your main function code here
-#   }
-#
-#   # call main with all of the positional arguments
-#   main "$@"
-#
-# *** PLEASE REMOVE THESE COMMENTS BEFORE SUBMITTING YOUR SOLUTION ***
+input="$1"
+shift="$2"
+
+alphabet="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+encrypted="${alphabet:$shift:$((26 - shift))}${alphabet::$shift}"
+encrypted+="${alphabet:$((26 + shift))}${alphabet:26:$shift}"
+
+declare -A letters
+output=""
+
+for ((i = 0; i < ${#alphabet}; i++)); do
+    letters[${alphabet:$i:1}]="${encrypted:$i:1}"
+done
+
+for ((i = 0; i < ${#input}; i++)); do
+    char="${input:$i:1}"
+    if [[ "${letters[$char]}" ]]; then
+        output+="${letters[$char]}"
+    else
+        output+="$char"
+    fi
+done
+
+echo "$output"
